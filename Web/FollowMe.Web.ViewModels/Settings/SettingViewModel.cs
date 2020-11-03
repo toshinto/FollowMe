@@ -1,9 +1,8 @@
 ﻿namespace FollowMe.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using FollowMe.Data.Models;
     using FollowMe.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

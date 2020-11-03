@@ -1,0 +1,15 @@
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\obj\Debug\netstandard2.1\FollowMe.Web.ViewModels.csprojAssemblyReference.cache
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\obj\Debug\netstandard2.1\FollowMe.Web.ViewModels.AssemblyInfoInputs.cache
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\obj\Debug\netstandard2.1\FollowMe.Web.ViewModels.AssemblyInfo.cs
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Web.ViewModels.deps.json
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Web.ViewModels.dll
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Web.ViewModels.pdb
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Data.Common.dll
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Data.Models.dll
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Services.Mapping.dll
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Data.Models.pdb
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Services.Mapping.pdb
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\bin\Debug\netstandard2.1\FollowMe.Data.Common.pdb
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\obj\Debug\netstandard2.1\FollowMe.Web.ViewModels.csproj.CopyComplete
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\obj\Debug\netstandard2.1\FollowMe.Web.ViewModels.dll
+D:\FollowMe\FollowMe\Web\FollowMe.Web.ViewModels\obj\Debug\netstandard2.1\FollowMe.Web.ViewModels.pdb

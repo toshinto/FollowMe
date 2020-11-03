@@ -1,0 +1,7 @@
+D:\FollowMe\FollowMe\Services\FollowMe.Services\bin\Debug\netstandard2.1\FollowMe.Services.deps.json
+D:\FollowMe\FollowMe\Services\FollowMe.Services\bin\Debug\netstandard2.1\FollowMe.Services.dll
+D:\FollowMe\FollowMe\Services\FollowMe.Services\bin\Debug\netstandard2.1\FollowMe.Services.pdb
+D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.AssemblyInfoInputs.cache
+D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.AssemblyInfo.cs
+D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.dll
+D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.pdb

@@ -1,0 +1,8 @@
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\bin\Debug\netstandard2.1\FollowMe.Data.Common.deps.json
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\bin\Debug\netstandard2.1\FollowMe.Data.Common.dll
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\bin\Debug\netstandard2.1\FollowMe.Data.Common.pdb
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\obj\Debug\netstandard2.1\FollowMe.Data.Common.csprojAssemblyReference.cache
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\obj\Debug\netstandard2.1\FollowMe.Data.Common.AssemblyInfoInputs.cache
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\obj\Debug\netstandard2.1\FollowMe.Data.Common.AssemblyInfo.cs
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\obj\Debug\netstandard2.1\FollowMe.Data.Common.dll
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Common\obj\Debug\netstandard2.1\FollowMe.Data.Common.pdb

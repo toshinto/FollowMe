@@ -5,6 +5,7 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
     using FollowMe.Data;
     using FollowMe.Data.Common;
     using FollowMe.Data.Common.Repositories;
@@ -13,9 +14,6 @@
     using FollowMe.Data.Seeding;
     using FollowMe.Services.Data;
     using FollowMe.Services.Messaging;
-
-    using CommandLine;
-
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
