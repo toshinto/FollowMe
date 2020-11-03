@@ -12,6 +12,10 @@ a.navbar-brand {
 /* Sticky footer styles
 -------------------------------------------------- */
 
+#image{
+    height: 100px;
+    width: 100px;
+}
 
 #register {
     position: fixed;
@@ -22,6 +26,7 @@ a.navbar-brand {
 }
 body {
     background-color: #AAC9FF;
+    background-size: auto;
 }
 #textCenter{
     text-align: center;
