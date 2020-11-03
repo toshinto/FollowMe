@@ -9,6 +9,24 @@ a.navbar-brand {
 
 /* Sticky footer styles
 -------------------------------------------------- */
+#register {
+    position: fixed;
+    height: 200px;
+    width: 400px;
+    top: 25%;
+    right: 35%;
+}
+
+#textCenter{
+    text-align: center;
+}
+#account {
+    position: fixed;
+    height: 200px;
+    width: 400px;
+    top: 25%;
+    right: 35%;
+}
 html {
     font-size: 14px;
 }

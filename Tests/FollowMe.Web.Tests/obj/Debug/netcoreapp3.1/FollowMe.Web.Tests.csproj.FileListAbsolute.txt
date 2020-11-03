@@ -524,3 +524,4 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.W
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.csproj.CopyComplete
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.dll
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.pdb
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\wwwroot\images\background.png
