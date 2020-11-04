@@ -20,5 +20,10 @@ namespace FollowMe.Web.Controllers
             };
             return this.View();
         }
+
+        public IActionResult Profile()
+        {
+            return this.View();
+        }
     }
 }

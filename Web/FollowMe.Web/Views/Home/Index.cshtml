@@ -1,6 +1,24 @@
-﻿@using FollowMe.Common
-@{
-    this.ViewData["Title"] = "Home Page";
-}
-
-
+﻿@model FollowMe.Web.ViewModels.Home.UsersIndexViewModel
+<h1 class="text-center mt-2">Lsat registerd users</h1>
+<div class="row mt-2 mb-4">
+    @foreach (var user in Model.UserCharacteristics)
+    {
+        <div class="card col-6 col-lg-3 game-card">
+            <img src="@user.CoverImageUrl"
+                 class="card-img-top img-fluid card-image">
+            <div class="card-body">
+                <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
+                    title="Description:<br>">
+                    @user.FullName
+                </h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-center"></li>
+                    <li class="list-group-item">
+                        <span class="attack-stat"></span><span class="health-stat"></span>
+                    </li>
+                </ul>
+                <a href="/Cards/AddToCollection?cardId" class="btn btn-block btn-primary">Add to Collection</a>
+            </div>
+        </div>
+    }
+</div>

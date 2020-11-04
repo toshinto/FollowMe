@@ -45,6 +45,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Views\Profiles\Details.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Profiles\Profile.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\images\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

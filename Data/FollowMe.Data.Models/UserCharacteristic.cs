@@ -40,6 +40,5 @@ namespace FollowMe.Data.Models
         public HairColor HairColor { get; set; }
 
         public string Description { get; set; }
-
     }
 }

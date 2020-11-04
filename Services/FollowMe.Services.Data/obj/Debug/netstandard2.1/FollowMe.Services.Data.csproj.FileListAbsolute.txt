@@ -13,3 +13,5 @@ D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\Fo
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.csproj.CopyComplete
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.dll
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.pdb
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Common.dll
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Common.pdb

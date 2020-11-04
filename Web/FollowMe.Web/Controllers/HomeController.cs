@@ -1,16 +1,28 @@
 ﻿namespace FollowMe.Web.Controllers
 {
     using System.Diagnostics;
-
+    using AutoMapper;
+    using FollowMe.Services.Data;
     using FollowMe.Web.ViewModels;
-
+    using FollowMe.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly IProfilesService profilesService;
+
+        public HomeController(IProfilesService profilesService)
+        {
+            this.profilesService = profilesService;
+        }
         public IActionResult Index()
         {
-            return this.View();
+            var viewModel = new UsersIndexViewModel
+            {
+                UserCharacteristics = this.profilesService.GetAll<IndexUserViewModel>(),
+            };
+
+            return this.View(viewModel);
         }
 
         public IActionResult Privacy()

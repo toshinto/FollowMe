@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FollowMe.Data.Common\FollowMe.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FollowMe.Data.Models\FollowMe.Data.Models.csproj" />
+    <ProjectReference Include="..\..\FollowMe.Common\FollowMe.Common.csproj" />
     <ProjectReference Include="..\FollowMe.Services.Mapping\FollowMe.Services.Mapping.csproj" />
   </ItemGroup>
 

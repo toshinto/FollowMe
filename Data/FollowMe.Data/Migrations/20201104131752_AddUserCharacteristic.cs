@@ -27,7 +27,7 @@ namespace FollowMe.Data.Migrations
                     WeddingStatus = table.Column<int>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
                     WhatAreYouSearchingFor = table.Column<int>(nullable: false),
-                    HairColor = table.Column<int>(nullable: false)
+                    HairColor = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {

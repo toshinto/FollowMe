@@ -12,7 +12,7 @@
     using FollowMe.Services.Mapping;
     using FollowMe.Services.Messaging;
     using FollowMe.Web.ViewModels;
-
+    using FollowMe.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
