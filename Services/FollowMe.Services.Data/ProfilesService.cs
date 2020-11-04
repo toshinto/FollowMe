@@ -10,16 +10,16 @@ namespace FollowMe.Services.Data
 {
     public class ProfilesService : IProfilesService
     {
-        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
+        private readonly IDeletableEntityRepository<UserCharacteristic> usersRepository;
 
-        public ProfilesService(IDeletableEntityRepository<ApplicationUser> usersRepository)
+        public ProfilesService(IDeletableEntityRepository<UserCharacteristic> usersRepository)
         {
             this.usersRepository = usersRepository;
         }
 
         public IEnumerable<T> GetAll<T>()
         {
-            IQueryable<ApplicationUser> query =
+            IQueryable<UserCharacteristic> query =
                 this.usersRepository.All().OrderByDescending(x => x.CreatedOn);
             return query.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
         }

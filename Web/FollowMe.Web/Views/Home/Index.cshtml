@@ -1,5 +1,5 @@
 ﻿@model FollowMe.Web.ViewModels.Home.UsersIndexViewModel
-<h1 class="text-center mt-2">Lsat registerd users</h1>
+<h1 class="text-center mt-2">Last confirmed users</h1>
 <div class="row mt-2 mb-4">
     @foreach (var user in Model.UserCharacteristics)
     {
@@ -17,7 +17,7 @@
                         <span class="attack-stat"></span><span class="health-stat"></span>
                     </li>
                 </ul>
-                <a href="/Cards/AddToCollection?cardId" class="btn btn-block btn-primary">Add to Collection</a>
+                <a href="/Cards/AddToCollection?cardId" class="btn btn-block btn-primary">Profile</a>
             </div>
         </div>
     }

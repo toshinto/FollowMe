@@ -7,6 +7,7 @@ namespace FollowMe.Web.ViewModels.Home
 {
     public class UsersIndexViewModel : IMapFrom<ApplicationUser>
     {
+        public string Id { get; set; }
         public IEnumerable<IndexUserViewModel> UserCharacteristics { get; set; }
         public void CreateMapping(IProfileExpression configuration)
         {
