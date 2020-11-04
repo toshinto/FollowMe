@@ -8,6 +8,7 @@ namespace FollowMe.Web.ViewModels.Home
 {
     public class IndexUserViewModel : IMapFrom<UserCharacteristic>, IHaveCustomMappings
     {
+        public string Id { get; set; }
         public string CoverImageUrl { get; set; }
 
         public string FirstName { get; set; }

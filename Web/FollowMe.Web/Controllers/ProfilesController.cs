@@ -21,7 +21,7 @@ namespace FollowMe.Web.Controllers
             return this.View();
         }
 
-        public IActionResult Profile()
+        public IActionResult Profile(string id)
         {
             return this.View();
         }
