@@ -42,7 +42,7 @@ namespace FollowMe.Services.Data
                 FirstName = details.FirstName,
                 LastName = details.LastName,
                 BirthDate = date,
-                CoverImageUrl = details.ImagePath,
+                CoverImageUrl = details.CoverImageUrl,
                 Height = details.Height,
                 Weight = details.Weight,
                 Description = details.Description,
