@@ -17,9 +17,9 @@
         }
         public IActionResult Index()
         {
-            if (this.User.Identity.IsAuthenticated)
+            if (!this.User.Identity.IsAuthenticated)
             {
-                this.Redirect("/Profiles/Details");
+                return this.Redirect("/Identity/Account/Login");
             }
             var viewModel = new UsersIndexViewModel
             {
