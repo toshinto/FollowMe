@@ -27,7 +27,10 @@ namespace FollowMe.Web.Controllers
         {
             var userId = this.userManager.GetUserId(this.User);
             var viewModel = this.profilesService.GetByName<ProfileViewPersonalDetailsViewModel>(id);
-
+            if (viewModel == null)
+            {
+                return this.Redirect("/Profiles/Details");
+            }
             return this.View(viewModel);
         }
 
