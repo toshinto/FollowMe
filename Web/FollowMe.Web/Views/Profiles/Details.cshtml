@@ -1,15 +1,17 @@
-﻿<section class="py-5">
+﻿@using FollowMe.Data.Models;
+@model FollowMe.Web.ViewModels.Profiles.CreateDetailsViewModel
+<section class="py-5">
     <div class="container">
         <h1 style="margin: 2%; text-align: center;">Add Personal Info</h1>
         <div style="padding: 5%;">
             <form method="post">
                 <div class="form-group">
                     <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name">
                 </div>
                 <div class="form-group">
                     <label for="birthDay">Birthday</label>
@@ -31,7 +33,51 @@
                     <label for="description">Description</label>
                     <input type="text" class="form-control" id="description" name="description" placeholder="Say something about you">
                 </div>
-
+                <div>
+                    <label for="eyeColor">Choose eye color</label>
+                    <select id="eyeColor" name="eyeColor">
+                        <option value="1">Amber</option>
+                        <option value="2">Blue</option>
+                        <option value="3">Brown</option>
+                        <option value="4">Gray</option>
+                        <option value="5">Green</option>
+                        <option value="6">Hazel</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="gender">Choose gender</label>
+                    <select id="gender" name="gender">
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="hairColor">Choose hair color</label>
+                    <select id="hairColor" name="hairColor">
+                        <option value="1">Black</option>
+                        <option value="2">Brown</option>
+                        <option value="3">White</option>
+                        <option value="4">Red</option>
+                        <option value="5">Blond</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="weddingStatus">Choose your status</label>
+                    <select id="weddingStatus" name="weddingStatus">
+                        <option value="1">Married</option>
+                        <option value="2">Divorced</option>
+                        <option value="3">Single</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="whatAreYouSearchingFor">Choose what are you searching for</label>
+                    <select id="weddingStatus" name="weddingStatus">
+                        <option value="1">Date</option>
+                        <option value="2">RelationShip</option>
+                        <option value="3">Chat</option>
+                        <option value="4">Flirt</option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
             </form>
         </div>
