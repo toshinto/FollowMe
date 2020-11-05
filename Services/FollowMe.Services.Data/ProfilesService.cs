@@ -29,6 +29,27 @@ namespace FollowMe.Services.Data
             var wedding = Enum.TryParse(details.WeddingStatus, out WeddingStatus weddingStatus);
             var whatYouSerachingFor = Enum.TryParse(details.WhatAreYouSearchingFor, out WhatAreYouSearchingFor whatAreYouSearchingFor);
 
+            if (usersRepository.All().Any(x => x.UserId == userId))
+            {
+                var user = usersRepository.All().Where(x => x.UserId == userId).FirstOrDefault();
+                if (user != null)
+                {
+                    user.FirstName = details.FirstName;
+                    user.LastName = details.LastName;
+                    user.BirthDate = details.Birthday;
+                    user.CoverImageUrl = details.Birthday.ToString();
+                    user.Height = details.Height;
+                    user.Weight = details.Weight;
+                    user.Description = details.Description;
+                    user.EyeColor = eyesColor;
+                    user.HairColor = hairColor;
+                    user.Gender = gender;
+                    user.WeddingStatus = weddingStatus;
+                    user.WhatAreYouSearchingFor = whatAreYouSearchingFor;
+                }
+                await this.usersRepository.SaveChangesAsync();
+                return;
+            }
             var userCharacteristic = new UserCharacteristic
             {
                 FirstName = details.FirstName,
