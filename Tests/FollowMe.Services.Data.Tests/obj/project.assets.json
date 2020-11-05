@@ -2695,7 +2695,8 @@
           "FollowMe.Common": "1.0.0",
           "FollowMe.Data.Common": "1.0.0",
           "FollowMe.Data.Models": "1.0.0",
-          "FollowMe.Services.Mapping": "1.0.0"
+          "FollowMe.Services.Mapping": "1.0.0",
+          "FollowMe.Web.ViewModels": "1.0.0"
         },
         "compile": {
           "bin/placeholder/FollowMe.Services.Data.dll": {}
@@ -2715,6 +2716,20 @@
         },
         "runtime": {
           "bin/placeholder/FollowMe.Services.Mapping.dll": {}
+        }
+      },
+      "FollowMe.Web.ViewModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "FollowMe.Data.Models": "1.0.0",
+          "FollowMe.Services.Mapping": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FollowMe.Web.ViewModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FollowMe.Web.ViewModels.dll": {}
         }
       }
     }
@@ -8637,6 +8652,11 @@
       "type": "project",
       "path": "../../Services/FollowMe.Services.Mapping/FollowMe.Services.Mapping.csproj",
       "msbuildProject": "../../Services/FollowMe.Services.Mapping/FollowMe.Services.Mapping.csproj"
+    },
+    "FollowMe.Web.ViewModels/1.0.0": {
+      "type": "project",
+      "path": "../../Web/FollowMe.Web.ViewModels/FollowMe.Web.ViewModels.csproj",
+      "msbuildProject": "../../Web/FollowMe.Web.ViewModels/FollowMe.Web.ViewModels.csproj"
     }
   },
   "projectFileDependencyGroups": {

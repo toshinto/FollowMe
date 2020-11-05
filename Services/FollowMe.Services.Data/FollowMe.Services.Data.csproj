@@ -22,6 +22,7 @@
     <ProjectReference Include="..\..\Data\FollowMe.Data.Common\FollowMe.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\FollowMe.Data.Models\FollowMe.Data.Models.csproj" />
     <ProjectReference Include="..\..\FollowMe.Common\FollowMe.Common.csproj" />
+    <ProjectReference Include="..\..\Web\FollowMe.Web.ViewModels\FollowMe.Web.ViewModels.csproj" />
     <ProjectReference Include="..\FollowMe.Services.Mapping\FollowMe.Services.Mapping.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+using FollowMe.Web.ViewModels.Profiles;
 
 namespace FollowMe.Services.Data
 {
@@ -8,5 +9,7 @@ namespace FollowMe.Services.Data
     {
         string GetId(string id);
         IEnumerable<T> GetAll<T>();
+
+        Task Create(CreateDetailsViewModel details, string userId);
     }
 }
