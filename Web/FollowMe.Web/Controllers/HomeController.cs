@@ -17,6 +17,10 @@
         }
         public IActionResult Index()
         {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                this.Redirect("/Profiles/Details");
+            }
             var viewModel = new UsersIndexViewModel
             {
                 UserCharacteristics = this.profilesService.GetAll<IndexUserViewModel>(),
