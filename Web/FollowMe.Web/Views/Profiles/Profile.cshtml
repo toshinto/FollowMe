@@ -4,10 +4,10 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                    <div class="pv-lg"><img class="center-block img-responsive img-circle img-thumbnail thumb96" src="" alt="Contact"></div>
+                    <div class="pv-lg"><img src="@Model.CoverImageUrl" alt="Contact" style="height:430px; width:450px"></div>
                     <h3 class="m0 text-bold"></h3>
                     <div class="mv-lg">
-                        <p></p>
+                        <p>@Model.Description</p>
                     </div>
                     <div class="text-center"><a class="btn btn-primary" href="">Send message</a></div>
                 </div>
@@ -22,21 +22,21 @@
                         <div class="col-lg-8">
                             <form class="form-horizontal ng-pristine ng-valid">
                                 <div class="form-group">
-                                    <label class="control-label" for="inputContact1">Birthday: </label>
+                                    <label class="control-label" for="inputContact1">Birthday: @Model.Birthday.ToShortDateString() </label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Height: </label>
+                                    <label class="control-label" for="inputContact1">Height: @Model.Height </label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Weight: </label>
+                                    <label class="control-label" for="inputContact1">Weight: @Model.Weight </label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Gender: </label>
+                                    <label class="control-label" for="inputContact1">Gender: @Model.Gender</label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Eyes color: </label>
+                                    <label class="control-label" for="inputContact1">Eyes color: @Model.EyeColor</label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Hair color: </label>
+                                    <label class="control-label" for="inputContact1">Hair color: @Model.HairColor</label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Status: </label>
+                                    <label class="control-label" for="inputContact1">Status: @Model.WeddingStatus</label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">What are you searching for: </label>
+                                    <label class="control-label" for="inputContact1">What are you searching for: @Model.WhatAreYouSearchingFor</label>
                                </div>
 
                             </form>
