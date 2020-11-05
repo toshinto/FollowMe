@@ -4,7 +4,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                    <div class="pv-lg"><img src="@Model.CoverImageUrl" alt="Contact" style="height:430px; width:450px"></div>
+                    <div class="pv-lg"><img src="@Model.CoverImageUrl" style="height:430px; width:450px"></div>
                     <h3 class="m0 text-bold"></h3>
                     <div class="mv-lg">
                         <p>@Model.Description</p>
@@ -22,7 +22,7 @@
                         <div class="col-lg-8">
                             <form class="form-horizontal ng-pristine ng-valid">
                                 <div class="form-group">
-                                    <label class="control-label" for="inputContact1">Birthday: @Model.Birthday.ToShortDateString() </label>
+                                    <label class="control-label" for="inputContact1">Birthday: @Model.BirthDate.ToShortDateString() </label>
                                     <hr />
                                     <label class="control-label" for="inputContact1">Height: @Model.Height </label>
                                     <hr />
@@ -37,8 +37,7 @@
                                     <label class="control-label" for="inputContact1">Status: @Model.WeddingStatus</label>
                                     <hr />
                                     <label class="control-label" for="inputContact1">What are you searching for: @Model.WhatAreYouSearchingFor</label>
-                               </div>
-
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -47,3 +46,4 @@
         </div>
     </div>
 </div>
+

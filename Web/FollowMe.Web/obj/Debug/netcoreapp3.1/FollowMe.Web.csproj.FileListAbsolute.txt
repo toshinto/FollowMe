@@ -465,3 +465,5 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Profil
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Profiles\Profile.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Profiles\Details.cshtml
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Profiles\Profile.cshtml
+D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Home\Index.cshtml
+D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Home\Privacy.cshtml

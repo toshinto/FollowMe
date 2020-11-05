@@ -3,6 +3,9 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@{ 
+     var userId = this.UserManager.GetUserId(this.User);
+}
 
     <ul class="navbar-nav">
         @if (this.SignInManager.IsSignedIn(this.User))
@@ -14,7 +17,7 @@
                 <a class="nav-link text-white" href="/Profiles/Details" title="Details">Details</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/Profiles/Profile" title="Profile">Profile</a>
+                <a class="nav-link text-white" href="/Profiles/Profile?id=@userId" title="Profile">Profile</a>
             </li>
             if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
             {

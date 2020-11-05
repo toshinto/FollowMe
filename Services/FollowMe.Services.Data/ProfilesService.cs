@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -28,12 +29,19 @@ namespace FollowMe.Services.Data
             var sex = Enum.TryParse(details.Gender, out Gender gender);
             var wedding = Enum.TryParse(details.WeddingStatus, out WeddingStatus weddingStatus);
             var whatYouSerachingFor = Enum.TryParse(details.WhatAreYouSearchingFor, out WhatAreYouSearchingFor whatAreYouSearchingFor);
+            DateTime date;
+            bool validDate = DateTime.TryParseExact(
+                                      details.BirthDay,
+                                      "dd.MM.yyyy",
+                                      CultureInfo.InvariantCulture,
+                                      DateTimeStyles.None,
+                                      out date);
 
             var userCharacteristic = new UserCharacteristic
             {
                 FirstName = details.FirstName,
                 LastName = details.LastName,
-                BirthDate = details.Birthday,
+                BirthDate = date,
                 CoverImageUrl = details.ImagePath,
                 Height = details.Height,
                 Weight = details.Weight,
@@ -57,10 +65,10 @@ namespace FollowMe.Services.Data
             return query.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
         }
 
-        public T GetByName<T>(string userId)
+        public T GetByName<T>(string id)
         {
             var userDetail = this.usersRepository.All()
-                .Where(x => x.UserId == userId)
+                .Where(x => x.UserId == id)
                 .To<T>().FirstOrDefault();
             return userDetail;
         }

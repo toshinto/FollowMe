@@ -16,6 +16,8 @@ namespace FollowMe.Web.ViewModels.Home
 
         public string LastName { get; set; }
 
+        public string UserId { get; set; }
+
         public string FullName => this.FirstName + " " + this.LastName;
 
         public void CreateMappings(IProfileExpression configuration)
