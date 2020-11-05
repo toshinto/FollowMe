@@ -18,12 +18,8 @@ namespace FollowMe.Web.Controllers
             this.profilesService = profilesService;
             this.userManager = userManager;
         }
-        public IActionResult Details(string id)
+        public IActionResult Details()
         {
-            var viewModel = new ProfileIdViewModel
-            {
-                Id = this.profilesService.GetId(id),
-            };
             return this.View();
         }
 
