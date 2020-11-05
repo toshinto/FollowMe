@@ -37,7 +37,7 @@ namespace FollowMe.Web.Controllers
         {
             var userId = this.userManager.GetUserId(this.User);
             await this.profilesService.Create(input, userId);
-            return this.Redirect("Profiles/Profile");
+            return this.Redirect("/Profiles/Profile");
         }
     }
 }
