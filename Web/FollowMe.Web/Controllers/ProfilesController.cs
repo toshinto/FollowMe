@@ -25,7 +25,10 @@ namespace FollowMe.Web.Controllers
 
         public IActionResult Profile(string id)
         {
-            return this.View();
+            var userId = this.userManager.GetUserId(this.User);
+
+            var viewModel = this.profilesService.GetByName<ProfileViewPersonalDetailsViewModel>(userId);
+            return this.View(viewModel);
         }
 
         [HttpPost]

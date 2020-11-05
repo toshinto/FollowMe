@@ -10,6 +10,8 @@ namespace FollowMe.Services.Data
         string GetId(string id);
         IEnumerable<T> GetAll<T>();
 
+        T GetByName<T>(string userId);
+
         Task Create(CreateDetailsViewModel details, string userId);
     }
 }

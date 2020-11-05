@@ -78,6 +78,14 @@ namespace FollowMe.Services.Data
             return query.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
         }
 
+        public T GetByName<T>(string userId)
+        {
+            var userDetail = this.usersRepository.All()
+                .Where(x => x.UserId == userId)
+                .To<T>().FirstOrDefault();
+            return userDetail;
+        }
+
         public string GetId(string id)
         {
             var userId = this.usersRepository.All().Where(x => x.Id == id).Select(x => x.Id).FirstOrDefault();

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
+using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 
 namespace FollowMe.Web.ViewModels.Profiles
 {
-    public class CreateDetailsViewModel
+    public class ProfileViewPersonalDetailsViewModel : IMapFrom<UserCharacteristic>
     {
         public string FirstName { get; set; }
 
@@ -31,5 +30,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string WeddingStatus { get; set; }
 
         public string WhatAreYouSearchingFor { get; set; }
+
+        public string FullName => $"{this.FirstName} {this.LastName}";
     }
 }
