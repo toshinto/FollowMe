@@ -32,7 +32,7 @@ namespace FollowMe.Services.Data
             DateTime date;
             bool validDate = DateTime.TryParseExact(
                                       details.BirthDay,
-                                      "dd.MM.yyyy",
+                                      "dd-MM-yyyy",
                                       CultureInfo.InvariantCulture,
                                       DateTimeStyles.None,
                                       out date);
