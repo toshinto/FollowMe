@@ -29,6 +29,8 @@ namespace FollowMe.Services.Data
             var sex = Enum.TryParse(details.Gender, out Gender gender);
             var wedding = Enum.TryParse(details.WeddingStatus, out WeddingStatus weddingStatus);
             var whatYouSerachingFor = Enum.TryParse(details.WhatAreYouSearchingFor, out WhatAreYouSearchingFor whatAreYouSearchingFor);
+            var cities = Enum.TryParse(details.City, out City city);
+
             DateTime date;
             bool validDate = DateTime.TryParseExact(
                                       details.BirthDay,
@@ -42,6 +44,8 @@ namespace FollowMe.Services.Data
                 FirstName = details.FirstName,
                 LastName = details.LastName,
                 BirthDate = date,
+                Age = details.Age,
+                City = city,
                 CoverImageUrl = details.CoverImageUrl,
                 Height = details.Height,
                 Weight = details.Weight,
