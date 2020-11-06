@@ -23,6 +23,10 @@ namespace FollowMe.Data.Models
         [MaxLength(15)]
         public string LastName { get; set; }
 
+        public int? Age { get; set; }
+
+        public City City { get; set; }
+
         public Gender Gender { get; set; }
 
         public int? Height { get; set; }

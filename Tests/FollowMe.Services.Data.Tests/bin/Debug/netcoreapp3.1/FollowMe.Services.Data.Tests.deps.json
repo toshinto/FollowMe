@@ -1885,7 +1885,8 @@
           "FollowMe.Common": "1.0.0",
           "FollowMe.Data.Common": "1.0.0",
           "FollowMe.Data.Models": "1.0.0",
-          "FollowMe.Services.Mapping": "1.0.0"
+          "FollowMe.Services.Mapping": "1.0.0",
+          "FollowMe.Web.ViewModels": "1.0.0"
         },
         "runtime": {
           "FollowMe.Services.Data.dll": {}
@@ -1897,6 +1898,15 @@
         },
         "runtime": {
           "FollowMe.Services.Mapping.dll": {}
+        }
+      },
+      "FollowMe.Web.ViewModels/1.0.0": {
+        "dependencies": {
+          "FollowMe.Data.Models": "1.0.0",
+          "FollowMe.Services.Mapping": "1.0.0"
+        },
+        "runtime": {
+          "FollowMe.Web.ViewModels.dll": {}
         }
       }
     }
@@ -3060,6 +3070,11 @@
       "sha512": ""
     },
     "FollowMe.Services.Mapping/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FollowMe.Web.ViewModels/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -89,3 +89,5 @@ D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.AssemblyInfo.
 D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.csproj.CopyComplete
 D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.dll
 D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.pdb
+D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewModels.dll
+D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewModels.pdb

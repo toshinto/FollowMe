@@ -5,3 +5,4 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web.Infrastructure\obj\Debug\netstandard2.1\Fo
 D:\FollowMe\FollowMe\Web\FollowMe.Web.Infrastructure\obj\Debug\netstandard2.1\FollowMe.Web.Infrastructure.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web.Infrastructure\obj\Debug\netstandard2.1\FollowMe.Web.Infrastructure.dll
 D:\FollowMe\FollowMe\Web\FollowMe.Web.Infrastructure\obj\Debug\netstandard2.1\FollowMe.Web.Infrastructure.pdb
+D:\FollowMe\FollowMe\Web\FollowMe.Web.Infrastructure\obj\Debug\netstandard2.1\FollowMe.Web.Infrastructure.csprojAssemblyReference.cache
