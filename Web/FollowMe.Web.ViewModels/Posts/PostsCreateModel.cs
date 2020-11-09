@@ -8,5 +8,6 @@ namespace FollowMe.Web.ViewModels.Posts
         public string UserUserName { get; set; }
 
         public string UserId { get; set; }
+
     }
 }

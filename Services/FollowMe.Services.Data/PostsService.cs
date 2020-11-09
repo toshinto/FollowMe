@@ -1,6 +1,7 @@
-﻿using FollowMe.Data.Common.Repositories;
+﻿using System.Linq;
+
+using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
-using System.Linq;
 
 namespace FollowMe.Services.Data
 {
