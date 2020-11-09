@@ -7,6 +7,5 @@ namespace FollowMe.Services.Data
     public interface IPostsService
     {
         string GetNameById(string userId);
-
     }
 }
