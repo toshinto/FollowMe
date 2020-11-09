@@ -16,7 +16,6 @@ namespace FollowMe.Services.Data
         public string GetNameById(string userId)
         {
             var user = this.usersRepository.All().Where(x => x.Id == userId).Select(x => x.UserName).FirstOrDefault();
-
             return user;
         }
     }
