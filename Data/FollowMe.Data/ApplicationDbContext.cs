@@ -27,6 +27,8 @@
 
         public DbSet<UserCharacteristic> UserCharacteristics { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
