@@ -19,5 +19,4 @@ namespace FollowMe.Data.Models
 
         public ApplicationUser User { get; set; }
     }
-
 }
