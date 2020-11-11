@@ -61,25 +61,30 @@
 <div class="row justify-content-center">
     <a href="/Posts/Create?id=@Model.UserId" class="btn btn-primary btn-lg text-center">Create new post</a>
 </div>
+<hr />
 @foreach (var post in Model.UserPosts)
 {
-    <div class="container">
-        <div class="well">
-            <div class="media">
-                    <img class="media-object" style="height:200px; width:200px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
-                <div class="media-body">
-                    <p class="text-right">By @post.SentByUserCharacteristicsFullName</p>
-                    <p>
-                        @post.Content
-                    </p>
-                    <ul class="list-inline list-unstyled">
-                        <li><span><i class="glyphicon glyphicon-calendar"></i>@post.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</span></li>
-                        <li></li>
+<div class="container">
+    <div class="well">
+        <div class="media">
+            <img class="media-object" style="height:150px; width:150px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
+            <div class="media-body">
+                <p class="text-right"><i class="fas fa-user"></i>By @post.SentByUserCharacteristicsFullName</p>
+                <p>
+                    @post.Content
+                </p>
+                <ul class="list-inline list-unstyled">
+                    <li><span><i class="fas fa-calendar-alt"></i>@post.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</span></li>
+                    <li>
                         <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
-                    </ul>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
+    </div>
+    <div class="row justify-content-md-end">
+        <a href="/Comments/Create?id=@post.Id" class="btn btn-primary btn-lg text-center">Add comment</a>
+    </div>
     </div>
     <hr />
 }
