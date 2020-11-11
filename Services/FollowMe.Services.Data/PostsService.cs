@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Services.Mapping;
 
 namespace FollowMe.Services.Data
 {
@@ -28,6 +30,13 @@ namespace FollowMe.Services.Data
 
             await this.postsRepository.AddAsync(post);
             await this.postsRepository.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> GetByUserId<T>(string userId)
+        {
+            var posts = this.postsRepository.All().Where(x => x.UserId == userId);
+
+            return posts.To<T>().ToList();
         }
 
         public string GetNameById(string userId)

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 
@@ -35,5 +35,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string WhatAreYouSearchingFor { get; set; }
 
         public string FullName => $"{this.FirstName} {this.LastName}";
+
+        public IEnumerable<PostInUserViewModel> UserPosts { get; set; }
     }
 }

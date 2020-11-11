@@ -50,10 +50,26 @@
                             </form>
                         </div>
                         <a href="/Posts/Create?id=@Model.UserId" class="btn btn-primary btn-lg">Create new post</a>
+                        <hr />
                     </div>
                 </div>
             </div>
         </div>
+
+        @foreach (var post in Model.UserPosts)
+        {
+            <div class="media-body">
+                <p>@post.Content</p>
+                <ul class="list-inline list-unstyled text-right">
+                    <li class="list-inline-item">
+                        <i class="fas fa-user-edit"></i> @post.UserUserName
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fas fa-calendar-alt"></i> @post.CreatedOn
+                    </li>
+                </ul>
+            </div>
+        }
     </div>
 </div>
 

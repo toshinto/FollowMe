@@ -12,11 +12,13 @@ namespace FollowMe.Web.Controllers
     {
         private readonly IProfilesService profilesService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IPostsService postsService;
 
-        public ProfilesController(IProfilesService profilesService, UserManager<ApplicationUser> userManager)
+        public ProfilesController(IProfilesService profilesService, UserManager<ApplicationUser> userManager, IPostsService postsService)
         {
             this.profilesService = profilesService;
             this.userManager = userManager;
+            this.postsService = postsService;
         }
         public IActionResult Details()
         {
@@ -27,6 +29,7 @@ namespace FollowMe.Web.Controllers
         {
             var userId = this.userManager.GetUserId(this.User);
             var viewModel = this.profilesService.GetByName<ProfileViewPersonalDetailsViewModel>(id);
+            viewModel.UserPosts = this.postsService.GetByUserId<PostInUserViewModel>(id);
             if (viewModel == null)
             {
                 return this.Redirect("/Profiles/Details");
