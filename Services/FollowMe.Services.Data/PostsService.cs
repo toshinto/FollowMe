@@ -34,7 +34,7 @@ namespace FollowMe.Services.Data
 
         public IEnumerable<T> GetByUserId<T>(string userId)
         {
-            var posts = this.postsRepository.All().Where(x => x.UserId == userId);
+            var posts = this.postsRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
 
             return posts.To<T>().ToList();
         }

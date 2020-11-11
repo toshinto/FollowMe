@@ -47,26 +47,25 @@
                                     <hr />
                                     <label class="control-label" for="inputContact1">What are you searching for: @Model.WhatAreYouSearchingFor</label>
                                 </div>
+
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="form-row text-center">
-            <div class="col-12">
-                <a href="/Posts/Create?id=@Model.UserId" class="btn btn-primary btn-lg">Create new post</a>
-                <hr />
-            </div>
-        </div>
-        @foreach (var post in Model.UserPosts)
-        {
-            <div class="col-md-12" style="text-align:center">
-                <p>@post.Content</p>
-                <i class="fas fa-user-edit"></i> @post.UserUserName
-                <i class="fas fa-calendar-alt"></i> @post.CreatedOn
-            </div>
-        }
-    </div>
-</div>
 
+    </div>
+    <hr />
+    <div class="row justify-content-center">
+        <a href="/Posts/Create?id=@Model.UserId" class="btn btn-primary btn-lg text-center">Create new post</a>
+    </div>
+    @foreach (var post in Model.UserPosts)
+    {
+        <div class="col-md-12" style="text-align:center">
+            <p>@post.Content</p>
+            <i class="fas fa-user-edit"></i> @post.UserUserName
+            <i class="fas fa-calendar-alt"></i> @post.CreatedOn
+        </div>
+    }
+</div>
