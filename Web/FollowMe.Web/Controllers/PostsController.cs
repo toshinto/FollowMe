@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
-
+using FollowMe.Data.Models;
 using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Posts;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FollowMe.Web.Controllers
@@ -9,10 +10,12 @@ namespace FollowMe.Web.Controllers
     public class PostsController : Controller
     {
         private readonly IPostsService postsService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public PostsController(IPostsService postsService)
+        public PostsController(IPostsService postsService, UserManager<ApplicationUser> userManager)
         {
             this.postsService = postsService;
+            this.userManager = userManager;
         }
 
         [HttpGet]
@@ -30,7 +33,8 @@ namespace FollowMe.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(string userId, string content)
         {
-            await this.postsService.Create(content, userId);
+            var currentUser = this.userManager.GetUserId(this.User);
+            await this.postsService.Create(content, userId, currentUser);
             return this.Redirect("/");
         }
     }

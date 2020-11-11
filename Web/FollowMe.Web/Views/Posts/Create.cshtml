@@ -1,4 +1,10 @@
-﻿@model FollowMe.Web.ViewModels.Posts.PostsCreateModel
+﻿@using Microsoft.AspNetCore.Identity
+@using FollowMe.Data.Models
+@model FollowMe.Web.ViewModels.Posts.PostsCreateModel
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var userId = this.UserManager.GetUserId(this.User);
+}
 <h1 class="text-center suls-text-color">Post - @Model.UserUserName </h1>
 <form asp-controller="Posts" asp-action="Create" method="post" id="AddPostToUser">
     <div class="top-border-line primary-separator"></div>

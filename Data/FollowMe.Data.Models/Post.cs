@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.ComponentModel.DataAnnotations;
 using FollowMe.Data.Common.Models;
 
 namespace FollowMe.Data.Models
@@ -17,6 +17,10 @@ namespace FollowMe.Data.Models
 
         public string UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser CreatedBy { get; set; }
+
+        public string SentById { get; set; }
+
+        public virtual ApplicationUser SentBy { get; set; }
     }
 }

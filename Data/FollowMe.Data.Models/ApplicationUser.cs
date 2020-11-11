@@ -3,7 +3,8 @@ namespace FollowMe.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using FollowMe.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -16,7 +17,8 @@ namespace FollowMe.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            this.Posts = new HashSet<Post>();
+            this.PostsCreated = new HashSet<Post>();
+            this.PostsSent = new HashSet<Post>();
         }
 
         // Audit info
@@ -37,6 +39,11 @@ namespace FollowMe.Data.Models
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
-        public virtual ICollection<Post> Posts { get; set; }
+        [InverseProperty("CreatedBy")]
+        public virtual ICollection<Post> PostsCreated { get; set; }
+
+        [InverseProperty("SentBy")]
+
+        public virtual ICollection<Post> PostsSent { get; set; }
     }
 }

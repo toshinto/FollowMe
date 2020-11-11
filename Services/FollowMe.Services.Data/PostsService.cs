@@ -19,12 +19,13 @@ namespace FollowMe.Services.Data
             this.postsRepository = postsRepository;
         }
 
-        public async Task Create(string content, string userId)
+        public async Task Create(string content, string userId, string sentBy)
         {
             var post = new Post
             {
                 Content = content,
                 UserId = userId,
+                SentById = sentBy,
                 CreatedOn = DateTime.UtcNow,
             };
 
@@ -32,9 +33,9 @@ namespace FollowMe.Services.Data
             await this.postsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetByUserId<T>(string userId)
+        public IEnumerable<T> GetByUserId<T>(string userId, string currUserid)
         {
-            var posts = this.postsRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
+            var posts = this.postsRepository.All().Where(x => x.UserId == userId && x.SentById == currUserid).OrderByDescending(x => x.CreatedOn);
 
             return posts.To<T>().ToList();
         }
