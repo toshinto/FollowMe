@@ -16,5 +16,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string SentById { get; set; }
 
         public string SentByUserCharacteristicsFullName { get; set; }
+
+        public string SentByUserCharacteristicsCoverImageUrl { get; set; }
     }
 }

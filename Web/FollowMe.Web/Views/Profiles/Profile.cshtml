@@ -56,16 +56,31 @@
         </div>
 
     </div>
-    <hr />
-    <div class="row justify-content-center">
-        <a href="/Posts/Create?id=@Model.UserId" class="btn btn-primary btn-lg text-center">Create new post</a>
-    </div>
-    @foreach (var post in Model.UserPosts)
-    {
-        <div class="col-md-12" style="text-align:center">
-            <p>@post.Content</p>
-            <i class="fas fa-user-edit"></i>@post.SentByUserCharacteristicsFullName
-            <i class="fas fa-calendar-alt"></i> @post.CreatedOn
-        </div>
-    }
 </div>
+<hr />
+<div class="row justify-content-center">
+    <a href="/Posts/Create?id=@Model.UserId" class="btn btn-primary btn-lg text-center">Create new post</a>
+</div>
+@foreach (var post in Model.UserPosts)
+{
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                    <img class="media-object" style="height:200px; width:200px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
+                <div class="media-body">
+                    <p class="text-right">@post.SentByUserCharacteristicsFullName</p>
+                    <p>
+                        @post.Content
+                    </p>
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
+                        <li></li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+
