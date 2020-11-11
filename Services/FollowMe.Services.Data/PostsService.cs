@@ -33,9 +33,9 @@ namespace FollowMe.Services.Data
             await this.postsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetByUserId<T>(string userId, string currUserid)
+        public IEnumerable<T> GetByUserId<T>(string id)
         {
-            var posts = this.postsRepository.All().Where(x => x.UserId == userId && x.SentById == currUserid).OrderByDescending(x => x.CreatedOn);
+            var posts = this.postsRepository.All().Where(x => x.UserId == id).OrderByDescending(x => x.CreatedOn);
 
             return posts.To<T>().ToList();
         }

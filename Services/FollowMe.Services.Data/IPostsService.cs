@@ -11,6 +11,6 @@ namespace FollowMe.Services.Data
 
         Task Create(string content, string userId, string sentBy);
 
-        IEnumerable<T> GetByUserId<T>(string userId, string currUserId);
+        IEnumerable<T> GetByUserId<T>(string id);
     }
 }

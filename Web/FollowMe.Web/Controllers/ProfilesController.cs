@@ -28,8 +28,8 @@ namespace FollowMe.Web.Controllers
         public IActionResult Profile(string id)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var viewModel = this.profilesService.GetByName<ProfileViewPersonalDetailsViewModel>(id);
-            viewModel.UserPosts = this.postsService.GetByUserId<PostInUserViewModel>(id, userId);
+            var viewModel = this.profilesService.GetByName<ProfileViewPersonalDetailsViewModel>(id, userId);
+            viewModel.UserPosts = this.postsService.GetByUserId<PostInUserViewModel>(id);
             if (viewModel == null)
             {
                 return this.Redirect("/Profiles/Details");
