@@ -68,12 +68,12 @@
             <div class="media">
                     <img class="media-object" style="height:200px; width:200px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
                 <div class="media-body">
-                    <p class="text-right">@post.SentByUserCharacteristicsFullName</p>
+                    <p class="text-right">By @post.SentByUserCharacteristicsFullName</p>
                     <p>
                         @post.Content
                     </p>
                     <ul class="list-inline list-unstyled">
-                        <li><span><i class="glyphicon glyphicon-calendar"></i>@post.CreatedOn</span></li>
+                        <li><span><i class="glyphicon glyphicon-calendar"></i>@post.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</span></li>
                         <li></li>
                         <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
                     </ul>
