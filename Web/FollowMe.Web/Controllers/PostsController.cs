@@ -35,7 +35,7 @@ namespace FollowMe.Web.Controllers
         {
             var currentUser = this.userManager.GetUserId(this.User);
             await this.postsService.Create(content, userId, currentUser);
-            return this.Redirect("/");
+            return this.Redirect($"/Profiles/Profile?id={userId}");
         }
     }
 }
