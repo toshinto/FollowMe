@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using FollowMe.Data.Common.Models;
 
@@ -22,5 +23,7 @@ namespace FollowMe.Data.Models
         public string SentById { get; set; }
 
         public virtual ApplicationUser SentBy { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
