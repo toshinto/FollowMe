@@ -88,18 +88,20 @@
                     </ul>
                     @foreach (var comment in post.Comments.OrderByDescending(x => x.CreatedOn))
                     {
-                        <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
-                            <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />
-                        </a>
-                        <p>
-                            @comment.Content
-                        </p>
-                        <p class="text-right">
-                            <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
-                        </p>
-                        <p>
-                            @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
-                        </p>
+                        <div class="comment" id="comment">
+                            <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
+                                <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />
+                            </a>
+                            <p>
+                                @comment.Content
+                            </p>
+                            <p class="text-right">
+                                <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
+                            </p>
+                            <p>
+                                @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
+                            </p>
+                        </div>
                         <hr />
                     }
                 </div>

@@ -7,7 +7,9 @@ a.navbar-brand {
     word-break: break-all;
 }
 
-
+#comment{
+    background-color: gold;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */
