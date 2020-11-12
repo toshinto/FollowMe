@@ -35,8 +35,9 @@ namespace FollowMe.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(string postId, string userId, string content)
         {
+            var parentUserId = this.postsService.GetUserByPostId(postId);
             await this.commentsService.CreateAsync(postId, userId, content);
-            return this.Redirect($"/");
+            return this.Redirect($"/Profiles/Profile?id={parentUserId}");
         }
     }
 }

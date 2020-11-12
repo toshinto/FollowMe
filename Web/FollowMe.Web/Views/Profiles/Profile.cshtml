@@ -86,7 +86,7 @@
                             <span><i class="fas fa-comment"></i>Comments: @post.CommentsCount</span>
                         </li>
                     </ul>
-                    @foreach (var comment in post.Comments)
+                    @foreach (var comment in post.Comments.OrderByDescending(x => x.CreatedOn))
                     {
                         <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
                             <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />

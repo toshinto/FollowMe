@@ -14,5 +14,7 @@ namespace FollowMe.Services.Data
         IEnumerable<T> GetByUserId<T>(string id);
 
         string GetPostById(string id);
+
+        string GetUserByPostId(string postId);
     }
 }

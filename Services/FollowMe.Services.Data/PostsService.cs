@@ -51,5 +51,11 @@ namespace FollowMe.Services.Data
             var post = this.postsRepository.All().Where(x => x.Id == id).Select(x => x.Id).FirstOrDefault();
             return post;
         }
+
+        public string GetUserByPostId(string postId)
+        {
+            var userId = this.postsRepository.All().Where(x => x.Id == postId).Select(x => x.UserId).FirstOrDefault();
+            return userId;
+        }
     }
 }
