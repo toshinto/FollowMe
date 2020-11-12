@@ -4,7 +4,7 @@
 @using System.Globalization;
 @model FollowMe.Web.ViewModels.Profiles.ProfileViewPersonalDetailsViewModel
 @inject UserManager<ApplicationUser> user
-@{ 
+@{
     var userId = this.user.GetUserId(this.User);
 }
 
@@ -88,20 +88,22 @@
                     </ul>
                     @foreach (var comment in post.Comments)
                     {
-                        <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />
-                        <p class="text-right">
-                            <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
-                        </p>
-                        <p>
-                            @comment.Content
-                        </p>
-                        @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
-                        <hr />
-                    }
-                </div>
+                        <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
+                            <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />
+                        </a>
+                            <p class="text-right">
+                                <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
+                            </p>
+                            <p>
+                                @comment.Content
+                            </p>
+                            @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
+                            <hr />
+                            }
+                    </div>
             </div>
         </div>
-        
+
         <div class="row justify-content-md-end">
             <a href="/Comments/Create?id=@post.Id&userId=@userId" style="margin-right:14px" class="btn btn-primary btn-lg text-center">Add comment</a>
         </div>
