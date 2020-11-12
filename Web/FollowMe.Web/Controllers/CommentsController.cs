@@ -4,6 +4,5 @@ namespace FollowMe.Web.Controllers
 {
     public class CommentsController : Controller
     {
-
     }
 }
