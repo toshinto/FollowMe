@@ -12,5 +12,7 @@ namespace FollowMe.Services.Data
         Task Create(string content, string userId, string sentBy);
 
         IEnumerable<T> GetByUserId<T>(string id);
+
+        string GetPostById(string id);
     }
 }

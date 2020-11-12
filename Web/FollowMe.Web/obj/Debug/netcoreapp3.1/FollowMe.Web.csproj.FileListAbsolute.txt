@@ -468,3 +468,4 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Profiles\Pro
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Home\Index.cshtml
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Home\Privacy.cshtml
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Posts\Create.cshtml.g.cs
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Create.cshtml.g.cs
