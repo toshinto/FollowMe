@@ -18,6 +18,8 @@ namespace FollowMe.Web.ViewModels.Profiles
 
         public IEnumerable<CommentsViewModel> Comments { get; set; }
 
+        public int CommentsCount { get; set; }
+
         public string SentByUserCharacteristicsFullName { get; set; }
 
         public string SentByUserCharacteristicsCoverImageUrl { get; set; }
