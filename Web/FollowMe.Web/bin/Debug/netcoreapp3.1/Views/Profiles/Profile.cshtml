@@ -91,16 +91,18 @@
                         <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
                             <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />
                         </a>
-                            <p class="text-right">
-                                <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
-                            </p>
-                            <p>
-                                @comment.Content
-                            </p>
+                        <p>
+                            @comment.Content
+                        </p>
+                        <p class="text-right">
+                            <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
+                        </p>
+                        <p>
                             @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
-                            <hr />
-                            }
-                    </div>
+                        </p>
+                        <hr />
+                    }
+                </div>
             </div>
         </div>
 
