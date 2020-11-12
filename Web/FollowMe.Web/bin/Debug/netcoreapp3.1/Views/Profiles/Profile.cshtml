@@ -86,9 +86,16 @@
                             <span><i class="fas fa-comment"></i>Comments: @post.CommentsCount</span>
                         </li>
                     </ul>
+                    @foreach (var comment in post.Comments)
+                    {
+                        @comment.Content
+                        @comment.UserId
+                        <hr />
+                    }
                 </div>
             </div>
         </div>
+        
         <div class="row justify-content-md-end">
             <a href="/Comments/Create?id=@post.Id&userId=@userId" style="margin-right:14px" class="btn btn-primary btn-lg text-center">Add comment</a>
         </div>
