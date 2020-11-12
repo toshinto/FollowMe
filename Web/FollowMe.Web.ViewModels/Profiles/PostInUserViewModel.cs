@@ -1,7 +1,8 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
+using FollowMe.Web.ViewModels.Comments;
 
 namespace FollowMe.Web.ViewModels.Profiles
 {
@@ -14,6 +15,8 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string Content { get; set; }
 
         public string SentById { get; set; }
+
+        public IEnumerable<CommentsViewModel> Comments { get; set; }
 
         public string SentByUserCharacteristicsFullName { get; set; }
 
