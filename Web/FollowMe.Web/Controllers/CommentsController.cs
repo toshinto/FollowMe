@@ -20,20 +20,22 @@ namespace FollowMe.Web.Controllers
             this.userManager = userManager;
             this.commentsService = commentsService;
         }
-        public IActionResult Create(string postId)
+        public IActionResult Create(string id)
         {
+            var userId = this.userManager.GetUserId(this.User);
             var viewModel = new CommentsCreateModel
             {
-                PostId = this.postsService.GetPostById(postId),
+                PostId = this.postsService.GetPostById(id),
+                UserId = userId,
             };
 
             return this.View(viewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string postId, string id, string content)
+        public async Task<IActionResult> Create(string postId, string userId, string content)
         {
-            await this.commentsService.CreateAsync(postId, id, content);
+            await this.commentsService.CreateAsync(postId, userId, content);
             return this.Redirect($"/");
         }
     }
