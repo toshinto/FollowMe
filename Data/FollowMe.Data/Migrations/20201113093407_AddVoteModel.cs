@@ -18,7 +18,7 @@ namespace FollowMe.Data.Migrations
                     PostId = table.Column<int>(nullable: false),
                     PostId1 = table.Column<string>(nullable: true),
                     UserId = table.Column<string>(nullable: false),
-                    Type = table.Column<int>(nullable: false)
+                    Type = table.Column<int>(nullable: false),
                 },
                 constraints: table =>
                 {
