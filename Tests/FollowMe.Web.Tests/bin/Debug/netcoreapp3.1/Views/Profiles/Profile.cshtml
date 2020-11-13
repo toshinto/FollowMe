@@ -1,20 +1,25 @@
 ﻿@using  System.Text;
+@using Microsoft.AspNetCore.Identity
+@using FollowMe.Data.Models
 @using System.Globalization;
-
 @model FollowMe.Web.ViewModels.Profiles.ProfileViewPersonalDetailsViewModel
+@inject UserManager<ApplicationUser> user
+@{
+    var userId = this.user.GetUserId(this.User);
+}
 
 <div class="container bootstrap snippets bootdey">
     <div class="row ng-scope">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                        <div class="pv-lg"><img src="@Model.CoverImageUrl" style="height:430px; width:450px"></div>
-                        <h3 class="m0 text-bold"></h3>
-                        <div class="mv-lg">
-                            <p>@Model.FullName</p>
-                            <p>@Model.Description</p>
-                        </div>
-                        <div class="text-center"><a class="btn btn-primary" href="">Send message</a></div>
+                    <div class="pv-lg"><img src="@Model.CoverImageUrl" style="height:430px; width:450px"></div>
+                    <h3 class="m0 text-bold"></h3>
+                    <div class="mv-lg">
+                        <p>@Model.FullName</p>
+                        <p>@Model.Description</p>
+                    </div>
+                    <div class="text-center"><a class="btn btn-primary" href="">Send message</a></div>
                 </div>
             </div>
         </div>
@@ -64,11 +69,11 @@
 <hr />
 @foreach (var post in Model.UserPosts)
 {
-<div class="container">
-    <div class="well">
-        <div class="media">
-            <a class="pull-left" href="/Profiles/Profile?id=@post.SentById">
-                <img class="media-object" style="height:150px; width:150px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="/Profiles/Profile?id=@post.SentById">
+                    <img class="media-object" style="height:140px; width:140px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
                 </a>
                 <div class="media-body">
                     <p class="text-right"><i class="fas fa-user"></i>By @post.SentByUserCharacteristicsFullName</p>
@@ -78,16 +83,35 @@
                     <ul class="list-inline list-unstyled">
                         <li><span><i class="fas fa-calendar-alt"></i>@post.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</span></li>
                         <li>
-                            <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                            <span><i class="fas fa-comment"></i>Comments: @post.CommentsCount</span>
                         </li>
                     </ul>
+                    @foreach (var comment in post.Comments.OrderByDescending(x => x.CreatedOn))
+                    {
+                        <div class="comment" id="comment">
+                            <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
+                                <img class="media-object" style="height:50px; width:50px;" src="@comment.UserUserCharacteristicsCoverImageUrl" />
+                            </a>
+                            <p>
+                                @comment.Content
+                            </p>
+                            <p class="text-right">
+                                <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
+                            </p>
+                            <p>
+                                @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
+                            </p>
+                        </div>
+                        <hr />
+                    }
                 </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-md-end">
+            <a href="/Comments/Create?id=@post.Id&userId=@userId" style="margin-right:14px" class="btn btn-primary btn-lg text-center">Add comment</a>
         </div>
     </div>
-    <div class="row justify-content-md-end">
-        <a href="/Comments/Create?id=@post.Id" style="margin-right:14px"class="btn btn-primary btn-lg text-center">Add comment</a>
-    </div>
-</div>
     <hr />
 }
 
