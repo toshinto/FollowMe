@@ -1,4 +1,4 @@
-﻿@using  System.Text;
+﻿@using System.Text;
 @using Microsoft.AspNetCore.Identity
 @using FollowMe.Data.Models
 @using System.Globalization;
@@ -7,7 +7,6 @@
 @{
     var userId = this.user.GetUserId(this.User);
 }
-
 <div class="container bootstrap snippets bootdey">
     <div class="row ng-scope">
         <div class="col-md-4">
@@ -77,18 +76,19 @@
                 </a>
                 <div class="media-body">
                     <div class="text-muted small ml-3">
-                        <form id="votesForm" asp-controller="Votes" asp-action="Post" method="post"></form>
-                        <div>
-                            <a href="#" onclick="sendVote(@post.Id, true)">
-                                <i class="fa fa-thumbs-up"></i>
-                            </a>
-                        </div>
-                        <div id="votesCount">@post.VotesCount</div>
-                        <div>
-                            <a href="#" onclick="sendVote(@post.Id, false)">
-                                <i class="fa fa-thumbs-down"></i>
-                            </a>
-                        </div>
+                        <form id="votesForm" method="post">
+                            <div>
+                                <a href="#" onclick='sendVote("@post.Id", true)'>
+                                    <i class="fa fa-thumbs-up"></i>
+                                </a>
+                            </div>
+                            <div id="votesCount">@post.VotesCount</div>
+                            <div>
+                                <a href="#" onclick='sendVote("@post.Id", false)'>
+                                    <i class="fa fa-thumbs-down"></i>
+                                </a>
+                            </div>
+                        </form>
                     </div>
                     <p class="text-right"><i class="fas fa-user"></i>By @post.SentByUserCharacteristicsFullName</p>
                     <p>
@@ -118,6 +118,7 @@
                         </div>
                         <hr />
                     }
+
                 </div>
             </div>
         </div>
@@ -128,18 +129,20 @@
     </div>
     <hr />
 }
+
 @section Scripts {
     <script>
-         function sendVote(postId, isUpVote) {
+        function sendVote(postId, isUpVote) {
             var token = $("#votesForm input[name=__RequestVerificationToken]").val();
             var json = { postId: postId, isUpVote: isUpVote };
+            var dataInfo = JSON.stringify(json);
             $.ajax({
                 url: "/api/votes",
                 type: "POST",
-                data: JSON.stringify(json),
+                data: dataInfo,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                headers: { 'X-CSRF-TOKEN': token },
+                headers: { "X-CSRF-TOKEN": token },
                 success: function (data) {
                     $("#votesCount").html(data.votesCount);
                 }
@@ -147,4 +150,3 @@
         }
     </script>
 }
-
