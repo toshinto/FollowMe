@@ -10,6 +10,7 @@ namespace FollowMe.Data.Models
         public Post()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Votes = new HashSet<Vote>();
         }
 
         public string Title { get; set; }
@@ -25,5 +26,7 @@ namespace FollowMe.Data.Models
         public virtual ApplicationUser SentBy { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

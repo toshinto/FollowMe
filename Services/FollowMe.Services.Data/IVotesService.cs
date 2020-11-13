@@ -9,6 +9,6 @@ namespace FollowMe.Services.Data
     {
         Task VoteAsync(string postId, string userId, bool isUpVote);
 
-        string GetVotes(string postId);
+        int GetVotes(string postId);
     }
 }
