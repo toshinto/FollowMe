@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Services.Mapping;
+using FollowMe.Web.ViewModels.Comments;
 
 namespace FollowMe.Services.Data
 {
@@ -40,6 +42,14 @@ namespace FollowMe.Services.Data
             }
 
             await this.commentsRepository.SaveChangesAsync();
+        }
+
+        public T Edit<T>(string commentId)
+        {
+            var comment = this.commentsRepository.All()
+                   .Where(x => x.Id == commentId)
+                   .To<T>().FirstOrDefault();
+            return comment;
         }
 
         public string GetPostIdByCommentId(string id)

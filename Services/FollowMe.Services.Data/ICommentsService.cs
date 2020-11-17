@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+
+using FollowMe.Web.ViewModels.Comments;
 
 namespace FollowMe.Services.Data
 {
@@ -12,5 +11,7 @@ namespace FollowMe.Services.Data
         Task DeleteAsync(string commentId, string userId);
 
         string GetPostIdByCommentId(string id);
+
+        T Edit<T>(string commentId);
     }
 }

@@ -32,7 +32,7 @@ namespace FollowMe.Web.Controllers
             return this.View(viewModel);
         }
 
-        public IActionResult Edit()
+        public IActionResult Edit(string id)
         {
             return this.View();
         }
