@@ -41,5 +41,11 @@ namespace FollowMe.Services.Data
 
             await this.commentsRepository.SaveChangesAsync();
         }
+
+        public string GetPostIdByCommentId(string id)
+        {
+            var postId = this.commentsRepository.All().Where(c => c.Id == id).Select(p => p.PostId).FirstOrDefault();
+            return postId;
+        }
     }
 }

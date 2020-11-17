@@ -10,5 +10,7 @@ namespace FollowMe.Services.Data
         Task CreateAsync(string postId, string userId, string content);
 
         Task DeleteAsync(string commentId, string userId);
+
+        string GetPostIdByCommentId(string id);
     }
 }
