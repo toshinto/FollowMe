@@ -44,6 +44,7 @@ namespace FollowMe.Services.Data
             {
                 return;
             }
+
             await this.postsRepository.SaveChangesAsync();
         }
 
