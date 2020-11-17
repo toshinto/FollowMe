@@ -78,13 +78,13 @@
                     <div class="text-muted small ml-3">
                         <form id="votesForm" method="post">
                             <div>
-                                <a href="#" onclick='sendVote("@post.Id", true)'>
+                                <a class="btn btn-primary" onclick='sendVote("@post.Id", true)'>
                                     <i class="fa fa-thumbs-up"></i>
                                 </a>
                             </div>
                             <div id="votesCount">@post.VotesCount</div>
                             <div>
-                                <a href="#" onclick='sendVote("@post.Id", false)'>
+                                <a class="btn btn-primary" onclick='sendVote("@post.Id", false)'>
                                     <i class="fa fa-thumbs-down"></i>
                                 </a>
                             </div>
