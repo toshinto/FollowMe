@@ -42,7 +42,7 @@ namespace FollowMe.Web.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> EditMessage(string commentId, string content)
+        public async Task<IActionResult> Edit(string commentId, string content)
         {
             var userId = this.userManager.GetUserId(this.User);
             await this.commentsService.EditMessageComment(commentId, content, userId);
