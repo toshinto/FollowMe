@@ -44,7 +44,14 @@ namespace FollowMe.Services.Data
             await this.commentsRepository.SaveChangesAsync();
         }
 
-        public T Edit<T>(string commentId)
+        public async Task EditMessageComment(string commentId, string content)
+        {
+            var comment = this.commentsRepository.All().Where(x => x.Id == commentId).FirstOrDefault();
+            comment.Content = content;
+            await this.commentsRepository.SaveChangesAsync();
+        }
+
+        public T EditView<T>(string commentId)
         {
             var comment = this.commentsRepository.All()
                    .Where(x => x.Id == commentId)

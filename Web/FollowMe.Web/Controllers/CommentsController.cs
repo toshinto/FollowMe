@@ -32,10 +32,20 @@ namespace FollowMe.Web.Controllers
             return this.View(viewModel);
         }
 
+        [HttpGet]
+
         public IActionResult Edit(string id)
         {
-            var viewModel = this.commentsService.Edit<EditCommentViewModel>(id);
+            var viewModel = this.commentsService.EditView<EditCommentViewModel>(id);
             return this.View(viewModel);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> EditMessage(string commentId, string content)
+        {
+            await this.commentsService.EditMessageComment(commentId, content);
+            return this.Redirect("/");
         }
 
         [HttpPost]

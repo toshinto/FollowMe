@@ -1,12 +1,13 @@
 ﻿@model FollowMe.Web.ViewModels.Comments.EditCommentViewModel
 <h1 class="text-center suls-text-color">Edit your comment</h1>
-<form method="post" id="AddHello">
+<form asp-controller="Comments" asp-action="EditMessage" method="post" id="AddHello">
     <div class="top-border-line primary-separator"></div>
     <div class="form-group">
         <label for="content" class="suls-text-color text-right">Submit your content here:</label>
         <textarea class="form-control" id="content" name="content" rows="10">@Model.Content</textarea>
     </div>
     <div class="top-border-line primary-separator"></div>
+    <div><input class="invisible" id="commentId" name="commentId" value="@Model.Id" /></div>
     <div class="button-holder d-flex justify-content-center">
         <input type="submit" class="btn btn-primary" value="Save" />
     </div>
