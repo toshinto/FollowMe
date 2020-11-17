@@ -34,7 +34,8 @@ namespace FollowMe.Web.Controllers
 
         public IActionResult Edit(string id)
         {
-            return this.View();
+            var viewModel = this.commentsService.Edit<EditCommentViewModel>(id);
+            return this.View(viewModel);
         }
 
         [HttpPost]
