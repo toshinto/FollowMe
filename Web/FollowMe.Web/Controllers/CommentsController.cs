@@ -32,6 +32,11 @@ namespace FollowMe.Web.Controllers
             return this.View(viewModel);
         }
 
+        public IActionResult Edit()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(string postId, string userId, string content)
         {
