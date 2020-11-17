@@ -118,6 +118,8 @@
                             <p>
                                 @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
                             </p>
+                            <a class="btn" href="/Comments/Delete?id=@comment.Id"><i class="fas fa-times"></i></a>
+
                         </div>
                         <hr />
                     }

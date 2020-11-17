@@ -7,6 +7,7 @@ namespace FollowMe.Web.ViewModels.Comments
 {
     public class CommentsViewModel : IMapFrom<Comment>
     {
+        public string Id { get; set; }
         public string UserId { get; set; }
 
         public string UserUserCharacteristicsFullName { get; set; }
