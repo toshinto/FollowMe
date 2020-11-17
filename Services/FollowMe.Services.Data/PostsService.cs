@@ -49,6 +49,18 @@ namespace FollowMe.Services.Data
             await this.postsRepository.SaveChangesAsync();
         }
 
+        public async Task EditPost(string postId, string content, string title, string userId)
+        {
+            var post = this.postsRepository.All().Where(x => x.Id == postId).FirstOrDefault();
+            if (post.SentById != userId)
+            {
+                return;
+            }
+            post.Content = content;
+            post.Title = title;
+            await this.postsRepository.SaveChangesAsync();
+        }
+
         public T EditView<T>(string postId)
         {
             var post = this.postsRepository.All()

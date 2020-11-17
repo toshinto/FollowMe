@@ -52,5 +52,14 @@ namespace FollowMe.Web.Controllers
             var viewModel = this.postsService.EditView<EditPostViewModel>(id);
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string postId, string content, string title)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var user = this.postsService.GetUserByPostId(postId);
+            await this.postsService.EditPost(postId, content, title, userId);
+            return this.Redirect($"/Profiles/Profile?id={user}");
+        }
     }
 }

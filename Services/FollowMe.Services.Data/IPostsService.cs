@@ -20,5 +20,7 @@ namespace FollowMe.Services.Data
         string GetUserByPostId(string postId);
 
         T EditView<T>(string postId);
+
+        Task EditPost(string postId, string content, string title, string userId);
     }
 }
