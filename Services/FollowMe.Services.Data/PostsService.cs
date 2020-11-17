@@ -33,6 +33,20 @@ namespace FollowMe.Services.Data
             await this.postsRepository.SaveChangesAsync();
         }
 
+        public async Task Delete(string postId, string userId)
+        {
+            var post = this.postsRepository.All().Where(x => x.Id == postId).FirstOrDefault();
+            if (post.SentById == userId || post.UserId == userId)
+            {
+                post.IsDeleted = true;
+            }
+            else
+            {
+                return;
+            }
+            await this.postsRepository.SaveChangesAsync();
+        }
+
         public IEnumerable<T> GetByUserId<T>(string id)
         {
             var posts = this.postsRepository.All().Where(x => x.UserId == id).OrderByDescending(x => x.CreatedOn);

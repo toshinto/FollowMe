@@ -37,5 +37,12 @@ namespace FollowMe.Web.Controllers
             await this.postsService.Create(content, userId, currentUser);
             return this.Redirect($"/Profiles/Profile?id={userId}");
         }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var currentUser = this.userManager.GetUserId(this.User);
+            await this.postsService.Delete(id, currentUser);
+            return this.Redirect("/");
+        }
     }
 }
