@@ -29,11 +29,11 @@ namespace FollowMe.Web.Controllers
         {
             var userId = this.userManager.GetUserId(this.User);
             var viewModel = this.profilesService.GetByName<ProfileViewPersonalDetailsViewModel>(id, userId);
-            viewModel.UserPosts = this.postsService.GetByUserId<PostInUserViewModel>(id);
             if (viewModel == null)
             {
                 return this.Redirect("/Profiles/Details");
             }
+            viewModel.UserPosts = this.postsService.GetByUserId<PostInUserViewModel>(id);
             return this.View(viewModel);
         }
 

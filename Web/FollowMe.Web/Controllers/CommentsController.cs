@@ -2,6 +2,7 @@
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Comments;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 

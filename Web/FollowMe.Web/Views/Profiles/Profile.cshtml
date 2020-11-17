@@ -12,7 +12,15 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
+                    @if (@Model.CoverImageUrl == null)
+                    {
+                        <div class="pv-lg"><img src="" style="height:430px; width:450px"></div>
+                    }
+                    else
+                    {
                     <div class="pv-lg"><img src="@Model.CoverImageUrl" style="height:430px; width:450px"></div>
+                    }
+
                     <h3 class="m0 text-bold"></h3>
                     <div class="mv-lg">
                         <p>@Model.FullName</p>
