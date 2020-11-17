@@ -46,7 +46,9 @@ namespace FollowMe.Web.Controllers
         {
             var userId = this.userManager.GetUserId(this.User);
             await this.commentsService.EditMessageComment(commentId, content, userId);
-            return this.Redirect("/");
+            var postId = this.commentsService.GetPostIdByCommentId(commentId);
+            var parentUserProfile = this.postsService.GetUserByPostId(postId);
+            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
         }
 
         [HttpPost]
