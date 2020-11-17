@@ -49,6 +49,14 @@ namespace FollowMe.Services.Data
             await this.postsRepository.SaveChangesAsync();
         }
 
+        public T EditView<T>(string postId)
+        {
+            var post = this.postsRepository.All()
+                   .Where(x => x.Id == postId)
+                   .To<T>().FirstOrDefault();
+            return post;
+        }
+
         public IEnumerable<T> GetByUserId<T>(string id)
         {
             var posts = this.postsRepository.All().Where(x => x.UserId == id).OrderByDescending(x => x.CreatedOn);

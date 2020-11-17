@@ -2,6 +2,7 @@
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Posts;
+using FollowMe.Web.ViewModels.Profiles;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,12 @@ namespace FollowMe.Web.Controllers
             var user = this.postsService.GetUserByPostId(id);
             await this.postsService.Delete(id, currentUser);
             return this.Redirect($"/Profiles/Profile?id={user}");
+        }
+
+        public IActionResult Edit(string id)
+        {
+            var viewModel = this.postsService.EditView<EditPostViewModel>(id);
+            return this.View(viewModel);
         }
     }
 }
