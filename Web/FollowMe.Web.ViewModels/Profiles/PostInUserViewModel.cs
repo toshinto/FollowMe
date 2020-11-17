@@ -11,6 +11,7 @@ namespace FollowMe.Web.ViewModels.Profiles
     public class PostInUserViewModel : IMapFrom<Post>, IMapTo<Post>, IHaveCustomMappings
     {
         public string Id { get; set; }
+        public string Title { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

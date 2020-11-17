@@ -19,13 +19,14 @@ namespace FollowMe.Services.Data
             this.postsRepository = postsRepository;
         }
 
-        public async Task Create(string content, string userId, string sentBy)
+        public async Task Create(string content, string userId, string sentBy, string title)
         {
             var post = new Post
             {
                 Content = content,
                 UserId = userId,
                 SentById = sentBy,
+                Title = title,
                 CreatedOn = DateTime.UtcNow,
             };
 

@@ -31,10 +31,10 @@ namespace FollowMe.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string userId, string content)
+        public async Task<IActionResult> Create(string userId, string content, string title)
         {
             var currentUser = this.userManager.GetUserId(this.User);
-            await this.postsService.Create(content, userId, currentUser);
+            await this.postsService.Create(content, userId, currentUser, title);
             return this.Redirect($"/Profiles/Profile?id={userId}");
         }
 
