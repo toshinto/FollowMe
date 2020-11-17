@@ -44,7 +44,8 @@ namespace FollowMe.Web.Controllers
 
         public async Task<IActionResult> EditMessage(string commentId, string content)
         {
-            await this.commentsService.EditMessageComment(commentId, content);
+            var userId = this.userManager.GetUserId(this.User);
+            await this.commentsService.EditMessageComment(commentId, content, userId);
             return this.Redirect("/");
         }
 
