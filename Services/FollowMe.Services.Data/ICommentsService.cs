@@ -8,5 +8,7 @@ namespace FollowMe.Services.Data
     public interface ICommentsService
     {
         Task CreateAsync(string postId, string userId, string content);
+
+        Task DeleteAsync(string commentId, string userId);
     }
 }

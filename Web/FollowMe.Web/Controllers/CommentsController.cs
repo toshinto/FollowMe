@@ -39,5 +39,12 @@ namespace FollowMe.Web.Controllers
             await this.commentsService.CreateAsync(postId, userId, content);
             return this.Redirect($"/Profiles/Profile?id={parentUserId}");
         }
+
+        public async Task<IActionResult> Delete(string id)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            await this.commentsService.DeleteAsync(id, userId);
+            return this.Redirect("/");
+        }
     }
 }

@@ -26,5 +26,20 @@ namespace FollowMe.Services.Data
             await this.commentsRepository.AddAsync(comment);
             await this.commentsRepository.SaveChangesAsync();
         }
+
+        public async Task DeleteAsync(string commentId, string userId)
+        {
+            var comment = this.commentsRepository.All().Where(c => c.Id == commentId).FirstOrDefault();
+            if (comment.UserId == userId)
+            {
+                comment.IsDeleted = true;
+            }
+            else
+            {
+                return;
+            }
+
+            await this.commentsRepository.SaveChangesAsync();
+        }
     }
 }
