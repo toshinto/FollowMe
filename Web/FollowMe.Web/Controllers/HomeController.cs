@@ -1,6 +1,7 @@
 ﻿namespace FollowMe.Web.Controllers
 {
     using System.Diagnostics;
+    using System.Linq;
     using AutoMapper;
     using FollowMe.Data.Models;
     using FollowMe.Services.Data;
@@ -25,7 +26,6 @@
             {
                 return this.Redirect("/Identity/Account/Login");
             }
-
             var viewModel = new UsersIndexViewModel
             {
                 UserCharacteristics = this.profilesService.GetAll<IndexUserViewModel>(),
