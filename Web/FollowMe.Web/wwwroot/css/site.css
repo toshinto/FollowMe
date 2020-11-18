@@ -7,15 +7,17 @@ a.navbar-brand {
     word-break: break-all;
 }
 
-#comment{
-    background-color: gold;
+#comment {
+    background-color: #34cac9;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
-
+.card {
+    background-color: #AAC9FF;
+}
 .well {
-    background-color: #ffffff;
+    background-color: #AAC9FF;
 }
 #image{
     height: 100px;
@@ -29,7 +31,7 @@ a.navbar-brand {
     right: 35%;
 }
 body {
-    background-color: #AAC9FF;
+    background-color: white;
     background-size: auto;
 }
 #textCenter{
