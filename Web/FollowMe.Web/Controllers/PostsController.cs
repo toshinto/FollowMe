@@ -12,13 +12,11 @@ namespace FollowMe.Web.Controllers
     {
         private readonly IPostsService postsService;
         private readonly UserManager<ApplicationUser> userManager;
-        private readonly IUsersService usersService;
 
-        public PostsController(IPostsService postsService, UserManager<ApplicationUser> userManager, IUsersService usersService)
+        public PostsController(IPostsService postsService, UserManager<ApplicationUser> userManager)
         {
             this.postsService = postsService;
             this.userManager = userManager;
-            this.usersService = usersService;
         }
 
         [HttpGet]
