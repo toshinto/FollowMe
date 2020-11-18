@@ -49,6 +49,12 @@ namespace FollowMe.Web.Controllers
 
         public IActionResult Edit(string id)
         {
+            var userId = this.userManager.GetUserId(this.User);
+            var parentUserProfile = this.postsService.GetUserByPostId(id);
+            if (!this.postsService.IsUserCreatorOfPost(id, userId))
+            {
+                return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+            }
             var viewModel = this.postsService.EditView<EditPostViewModel>(id);
             return this.View(viewModel);
         }
@@ -57,9 +63,9 @@ namespace FollowMe.Web.Controllers
         public async Task<IActionResult> Edit(string postId, string content, string title)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var user = this.postsService.GetUserByPostId(postId);
+            var parentUserProfile = this.postsService.GetUserByPostId(postId);
             await this.postsService.EditPost(postId, content, title, userId);
-            return this.Redirect($"/Profiles/Profile?id={user}");
+            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
         }
     }
 }

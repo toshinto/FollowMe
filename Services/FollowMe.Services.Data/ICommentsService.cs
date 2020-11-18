@@ -16,6 +16,6 @@ namespace FollowMe.Services.Data
 
         Task EditMessageComment(string commentId, string content, string userId);
 
-        bool IsUserComment(string commentId, string userId);
+        bool IsUserCreatorOfComment(string commentId, string userId);
     }
 }

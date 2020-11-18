@@ -93,5 +93,16 @@ namespace FollowMe.Services.Data
             var userId = this.postsRepository.All().Where(x => x.Id == postId).Select(x => x.UserId).FirstOrDefault();
             return userId;
         }
+
+        public bool IsUserCreatorOfPost(string postId, string userId)
+        {
+            var post = this.postsRepository.All().Where(p => p.Id == postId).FirstOrDefault();
+            if (post.SentById == userId)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

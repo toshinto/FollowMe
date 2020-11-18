@@ -22,5 +22,7 @@ namespace FollowMe.Services.Data
         T EditView<T>(string postId);
 
         Task EditPost(string postId, string content, string title, string userId);
+
+        bool IsUserCreatorOfPost(string postId, string userId);
     }
 }

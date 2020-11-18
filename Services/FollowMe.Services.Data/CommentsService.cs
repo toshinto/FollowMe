@@ -69,7 +69,7 @@ namespace FollowMe.Services.Data
             return postId;
         }
 
-        public bool IsUserComment(string commentId, string userId)
+        public bool IsUserCreatorOfComment(string commentId, string userId)
         {
             var comment = this.commentsRepository.All().Where(x => x.Id == commentId).FirstOrDefault();
             if (comment.UserId == userId)

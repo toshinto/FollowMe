@@ -40,7 +40,7 @@ namespace FollowMe.Web.Controllers
             var userId = this.userManager.GetUserId(this.User);
             var postId = this.commentsService.GetPostIdByCommentId(id);
             var parentUserProfile = this.postsService.GetUserByPostId(postId);
-            if (!this.commentsService.IsUserComment(id, userId))
+            if (!this.commentsService.IsUserCreatorOfComment(id, userId))
             {
                 return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
             }
