@@ -15,5 +15,7 @@ namespace FollowMe.Services.Data
         T EditView<T>(string commentId);
 
         Task EditMessageComment(string commentId, string content, string userId);
+
+        bool IsUserComment(string commentId, string userId);
     }
 }

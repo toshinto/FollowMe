@@ -37,6 +37,13 @@ namespace FollowMe.Web.Controllers
 
         public IActionResult Edit(string id)
         {
+            var userId = this.userManager.GetUserId(this.User);
+            var postId = this.commentsService.GetPostIdByCommentId(id);
+            var parentUserProfile = this.postsService.GetUserByPostId(postId);
+            if (!this.commentsService.IsUserComment(id, userId))
+            {
+                return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+            }
             var viewModel = this.commentsService.EditView<EditCommentViewModel>(id);
             return this.View(viewModel);
         }

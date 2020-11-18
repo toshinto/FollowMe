@@ -68,5 +68,16 @@ namespace FollowMe.Services.Data
             var postId = this.commentsRepository.All().Where(c => c.Id == id).Select(p => p.PostId).FirstOrDefault();
             return postId;
         }
+
+        public bool IsUserComment(string commentId, string userId)
+        {
+            var comment = this.commentsRepository.All().Where(x => x.Id == commentId).FirstOrDefault();
+            if (comment.UserId == userId)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
