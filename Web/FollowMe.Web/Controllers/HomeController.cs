@@ -14,11 +14,13 @@
     {
         private readonly IProfilesService profilesService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IUsersService usersService;
 
-        public HomeController(IProfilesService profilesService, UserManager<ApplicationUser> userManager)
+        public HomeController(IProfilesService profilesService, UserManager<ApplicationUser> userManager, IUsersService usersService)
         {
             this.profilesService = profilesService;
             this.userManager = userManager;
+            this.usersService = usersService;
         }
         public IActionResult Index()
         {
@@ -30,7 +32,6 @@
             {
                 UserCharacteristics = this.profilesService.GetAll<IndexUserViewModel>(),
             };
-
             return this.View(viewModel);
         }
 

@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
+using FollowMe.Data.Models;
+
 namespace FollowMe.Services.Data
 {
-    class IUsersService
+    public interface IUsersService
     {
+        ApplicationUser GetUserById(string userId);
     }
 }
