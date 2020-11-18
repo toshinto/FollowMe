@@ -24,6 +24,11 @@ namespace FollowMe.Web.Controllers
         public IActionResult Create(string id)
         {
             var userId = this.userManager.GetUserId(this.User);
+            var userFirstName = this.postsService.GetFirstNameById(userId);
+            if (userFirstName == null)
+            {
+                return this.Redirect("/Profiles/Details");
+            }
             var viewModel = new CommentsCreateModel
             {
                 PostId = this.postsService.GetPostById(id),

@@ -24,6 +24,12 @@ namespace FollowMe.Web.Controllers
         [HttpGet]
         public IActionResult Create(string id)
         {
+            var currentUser = this.userManager.GetUserId(this.User);
+            var userFirstName = this.postsService.GetFirstNameById(currentUser);
+            if (userFirstName == null)
+            {
+                return this.Redirect("/Profiles/Details");
+            }
             var userName = this.postsService.GetNameById(id);
             var viewModel = new PostsCreateModel
             {
