@@ -13,6 +13,8 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string LastName { get; set; }
 
         public DateTime BirthDate { get; set; }
+
+        public DateTime Date { get; set; }
         public string CoverImageUrl { get; set; }
 
         public int Age { get; set; }

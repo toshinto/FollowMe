@@ -39,7 +39,7 @@ namespace FollowMe.Data.Models
 
         public WeddingStatus WeddingStatus { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime Date { get; set; }
 
         public WhatAreYouSearchingFor WhatAreYouSearchingFor { get; set; }
 

@@ -31,19 +31,10 @@ namespace FollowMe.Services.Data
             var whatYouSerachingFor = Enum.TryParse(details.WhatAreYouSearchingFor, out WhatAreYouSearchingFor whatAreYouSearchingFor);
             var cities = Enum.TryParse(details.City, out City city);
 
-            DateTime date;
-            bool validDate = DateTime.TryParseExact(
-                                      details.BirthDay,
-                                      "dd-MM-yyyy",
-                                      CultureInfo.InvariantCulture,
-                                      DateTimeStyles.None,
-                                      out date);
-
             var userCharacteristic = new UserCharacteristic
             {
                 FirstName = details.FirstName,
                 LastName = details.LastName,
-                BirthDate = date,
                 Age = details.Age,
                 City = city,
                 CoverImageUrl = details.CoverImageUrl,
@@ -56,6 +47,7 @@ namespace FollowMe.Services.Data
                 WeddingStatus = weddingStatus,
                 WhatAreYouSearchingFor = whatAreYouSearchingFor,
                 CreatedOn = DateTime.UtcNow,
+                Date = details.Date,
                 UserId = userId,
             };
             await this.usersRepository.AddAsync(userCharacteristic);

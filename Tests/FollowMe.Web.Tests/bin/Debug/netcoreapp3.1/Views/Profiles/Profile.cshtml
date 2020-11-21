@@ -1,4 +1,4 @@
-﻿@using  System.Text;
+﻿@using System.Text;
 @using Microsoft.AspNetCore.Identity
 @using FollowMe.Data.Models
 @using System.Globalization;
@@ -7,13 +7,20 @@
 @{
     var userId = this.user.GetUserId(this.User);
 }
-
 <div class="container bootstrap snippets bootdey">
     <div class="row ng-scope">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
+                    @if (@Model.CoverImageUrl == null)
+                    {
+                        <div class="pv-lg"><img src="" style="height:430px; width:450px"></div>
+                    }
+                    else
+                    {
                     <div class="pv-lg"><img src="@Model.CoverImageUrl" style="height:430px; width:450px"></div>
+                    }
+
                     <h3 class="m0 text-bold"></h3>
                     <div class="mv-lg">
                         <p>@Model.FullName</p>
@@ -32,7 +39,7 @@
                         <div class="col-lg-8">
                             <form class="form-horizontal ng-pristine ng-valid">
                                 <div class="form-group">
-                                    <label class="control-label" for="inputContact1">Birthday: @Model.BirthDate.ToString("dd-MM-yyyy", CultureInfo.CreateSpecificCulture("en-US"))</label>
+                                    <label class="control-label" for="inputContact1">Date: @Model.Date.ToString("dd-MM-yyyy", CultureInfo.CreateSpecificCulture("en-US")) </label>
                                     <hr />
                                     <label class="control-label" for="inputContact1">Height: @Model.Height </label>
                                     <hr />
@@ -76,6 +83,27 @@
                     <img class="media-object" style="height:140px; width:140px;" src="@post.SentByUserCharacteristicsCoverImageUrl">
                 </a>
                 <div class="media-body">
+                    <div class="text-muted small ml-3">
+                        <form id="votesForm" method="post">
+                            <div>
+                                <a class="btn btn-primary" onclick='sendVote("@post.Id", true)'>
+                                    <i class="fa fa-thumbs-up"></i>
+                                </a>
+                            </div>
+                            <div id="votesCount">@post.VotesCount</div>
+                            <div>
+                                <a class="btn btn-primary" onclick='sendVote("@post.Id", false)'>
+                                    <i class="fa fa-thumbs-down"></i>
+                                </a>
+                            </div>
+                        </form>
+                        <div>
+                            <a class="btn" href="/Posts/Delete?id=@post.Id"><i class="fas fa-times"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        @post.Title
+                    </div>
                     <p class="text-right"><i class="fas fa-user"></i>By @post.SentByUserCharacteristicsFullName</p>
                     <p>
                         @post.Content
@@ -85,7 +113,11 @@
                         <li>
                             <span><i class="fas fa-comment"></i>Comments: @post.CommentsCount</span>
                         </li>
+                        <li>
+                            <a class="btn btn-primary" href="/Posts/Edit?id=@post.Id">Edit post</a>
+                        </li>
                     </ul>
+
                     @foreach (var comment in post.Comments.OrderByDescending(x => x.CreatedOn))
                     {
                         <div class="comment" id="comment">
@@ -101,9 +133,12 @@
                             <p>
                                 @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))
                             </p>
+                            <a class="btn" href="/Comments/Delete?id=@comment.Id"><i class="fas fa-times"></i></a>
+                            <a class="btn btn-primary" href="/Comments/Edit?id=@comment.Id">Edit comment</a>
                         </div>
                         <hr />
                     }
+
                 </div>
             </div>
         </div>
@@ -115,3 +150,23 @@
     <hr />
 }
 
+@section Scripts {
+    <script>
+        function sendVote(postId, isUpVote) {
+            var token = $("#votesForm input[name=__RequestVerificationToken]").val();
+            var json = { postId: postId, isUpVote: isUpVote };
+            var dataInfo = JSON.stringify(json);
+            $.ajax({
+                url: "/api/votes",
+                type: "POST",
+                data: dataInfo,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                headers: { "X-CSRF-TOKEN": token },
+                success: function (data) {
+                    $("#votesCount").html(data.votesCount);
+                }
+            });
+        }
+    </script>
+}
