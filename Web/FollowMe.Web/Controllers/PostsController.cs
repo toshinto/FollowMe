@@ -38,11 +38,11 @@ namespace FollowMe.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(string userId, string content, string title)
+        public async Task<IActionResult> Create(PostsCreateModel model)
         {
             var currentUser = this.userManager.GetUserId(this.User);
-            await this.postsService.Create(content, userId, currentUser, title);
-            return this.Redirect($"/Profiles/Profile?id={userId}");
+            await this.postsService.Create(model.Content, model.UserId, currentUser, model.Title);
+            return this.Redirect($"/Profiles/Profile?id={model.UserId}");
         }
 
         public async Task<IActionResult> Delete(string id)
