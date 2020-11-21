@@ -7,6 +7,8 @@ namespace FollowMe.Web.ViewModels.Profiles
     {
         public string Id { get; set; }
 
+        public string PostId { get; set; }
+
         public string Title { get; set; }
 
         public string Content { get; set; }
