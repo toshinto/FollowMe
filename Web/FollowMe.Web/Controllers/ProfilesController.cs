@@ -44,10 +44,10 @@ namespace FollowMe.Web.Controllers
             await this.profilesService.Create(input, userId);
             return this.Redirect($"/Profiles/Profile?id={userId}");
         }
-
-        public IActionResult EditDetails(EditDetailsViewModel model)
+        public IActionResult EditDetails(string id)
         {
-            return this.View();
+            var viewModel = this.profilesService.EditView<EditDetailsViewModel>(id);
+            return this.View(viewModel);
         }
     }
 }

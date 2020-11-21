@@ -13,5 +13,9 @@ namespace FollowMe.Services.Data
         T GetByName<T>(string userId, string currUser);
 
         Task Create(CreateDetailsViewModel details, string userId);
+
+        Task EditPersonalDetails(EditDetailsViewModel model);
+
+        T EditView<T>(string userId);
     }
 }

@@ -53,9 +53,9 @@ namespace FollowMe.Services.Data
             await this.usersRepository.SaveChangesAsync();
         }
 
-        public async Task EditPersonalDetails(EditDetailsViewModel model, string userId)
+        public async Task EditPersonalDetails(EditDetailsViewModel model)
         {
-            var userDetails = this.usersRepository.All().Where(x => x.Id == userId).FirstOrDefault();
+            var userDetails = this.usersRepository.All().Where(x => x.Id == model.UserId).FirstOrDefault();
 
             userDetails.FirstName = model.FirstName;
             userDetails.LastName = model.LastName;
@@ -63,7 +63,17 @@ namespace FollowMe.Services.Data
             userDetails.Height = model.Height;
             userDetails.Weight = model.Weight;
             userDetails.Description = model.Description;
+            userDetails.UserId = model.UserId;
+
             await this.usersRepository.SaveChangesAsync();
+        }
+
+        public T EditView<T>(string userId)
+        {
+            var userDetails = this.usersRepository.All()
+                   .Where(x => x.UserId == userId)
+                   .To<T>().FirstOrDefault();
+            return userDetails;
         }
 
         public IEnumerable<T> GetAll<T>()
