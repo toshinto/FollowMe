@@ -6,6 +6,7 @@
 @inject UserManager<ApplicationUser> user
 @{
     var userId = this.user.GetUserId(this.User);
+    var age = DateTime.UtcNow.Year - Model.Date.Year;
 }
 <div class="container bootstrap snippets bootdey">
     <div class="row ng-scope">
@@ -43,7 +44,7 @@
                                     <hr />
                                     <label class="control-label" for="inputContact1">Height: @Model.Height </label>
                                     <hr />
-                                    <label class="control-label" for="inputContact1">Age: @Model.Age </label>
+                                    <label class="control-label" for="inputContact1">Age: @age </label>
                                     <hr />
                                     <label class="control-label" for="inputContact1">Weight: @Model.Weight </label>
                                     <hr />

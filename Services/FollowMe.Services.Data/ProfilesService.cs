@@ -35,7 +35,6 @@ namespace FollowMe.Services.Data
             {
                 FirstName = details.FirstName,
                 LastName = details.LastName,
-                Age = details.Age,
                 City = city,
                 CoverImageUrl = details.CoverImageUrl,
                 Height = details.Height,

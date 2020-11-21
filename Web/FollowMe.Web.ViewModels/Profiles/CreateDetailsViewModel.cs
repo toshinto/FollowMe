@@ -17,8 +17,6 @@ namespace FollowMe.Web.ViewModels.Profiles
 
         public DateTime Date { get; set; }
 
-        public int Age { get; set; }
-
         public string City { get; set; }
 
         public int Height { get; set; }
