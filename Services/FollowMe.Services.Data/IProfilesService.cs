@@ -17,5 +17,6 @@ namespace FollowMe.Services.Data
         Task EditPersonalDetails(EditDetailsViewModel model);
 
         T EditView<T>(string userId);
+        bool IsUserDetailsPage(string userId, string currentUser);
     }
 }

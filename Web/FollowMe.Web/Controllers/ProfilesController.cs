@@ -46,6 +46,11 @@ namespace FollowMe.Web.Controllers
         }
         public IActionResult EditDetails(string id)
         {
+            var currentUser = this.userManager.GetUserId(this.User);
+            if (!this.profilesService.IsUserDetailsPage(id, currentUser))
+            {
+                return this.Redirect("/");
+            }
             var viewModel = this.profilesService.EditView<EditDetailsViewModel>(id);
             return this.View(viewModel);
         }

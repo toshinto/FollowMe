@@ -97,5 +97,15 @@ namespace FollowMe.Services.Data
 
             return userId;
         }
+
+        public bool IsUserDetailsPage(string userId, string currentUser)
+        {
+            var user = this.usersRepository.All().Where(x => x.UserId == userId).FirstOrDefault();
+            if (user.UserId == currentUser)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
