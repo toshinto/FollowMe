@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
+using FollowMe.Web.ViewModels.Posts;
 
 namespace FollowMe.Services.Data
 {

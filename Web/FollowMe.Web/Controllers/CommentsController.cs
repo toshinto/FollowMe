@@ -55,11 +55,11 @@ namespace FollowMe.Web.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> Edit(string commentId, string content)
+        public async Task<IActionResult> Edit(EditCommentViewModel input)
         {
             var userId = this.userManager.GetUserId(this.User);
-            await this.commentsService.EditMessageComment(commentId, content, userId);
-            var postId = this.commentsService.GetPostIdByCommentId(commentId);
+            await this.commentsService.EditMessageComment(input.CommentId, input.Content, userId);
+            var postId = this.commentsService.GetPostIdByCommentId(input.CommentId);
             var parentUserProfile = this.postsService.GetUserByPostId(postId);
             return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
         }
