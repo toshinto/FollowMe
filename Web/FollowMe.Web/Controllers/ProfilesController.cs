@@ -45,7 +45,7 @@ namespace FollowMe.Web.Controllers
             return this.Redirect($"/Profiles/Profile?id={userId}");
         }
 
-        public IActionResult EditDetails()
+        public IActionResult EditDetails(EditDetailsViewModel model)
         {
             return this.View();
         }

@@ -17,7 +17,5 @@ namespace FollowMe.Web.ViewModels.Profiles
         public int Weight { get; set; }
 
         public string Description { get; set; }
-
-        public string FullName => $"{this.FirstName} {this.LastName}";
     }
 }

@@ -53,6 +53,19 @@ namespace FollowMe.Services.Data
             await this.usersRepository.SaveChangesAsync();
         }
 
+        public async Task EditPersonalDetails(EditDetailsViewModel model, string userId)
+        {
+            var userDetails = this.usersRepository.All().Where(x => x.Id == userId).FirstOrDefault();
+
+            userDetails.FirstName = model.FirstName;
+            userDetails.LastName = model.LastName;
+            userDetails.CoverImageUrl = model.CoverImageUrl;
+            userDetails.Height = model.Height;
+            userDetails.Weight = model.Weight;
+            userDetails.Description = model.Description;
+            await this.usersRepository.SaveChangesAsync();
+        }
+
         public IEnumerable<T> GetAll<T>()
         {
             IQueryable<UserCharacteristic> query =
