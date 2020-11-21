@@ -49,5 +49,12 @@ namespace FollowMe.Web.Controllers
             var viewModel = this.profilesService.EditView<EditDetailsViewModel>(id);
             return this.View(viewModel);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> EditDetails(EditDetailsViewModel model)
+        {
+            await this.profilesService.EditPersonalDetails(model);
+            return this.Redirect("/");
+        }
     }
 }

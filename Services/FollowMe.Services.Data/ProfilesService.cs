@@ -55,7 +55,7 @@ namespace FollowMe.Services.Data
 
         public async Task EditPersonalDetails(EditDetailsViewModel model)
         {
-            var userDetails = this.usersRepository.All().Where(x => x.Id == model.UserId).FirstOrDefault();
+            var userDetails = this.usersRepository.All().Where(x => x.UserId == model.UserId).FirstOrDefault();
 
             userDetails.FirstName = model.FirstName;
             userDetails.LastName = model.LastName;
