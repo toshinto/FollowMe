@@ -474,3 +474,4 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Commen
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Views\Comments\Edit.cshtml
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Posts\Edit.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Profiles\EditDetails.cshtml.g.cs
+D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\wwwroot\images\default-profile-picture1.jpg
