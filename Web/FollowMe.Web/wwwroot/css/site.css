@@ -10,9 +10,19 @@ a.navbar-brand {
 #comment {
     background-color: #24b9b7;
 }
+
+#commentPicture {
+    height:50px; 
+    width:50px;
+}
 #coverImageUrlIndex {
     height:200px; 
     width: 200px;
+}
+
+#postImage {
+    height:140px; 
+    width:140px;
 }
 #profilePicture {
     height:430px;
