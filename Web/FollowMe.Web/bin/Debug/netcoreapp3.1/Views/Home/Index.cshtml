@@ -3,16 +3,24 @@
 <div class="row mt-2 mb-4">
     @foreach (var user in Model.UserCharacteristics)
     {
-        <div class="card col-6 col-lg-3 game-card">
-            <img src="@user.CoverImageUrl"; text-align: center;"
+    <div class="card col-6 col-lg-3 game-card">
+        @if (user.CoverImageUrl == null)
+        {
+            <img src="~/images/default-profile-picture1.jpg" ; text-align: center;"
                  class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
-            <div class="card-body">
-                <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
-                    title="Description:<br>">
-                    @user.FullName
-                </h5>
-                <a href="/Profiles/Profile?id=@user.UserId" class="btn btn-block btn-primary">Profile</a>
-            </div>
+        }
+        else
+        {
+            <img src="@user.CoverImageUrl" ; text-align: center;"
+                 class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
+        }
+        <div class="card-body">
+            <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
+                title="Description:<br>">
+                @user.FullName
+            </h5>
+            <a href="/Profiles/Profile?id=@user.UserId" class="btn btn-block btn-primary">Profile</a>
         </div>
+    </div>
     }
 </div>
