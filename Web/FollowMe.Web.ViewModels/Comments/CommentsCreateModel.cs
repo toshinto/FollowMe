@@ -13,6 +13,8 @@ namespace FollowMe.Web.ViewModels.Comments
         [Required]
         public string UserId { get; set; }
 
+        public string UserUserCharacteristicsFullName { get; set; }
+
         [Required]
         [MinLength(3)]
         [MaxLength(100)]
