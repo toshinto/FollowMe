@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using FollowMe.Common;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 
@@ -13,7 +13,7 @@ namespace FollowMe.Web.ViewModels.Comments
         public string CommentId { get; set; }
 
         [Required]
-        [MinLength(3)]
+        [MinLength(3, ErrorMessage = GlobalConstants.ContentMinLength)]
         [MaxLength(100)]
         public string Content { get; set; }
     }

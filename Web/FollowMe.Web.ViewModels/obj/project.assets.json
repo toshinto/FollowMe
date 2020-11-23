@@ -397,6 +397,16 @@
           "lib/netstandard2.0/System.Threading.Tasks.Extensions.dll": {}
         }
       },
+      "FollowMe.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "compile": {
+          "bin/placeholder/FollowMe.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FollowMe.Common.dll": {}
+        }
+      },
       "FollowMe.Data.Common/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -1294,6 +1304,11 @@
         "version.txt"
       ]
     },
+    "FollowMe.Common/1.0.0": {
+      "type": "project",
+      "path": "../../FollowMe.Common/FollowMe.Common.csproj",
+      "msbuildProject": "../../FollowMe.Common/FollowMe.Common.csproj"
+    },
     "FollowMe.Data.Common/1.0.0": {
       "type": "project",
       "path": "../../Data/FollowMe.Data.Common/FollowMe.Data.Common.csproj",
@@ -1312,6 +1327,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.1": [
+      "FollowMe.Common >= 1.0.0",
       "FollowMe.Data.Models >= 1.0.0",
       "FollowMe.Services.Mapping >= 1.0.0",
       "StyleCop.Analyzers >= 1.2.0-beta.205"
@@ -1350,6 +1366,9 @@
           "projectReferences": {
             "D:\\FollowMe\\FollowMe\\Data\\FollowMe.Data.Models\\FollowMe.Data.Models.csproj": {
               "projectPath": "D:\\FollowMe\\FollowMe\\Data\\FollowMe.Data.Models\\FollowMe.Data.Models.csproj"
+            },
+            "D:\\FollowMe\\FollowMe\\FollowMe.Common\\FollowMe.Common.csproj": {
+              "projectPath": "D:\\FollowMe\\FollowMe\\FollowMe.Common\\FollowMe.Common.csproj"
             },
             "D:\\FollowMe\\FollowMe\\Services\\FollowMe.Services.Mapping\\FollowMe.Services.Mapping.csproj": {
               "projectPath": "D:\\FollowMe\\FollowMe\\Services\\FollowMe.Services.Mapping\\FollowMe.Services.Mapping.csproj"
