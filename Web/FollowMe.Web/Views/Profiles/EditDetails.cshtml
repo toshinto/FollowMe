@@ -6,27 +6,27 @@
             <form method="post">
                 <div class="form-group">
                     <label for="firstName">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" value="">
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter your first name" value="@Model.FirstName">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" value="">
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter your last name" value="@Model.LastName">
                 </div>
                 <div class="form-group">
                     <label for="coverImageUrl">Profile picture</label>
-                    <input type="text" class="form-control" id="coverImageUrl" name="coverImageUrl" placeholder="https://..."value="">
+                    <input type="text" class="form-control" id="coverImageUrl" name="coverImageUrl" placeholder="https://..."value="@Model.CoverImageUrl">
                 </div>
                 <div class="form-group">
                     <label for="height">Height</label>
-                    <input min="130" max="220" type="number" class="form-control" id="height" name="height" placeholder="Your height" value="">
+                    <input min="130" max="220" type="number" class="form-control" id="height" name="height" placeholder="Your height" value="@Model.Height">
                 </div>
                 <div class="form-group">
                     <label for="weight">Weight</label>
-                    <input min="35" max="350" type="number" class="form-control" id="weight" name="weight" placeholder="Your weight" value="">
+                    <input min="35" max="350" type="number" class="form-control" id="weight" name="weight" placeholder="Your weight" value="@Model.Weight">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Say something about you" value="">
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Say something about you" value="@Model.Description">
                 </div>
                 <input class="invisible" id="userId" name="userId" value="@Model.UserId" />
                 <div class="button-holder d-flex justify-content-center">

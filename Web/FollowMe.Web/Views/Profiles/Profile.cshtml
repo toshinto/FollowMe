@@ -90,7 +90,9 @@
                 <div class="media-body">
                     <div class="text-muted small ml-3">
                         <form id="votesForm" method="post">
+
                             <div class="text-lg-right">
+
                                 <a class="btn" href="/Posts/Delete?id=@post.Id"><i class="fas fa-times"></i></a>
                             </div>
                             <div class="text-lg-right">
@@ -106,12 +108,12 @@
                                     </a>
                                 </div>
                             </div>
+                            <div>
+                                <h3>@post.Title</h3>
+                            </div>
                         </form>
-                        
                     </div>
-                    <div>
-                        <h3>@post.Title</h3>
-                    </div>
+                    
                     <hr />
                     <p class="text-right"><i class="fas fa-user"></i>By @post.SentByUserCharacteristicsFullName</p>
                     <p>

@@ -90,25 +90,30 @@
                 <div class="media-body">
                     <div class="text-muted small ml-3">
                         <form id="votesForm" method="post">
-                            <div>
-                                <a class="btn btn-primary" onclick='sendVote("@post.Id", true)'>
-                                    <i class="fa fa-thumbs-up"></i>
-                                </a>
+
+                            <div class="text-lg-right">
+
+                                <a class="btn" href="/Posts/Delete?id=@post.Id"><i class="fas fa-times"></i></a>
                             </div>
-                            <div id="votesCount">@post.VotesCount</div>
+                            <div class="text-lg-right">
+                                <div>
+                                    <a class="btn btn-primary" onclick='sendVote("@post.Id", true)'>
+                                        <i class="fa fa-thumbs-up"></i>
+                                    </a>
+                                </div>
+                                <div id="votesCount">@post.VotesCount</div>
+                                <div>
+                                    <a class="btn btn-primary" onclick='sendVote("@post.Id", false)'>
+                                        <i class="fa fa-thumbs-down"></i>
+                                    </a>
+                                </div>
+                            </div>
                             <div>
-                                <a class="btn btn-primary" onclick='sendVote("@post.Id", false)'>
-                                    <i class="fa fa-thumbs-down"></i>
-                                </a>
+                                <h3>@post.Title</h3>
                             </div>
                         </form>
-                        <div>
-                            <a class="btn" href="/Posts/Delete?id=@post.Id"><i class="fas fa-times"></i></a>
-                        </div>
                     </div>
-                    <div>
-                        <h3>@post.Title</h3>
-                    </div>
+                    
                     <hr />
                     <p class="text-right"><i class="fas fa-user"></i>By @post.SentByUserCharacteristicsFullName</p>
                     <p>
