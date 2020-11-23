@@ -15,7 +15,7 @@ namespace FollowMe.Web.ViewModels.Comments
 
         [Required]
         [MinLength(3, ErrorMessage = GlobalConstants.ContentMinLength)]
-        [MaxLength(100, ErrorMessage = GlobalConstants.ContentMaxnLength)]
+        [MaxLength(100, ErrorMessage = GlobalConstants.ContentMaxLength)]
         public string Content { get; set; }
     }
 }
