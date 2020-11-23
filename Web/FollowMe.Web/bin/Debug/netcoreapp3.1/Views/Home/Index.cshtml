@@ -4,6 +4,7 @@
     @foreach (var user in Model.UserCharacteristics)
     {
     <div class="card col-6 col-lg-3 game-card">
+        <div class="text-lg-center">
         @if (user.CoverImageUrl == null)
         {
             <img src="~/images/default-profile-picture1.jpg" ; text-align: center;"
@@ -14,6 +15,7 @@
             <img src="@user.CoverImageUrl" ; text-align: center;"
                  class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
         }
+        </div>
         <div class="card-body">
             <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
                 title="Description:<br>">
