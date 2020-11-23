@@ -531,3 +531,4 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Views\Home
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Views\Home\Privacy.cshtml
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Views\Comments\Create.cshtml
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Views\Comments\Edit.cshtml
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\wwwroot\images\default-profile-picture1.jpg

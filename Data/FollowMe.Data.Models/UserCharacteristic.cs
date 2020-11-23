@@ -12,12 +12,14 @@ namespace FollowMe.Data.Models
             this.Id = Guid.NewGuid().ToString();
         }
 
+        [Required]
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
+        [Required]
         public string CoverImageUrl { get; set; }
 
-        [MaxLength(15)]
+        [MaxLength(10)]
         public string FirstName { get; set; }
 
         [MaxLength(15)]
@@ -29,20 +31,24 @@ namespace FollowMe.Data.Models
 
         public Gender Gender { get; set; }
 
-        public int? Height { get; set; }
+        [Required]
+        public int Height { get; set; }
 
-        public int? Weight { get; set; }
+        [Required]
+        public int Weight { get; set; }
 
         public EyesColor EyeColor { get; set; }
 
         public WeddingStatus WeddingStatus { get; set; }
 
+        [Required]
         public DateTime Date { get; set; }
 
         public WhatAreYouSearchingFor WhatAreYouSearchingFor { get; set; }
 
         public HairColor HairColor { get; set; }
 
+        [Required]
         public string Description { get; set; }
     }
 }

@@ -260,6 +260,7 @@ namespace FollowMe.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CoverImageUrl")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
@@ -272,14 +273,15 @@ namespace FollowMe.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EyeColor")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(15)")
-                        .HasMaxLength(15);
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<int>("Gender")
                         .HasColumnType("int");
@@ -287,7 +289,7 @@ namespace FollowMe.Data.Migrations
                     b.Property<int>("HairColor")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Height")
+                    b.Property<int>("Height")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
@@ -301,12 +303,13 @@ namespace FollowMe.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("WeddingStatus")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Weight")
+                    b.Property<int>("Weight")
                         .HasColumnType("int");
 
                     b.Property<int>("WhatAreYouSearchingFor")
@@ -317,8 +320,7 @@ namespace FollowMe.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("UserCharacteristics");
                 });
@@ -485,7 +487,9 @@ namespace FollowMe.Data.Migrations
                 {
                     b.HasOne("FollowMe.Data.Models.ApplicationUser", "User")
                         .WithOne("UserCharacteristics")
-                        .HasForeignKey("FollowMe.Data.Models.UserCharacteristic", "UserId");
+                        .HasForeignKey("FollowMe.Data.Models.UserCharacteristic", "UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FollowMe.Data.Models.Vote", b =>

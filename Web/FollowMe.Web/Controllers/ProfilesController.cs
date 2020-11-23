@@ -40,6 +40,10 @@ namespace FollowMe.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Details(CreateDetailsViewModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
             var userId = this.userManager.GetUserId(this.User);
             await this.profilesService.Create(input, userId);
             return this.Redirect($"/Profiles/Profile?id={userId}");
