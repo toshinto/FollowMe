@@ -57,6 +57,10 @@ namespace FollowMe.Web.Controllers
 
         public async Task<IActionResult> Edit(EditCommentViewModel input)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
             var userId = this.userManager.GetUserId(this.User);
             await this.commentsService.EditMessageComment(input.CommentId, input.Content, userId);
             var postId = this.commentsService.GetPostIdByCommentId(input.CommentId);
@@ -67,6 +71,10 @@ namespace FollowMe.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CommentsCreateModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
             var parentUserProfile = this.postsService.GetUserByPostId(model.PostId);
             await this.commentsService.CreateAsync(model.PostId, model.UserId, model.Content);
             return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");

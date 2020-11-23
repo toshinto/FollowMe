@@ -40,6 +40,10 @@ namespace FollowMe.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(PostsCreateModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
             var currentUser = this.userManager.GetUserId(this.User);
             await this.postsService.Create(model.Content, model.UserId, currentUser, model.Title);
             return this.Redirect($"/Profiles/Profile?id={model.UserId}");
@@ -68,6 +72,10 @@ namespace FollowMe.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditPostViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
             var userId = this.userManager.GetUserId(this.User);
             var parentUserProfile = this.postsService.GetUserByPostId(model.PostId);
             await this.postsService.EditPost(model.PostId, model.Content, model.Title, userId);
