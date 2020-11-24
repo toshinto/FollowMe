@@ -95,6 +95,12 @@ namespace FollowMe.Services.Data
             return post;
         }
 
+        public string GetPostNameByCommentId(string id)
+        {
+            var postName = this.postsRepository.All().Where(x => x.Id == id).Select(x => x.Title).FirstOrDefault();
+            return postName;
+        }
+
         public string GetUserByPostId(string postId)
         {
             var userId = this.postsRepository.All().Where(x => x.Id == postId).Select(x => x.UserId).FirstOrDefault();

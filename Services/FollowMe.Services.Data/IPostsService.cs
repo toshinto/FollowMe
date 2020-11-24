@@ -19,6 +19,8 @@ namespace FollowMe.Services.Data
 
         string GetPostById(string id);
 
+        string GetPostNameByCommentId(string id);
+
         string GetUserByPostId(string postId);
 
         T EditView<T>(string postId);

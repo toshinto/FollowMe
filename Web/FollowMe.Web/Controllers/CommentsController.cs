@@ -33,6 +33,7 @@ namespace FollowMe.Web.Controllers
             {
                 PostId = this.postsService.GetPostById(id),
                 UserId = userId,
+                PostTitle = this.postsService.GetPostNameByCommentId(id),
             };
 
             return this.View(viewModel);
