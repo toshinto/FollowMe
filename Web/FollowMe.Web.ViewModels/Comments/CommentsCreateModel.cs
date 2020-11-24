@@ -14,7 +14,7 @@ namespace FollowMe.Web.ViewModels.Comments
         [Required]
         public string UserId { get; set; }
 
-        public string PostTitle { get; set; }
+        public string UserFullName { get; set; }
 
         [Required]
         [MinLength(3, ErrorMessage = GlobalConstants.ContentMinLength)]

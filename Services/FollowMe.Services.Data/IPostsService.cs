@@ -19,7 +19,7 @@ namespace FollowMe.Services.Data
 
         string GetPostById(string id);
 
-        string GetPostNameByCommentId(string id);
+        string GetCreatorOfPostByCommentId(string id);
 
         string GetUserByPostId(string postId);
 

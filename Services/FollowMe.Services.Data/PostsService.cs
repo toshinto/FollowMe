@@ -95,10 +95,10 @@ namespace FollowMe.Services.Data
             return post;
         }
 
-        public string GetPostNameByCommentId(string id)
+        public string GetCreatorOfPostByCommentId(string id)
         {
-            var postName = this.postsRepository.All().Where(x => x.Id == id).Select(x => x.Title).FirstOrDefault();
-            return postName;
+            var userFullName = this.postsRepository.All().Where(x => x.Id == id).Select(x => x.SentBy.UserCharacteristics.FullName).FirstOrDefault();
+            return userFullName;
         }
 
         public string GetUserByPostId(string postId)
