@@ -63,7 +63,7 @@ namespace FollowMe.Web.Controllers
         public async Task<IActionResult> EditDetails(EditDetailsViewModel model)
         {
             await this.profilesService.EditPersonalDetails(model);
-            return this.Redirect("/");
+            return this.Redirect($"/Profiles/Profile?id={model.UserId}");
         }
     }
 }
