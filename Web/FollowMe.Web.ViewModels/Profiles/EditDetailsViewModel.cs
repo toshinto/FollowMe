@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using FollowMe.Common;
 using FollowMe.Data.Models;
+using FollowMe.Data.Models.Enum;
 using FollowMe.Services.Mapping;
 
 namespace FollowMe.Web.ViewModels.Profiles
@@ -41,5 +42,17 @@ namespace FollowMe.Web.ViewModels.Profiles
         [MaxLength(200, ErrorMessage = GlobalConstants.DescriptionMaxLength)]
 
         public string Description { get; set; }
+
+        public City City { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public EyesColor EyeColor { get; set; }
+
+        public HairColor HairColor { get; set; }
+
+        public WeddingStatus WeddingStatus { get; set; }
+
+        public WhatAreYouSearchingFor WhatAreYouSearchingFor { get; set; }
     }
 }

@@ -63,6 +63,12 @@ namespace FollowMe.Services.Data
             userDetails.Weight = model.Weight;
             userDetails.Description = model.Description;
             userDetails.UserId = model.UserId;
+            userDetails.City = model.City;
+            userDetails.Gender = model.Gender;
+            userDetails.EyeColor = model.EyeColor;
+            userDetails.HairColor = model.HairColor;
+            userDetails.WeddingStatus = model.WeddingStatus;
+            userDetails.WhatAreYouSearchingFor = model.WhatAreYouSearchingFor;
 
             await this.usersRepository.SaveChangesAsync();
         }
