@@ -24,27 +24,26 @@ namespace FollowMe.Services.Data
 
         public async Task Create(CreateDetailsViewModel details, string userId)
         {
-            var eye = Enum.TryParse(details.EyeColor, out EyesColor eyesColor);
-            var hair = Enum.TryParse(details.HairColor, out HairColor hairColor);
-            var sex = Enum.TryParse(details.Gender, out Gender gender);
-            var wedding = Enum.TryParse(details.WeddingStatus, out WeddingStatus weddingStatus);
-            var whatYouSerachingFor = Enum.TryParse(details.WhatAreYouSearchingFor, out WhatAreYouSearchingFor whatAreYouSearchingFor);
-            var cities = Enum.TryParse(details.City, out City city);
+            //var eye = Enum.TryParse(details.EyeColor, out EyesColor eyesColor);
+            //var hair = Enum.TryParse(details.HairColor, out HairColor hairColor);
 
+            //var wedding = Enum.TryParse(details.WeddingStatus, out WeddingStatus weddingStatus);
+            //var whatYouSerachingFor = Enum.TryParse(details.WhatAreYouSearchingFor, out WhatAreYouSearchingFor whatAreYouSearchingFor);
+            //var cities = Enum.TryParse(details.City, out City city);
             var userCharacteristic = new UserCharacteristic
             {
                 FirstName = details.FirstName,
                 LastName = details.LastName,
-                City = city,
+                City = details.City,
                 CoverImageUrl = details.CoverImageUrl,
                 Height = details.Height,
                 Weight = details.Weight,
-                EyeColor = eyesColor,
-                HairColor = hairColor,
-                Gender = gender,
+                EyeColor = details.EyeColor,
+                HairColor = details.HairColor,
+                Gender = details.Gender,
                 Description = details.Description,
-                WeddingStatus = weddingStatus,
-                WhatAreYouSearchingFor = whatAreYouSearchingFor,
+                WeddingStatus = details.WeddingStatus,
+                WhatAreYouSearchingFor = details.WhatAreYouSearchingFor,
                 CreatedOn = DateTime.UtcNow,
                 Date = details.Date,
                 UserId = userId,

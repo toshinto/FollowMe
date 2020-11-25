@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace FollowMe.Data.Models.Enum
@@ -10,7 +11,7 @@ namespace FollowMe.Data.Models.Enum
         Blagoevgrad = 1,
         Burgas = 2,
         Varna = 3,
-        [Description("Veliko Tarnovo")]
+        [Display(Name = "Veliko Tarnovo")]
         VelikoTarnovo = 4,
         Vidin = 5,
         Vraca = 6,
@@ -30,7 +31,7 @@ namespace FollowMe.Data.Models.Enum
         Sliven = 20,
         Smolqn = 21,
         Sofia = 22,
-        [Description("Stara Zagora")]
+        [Display(Name = "Stara Zagora")]
         StaraZagora = 23,
         Targovishte = 24,
         Haskovo = 25,

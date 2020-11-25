@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 using FollowMe.Common;
+using FollowMe.Data.Models;
+using FollowMe.Data.Models.Enum;
 using FollowMe.Services.Mapping;
 
 namespace FollowMe.Web.ViewModels.Profiles
@@ -28,7 +30,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public DateTime Date { get; set; }
 
         [Required]
-        public string City { get; set; }
+        public City City { get; set; }
 
         [Required(ErrorMessage = GlobalConstants.Height)]
         [Range(130, 240, ErrorMessage = GlobalConstants.Height)]
@@ -47,18 +49,18 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string Description { get; set; }
 
         [Required]
-        public string EyeColor { get; set; }
+        public EyesColor EyeColor { get; set; }
 
         [Required]
-        public string Gender { get; set; }
+        public Gender Gender { get; set; }
 
         [Required]
-        public string HairColor { get; set; }
+        public HairColor HairColor { get; set; }
 
         [Required]
-        public string WeddingStatus { get; set; }
+        public WeddingStatus WeddingStatus { get; set; }
 
         [Required]
-        public string WhatAreYouSearchingFor { get; set; }
+        public WhatAreYouSearchingFor WhatAreYouSearchingFor { get; set; }
     }
 }
