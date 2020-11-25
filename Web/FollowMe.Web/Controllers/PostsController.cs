@@ -54,7 +54,7 @@ namespace FollowMe.Web.Controllers
             var currentUser = this.userManager.GetUserId(this.User);
             var user = this.postsService.GetUserByPostId(id);
             await this.postsService.Delete(id, currentUser);
-            return this.Redirect($"/Profiles/Profile?id={user}");
+            return this.Redirect($"/Profiles/Profile?id={user}#{id}");
         }
 
         public IActionResult Edit(string id)
@@ -63,7 +63,7 @@ namespace FollowMe.Web.Controllers
             var parentUserProfile = this.postsService.GetUserByPostId(id);
             if (!this.postsService.IsUserCreatorOfPost(id, userId))
             {
-                return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+                return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{id}");
             }
             var viewModel = this.postsService.EditView<EditPostViewModel>(id);
             return this.View(viewModel);
