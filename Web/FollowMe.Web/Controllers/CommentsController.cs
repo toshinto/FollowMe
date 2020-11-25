@@ -48,7 +48,7 @@ namespace FollowMe.Web.Controllers
             var parentUserProfile = this.postsService.GetUserByPostId(postId);
             if (!this.commentsService.IsUserCreatorOfComment(id, userId))
             {
-                return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+                return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{id}");
             }
             var viewModel = this.commentsService.EditView<EditCommentViewModel>(id);
             return this.View(viewModel);
