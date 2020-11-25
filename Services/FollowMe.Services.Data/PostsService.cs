@@ -77,10 +77,14 @@ namespace FollowMe.Services.Data
             return posts.To<T>().ToList();
         }
 
-        public string GetFirstNameById(string userId)
+        public bool GetFirstNameById(string userId)
         {
-            var user = this.usersRepository.All().Where(x => x.Id == userId).Select(s => s.UserCharacteristics.FirstName).FirstOrDefault();
-            return user;
+            var userFirstName = this.usersRepository.All().Where(x => x.Id == userId).Select(s => s.UserCharacteristics.FirstName).FirstOrDefault();
+            if (userFirstName != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public string GetNameById(string userId)

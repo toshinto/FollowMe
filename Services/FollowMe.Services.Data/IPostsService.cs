@@ -9,7 +9,7 @@ namespace FollowMe.Services.Data
     {
         string GetNameById(string userId);
 
-        string GetFirstNameById(string userId);
+        bool GetFirstNameById(string userId);
 
         Task Create(string content, string userId, string sentBy, string title);
 

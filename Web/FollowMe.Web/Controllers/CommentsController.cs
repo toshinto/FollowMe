@@ -24,8 +24,7 @@ namespace FollowMe.Web.Controllers
         public IActionResult Create(string id)
         {
             var userId = this.userManager.GetUserId(this.User);
-            var userFirstName = this.postsService.GetFirstNameById(userId);
-            if (userFirstName == null)
+            if (!this.postsService.GetFirstNameById(userId))
             {
                 return this.Redirect("/Profiles/Details");
             }
