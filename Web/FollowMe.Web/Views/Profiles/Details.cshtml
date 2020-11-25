@@ -42,7 +42,7 @@
                     <span asp-validation-for="@Model.Description" class="text-danger"></span>
                 </div>
                 <div>
-                    <label asp-for="@Model.EyeColor">Choose your gender</label>
+                    <label asp-for="@Model.EyeColor">Choose your eyes color</label>
                     <select asp-for="EyeColor" asp-items="Html.GetEnumSelectList<EyesColor>()"></select>
                 </div>
                 <div>
@@ -50,19 +50,19 @@
                     <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
                 </div>
                 <div>
-                    <label asp-for="@Model.HairColor">Choose your gender</label>
+                    <label asp-for="@Model.HairColor">Choose your hair color</label>
                     <select asp-for="HairColor" asp-items="Html.GetEnumSelectList<HairColor>()"></select>
                 </div>
                 <div>
-                    <label asp-for="@Model.WeddingStatus">Choose your gender</label>
+                    <label asp-for="@Model.WeddingStatus">Choose your wedding status</label>
                     <select asp-for="WeddingStatus" asp-items="Html.GetEnumSelectList<WeddingStatus>()"></select>
                 </div>
                 <div>
-                    <label asp-for="@Model.WhatAreYouSearchingFor">Choose your gender</label>
+                    <label asp-for="@Model.WhatAreYouSearchingFor">Choose what are you searching for</label>
                     <select asp-for="WhatAreYouSearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
                 </div>
                 <div>
-                    <label asp-for="@Model.City">Choose your gender</label>
+                    <label asp-for="@Model.City">Choose your city</label>
                     <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
                 </div>
                 <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
