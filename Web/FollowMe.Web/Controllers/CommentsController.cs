@@ -66,7 +66,7 @@ namespace FollowMe.Web.Controllers
             await this.commentsService.EditMessageComment(input.CommentId, input.Content, userId);
             var postId = this.commentsService.GetPostIdByCommentId(input.CommentId);
             var parentUserProfile = this.postsService.GetUserByPostId(postId);
-            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{input.CommentId}");
         }
 
         [HttpPost]
@@ -78,7 +78,7 @@ namespace FollowMe.Web.Controllers
             }
             var parentUserProfile = this.postsService.GetUserByPostId(model.PostId);
             await this.commentsService.CreateAsync(model.PostId, model.UserId, model.Content);
-            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{model.PostId}");
         }
 
         public async Task<IActionResult> Delete(string id)
@@ -87,7 +87,7 @@ namespace FollowMe.Web.Controllers
             var postId = this.commentsService.GetPostIdByCommentId(id);
             var parentUserProfile = this.postsService.GetUserByPostId(postId);
             await this.commentsService.DeleteAsync(id, userId);
-            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}");
+            return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{postId}");
         }
     }
 }

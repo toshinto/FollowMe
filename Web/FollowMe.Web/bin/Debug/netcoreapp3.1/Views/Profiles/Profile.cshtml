@@ -81,7 +81,7 @@
 <hr />
 @foreach (var post in Model.UserPosts)
 {
-    <div class="container">
+    <div class="container" id="@post.Id">
         <div class="well">
             <div class="media">
                 <a class="pull-left" href="/Profiles/Profile?id=@post.SentById">
@@ -131,7 +131,7 @@
 
                     @foreach (var comment in post.Comments.OrderByDescending(x => x.CreatedOn))
                     {
-                        <div class="comment" id="comment">
+                        <div class="comment" id="@comment.Id">
                             <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
                                 <img class="media-object" id="commentPicture" src="@comment.UserUserCharacteristicsCoverImageUrl" />
                             </a>

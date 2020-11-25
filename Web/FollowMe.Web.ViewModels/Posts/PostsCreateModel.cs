@@ -7,6 +7,7 @@ namespace FollowMe.Web.ViewModels.Posts
 {
     public class PostsCreateModel : IMapFrom<Post>
     {
+        public string Id { get; set; }
         public string UserUserName { get; set; }
 
         [Required]
