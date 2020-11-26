@@ -9,5 +9,6 @@ namespace FollowMe.Web.ViewModels.Photos
     public class CreatePhotoInputModel
     {
         public IEnumerable<IFormFile> Images { get; set; }
+
     }
 }

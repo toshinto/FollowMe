@@ -44,5 +44,14 @@ namespace FollowMe.Web.Controllers
             return this.Redirect("/");
         }
 
+        public IActionResult All()
+        {
+            var viewModel = new PhotosAllViewModel
+            {
+                Photos = this.photosService.GetAll<AllPhotoViewModel>(),
+            };
+
+            return this.View(viewModel);
+        }
     }
 }

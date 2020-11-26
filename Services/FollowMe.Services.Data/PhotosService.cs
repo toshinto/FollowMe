@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Services.Mapping;
 using FollowMe.Web.ViewModels.Photos;
 
 namespace FollowMe.Services.Data
@@ -44,6 +46,13 @@ namespace FollowMe.Services.Data
                 await this.photosRepository.AddAsync(dbImage);
                 await this.photosRepository.SaveChangesAsync();
             }
+        }
+
+        public IEnumerable<T> GetAll<T>()
+        {
+            var photos =
+                this.photosRepository.All().OrderByDescending(x => x.CreatedOn);
+            return photos.To<T>().ToList();
         }
     }
 }

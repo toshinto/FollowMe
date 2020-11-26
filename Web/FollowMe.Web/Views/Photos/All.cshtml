@@ -1,0 +1,5 @@
+﻿@model FollowMe.Web.ViewModels.Photos.PhotosAllViewModel
+@foreach(var photo in Model.Photos)
+{
+    <img src="@photo.ImagePath" id="personalPhotos"/>
+}
