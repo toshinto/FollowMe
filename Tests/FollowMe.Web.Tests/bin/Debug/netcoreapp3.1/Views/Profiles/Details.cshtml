@@ -1,4 +1,5 @@
 ﻿@using FollowMe.Data.Models;
+@using FollowMe.Data.Models.Enum
 @model FollowMe.Web.ViewModels.Profiles.CreateDetailsViewModel
 <section class="py-5">
     <div class="container">
@@ -12,7 +13,7 @@
                 </div>
                 <div>
                     <label asp-for="@Model.LastName"></label>
-                    <input asp-for="@Model.LastName" class="form-control" placeholder="Enter your last name"/>
+                    <input asp-for="@Model.LastName" class="form-control" placeholder="Enter your last name" />
                     <span asp-validation-for="@Model.LastName" class="text-danger"></span>
                 </div>
                 <div>
@@ -22,101 +23,47 @@
                 </div>
                 <div>
                     <label asp-for="@Model.CoverImageUrl"></label>
-                    <input asp-for="@Model.CoverImageUrl" class="form-control" placeholder="Your profile picture"/>
+                    <input asp-for="@Model.CoverImageUrl" class="form-control" placeholder="Your profile picture" />
                     <span asp-validation-for="@Model.CoverImageUrl" class="text-danger"></span>
                 </div>
                 <div>
                     <label asp-for="@Model.Height"></label>
-                    <input asp-for="@Model.Height" class="form-control" placeholder="Enter your height"/>
+                    <input asp-for="@Model.Height" class="form-control" placeholder="Enter your height" />
                     <span asp-validation-for="@Model.Height" class="text-danger"></span>
                 </div>
                 <div>
                     <label asp-for="@Model.Weight"></label>
-                    <input asp-for="@Model.Weight" class="form-control" placeholder="Enter your weight"/>
+                    <input asp-for="@Model.Weight" class="form-control" placeholder="Enter your weight" />
                     <span asp-validation-for="@Model.Weight" class="text-danger"></span>
                 </div>
-                @*<div>
+                <div>
                     <label asp-for="@Model.Description"></label>
-                    <input asp-for="@Model.Description" class="form-control" placeholder="Say something about you"/>
+                    <input asp-for="@Model.Description" class="form-control" placeholder="Say something about you" />
                     <span asp-validation-for="@Model.Description" class="text-danger"></span>
-                </div>*@
-                <div>
-                    <label for="eyeColor">Choose eye color</label>
-                    <select id="eyeColor" name="eyeColor">
-                        <option value="1">Amber</option>
-                        <option value="2">Blue</option>
-                        <option value="3">Brown</option>
-                        <option value="4">Gray</option>
-                        <option value="5">Green</option>
-                        <option value="6">Hazel</option>
-                    </select>
                 </div>
                 <div>
-                    <label for="gender">Choose gender</label>
-                    <select id="gender" name="gender">
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                    </select>
+                    <label asp-for="@Model.EyeColor">Choose your eyes color</label>
+                    <select asp-for="EyeColor" asp-items="Html.GetEnumSelectList<EyesColor>()"></select>
                 </div>
                 <div>
-                    <label for="hairColor">Choose hair color</label>
-                    <select id="hairColor" name="hairColor">
-                        <option value="1">Black</option>
-                        <option value="2">Brown</option>
-                        <option value="3">White</option>
-                        <option value="4">Red</option>
-                        <option value="5">Blond</option>
-                    </select>
+                    <label asp-for="@Model.Gender">Choose your gender</label>
+                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
                 </div>
                 <div>
-                    <label for="weddingStatus">Choose your status</label>
-                    <select id="weddingStatus" name="weddingStatus">
-                        <option value="1">Married</option>
-                        <option value="2">Divorced</option>
-                        <option value="3">Single</option>
-                    </select>
+                    <label asp-for="@Model.HairColor">Choose your hair color</label>
+                    <select asp-for="HairColor" asp-items="Html.GetEnumSelectList<HairColor>()"></select>
                 </div>
                 <div>
-                    <label for="whatAreYouSearchingFor">Choose what are you searching for</label>
-                    <select id="whatAreYouSearchingFor" name="whatAreYouSearchingFor">
-                        <option value="1">Date</option>
-                        <option value="2">RelationShip</option>
-                        <option value="3">Chat</option>
-                        <option value="4">Flirt</option>
-                    </select>
+                    <label asp-for="@Model.WeddingStatus">Choose your wedding status</label>
+                    <select asp-for="WeddingStatus" asp-items="Html.GetEnumSelectList<WeddingStatus>()"></select>
                 </div>
                 <div>
-                    <label for="city">Choose your city</label>
-                    <select id="city" name="city">
-                        <option value="1">Blagoevgrad</option>
-                        <option value="2">Burgas</option>
-                        <option value="3">Varna</option>
-                        <option value="4">Veliko Tarnovo</option>
-                        <option value="5">Vidin</option>
-                        <option value="6">Vraca</option>
-                        <option value="7">Gabrovo</option>
-                        <option value="8">Dobrich</option>
-                        <option value="9">Kardzhali</option>
-                        <option value="10">Kustendil</option>
-                        <option value="11">Lovech</option>
-                        <option value="12">Montana</option>
-                        <option value="13">Pazadzhik</option>
-                        <option value="14">Pernik</option>
-                        <option value="15">Pleven</option>
-                        <option value="16">Plovdiv</option>
-                        <option value="17">Razgrad</option>
-                        <option value="18">Ruse</option>
-                        <option value="19">Silistra</option>
-                        <option value="20">Sliven</option>
-                        <option value="21">Smolqn</option>
-                        <option value="22">Sofia</option>
-                        <option value="23">Stara Zagora</option>
-                        <option value="24">Targovishte</option>
-                        <option value="25">Haskovo</option>
-                        <option value="26">Shumen</option>
-                        <option value="27">Qmbol</option>
-                        <option value="28">Other</option>
-                    </select>
+                    <label asp-for="@Model.WhatAreYouSearchingFor">Choose what are you searching for</label>
+                    <select asp-for="WhatAreYouSearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
+                </div>
+                <div>
+                    <label asp-for="@Model.City">Choose your city</label>
+                    <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
                 </div>
                 <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
             </form>

@@ -1902,6 +1902,7 @@
       },
       "FollowMe.Web.ViewModels/1.0.0": {
         "dependencies": {
+          "FollowMe.Common": "1.0.0",
           "FollowMe.Data.Models": "1.0.0",
           "FollowMe.Services.Mapping": "1.0.0"
         },
