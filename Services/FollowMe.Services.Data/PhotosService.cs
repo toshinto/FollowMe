@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FollowMe.Services.Data
 {
-    class PhotosService
+    public class PhotosService : IPhotosService
     {
     }
 }
