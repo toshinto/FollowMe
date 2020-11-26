@@ -39,5 +39,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string FullName => $"{this.FirstName} {this.LastName}";
 
         public IEnumerable<PostInUserViewModel> UserPosts { get; set; }
+
+        public int UserPhotosCount { get; set; }
     }
 }

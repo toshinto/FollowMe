@@ -45,7 +45,7 @@ namespace FollowMe.Web.Controllers
         }
 
         public IActionResult All(string id)
-        {   
+        {
             var viewModel = new PhotosAllViewModel
             {
                 Photos = this.photosService.GetAll<AllPhotoViewModel>(id),
