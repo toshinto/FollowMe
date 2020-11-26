@@ -162,3 +162,5 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.pdb
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewModels.dll
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewModels.pdb
+D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll

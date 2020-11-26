@@ -10,6 +10,8 @@ namespace FollowMe.Data.Models
             this.Id = Guid.NewGuid().ToString();
         }
 
+        public string ImagePath { get; set; }
+
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
