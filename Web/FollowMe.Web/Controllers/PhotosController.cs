@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
@@ -30,7 +31,16 @@ namespace FollowMe.Web.Controllers
         public async Task<IActionResult> Create(CreatePhotoInputModel input)
         {
             var user = this.userManager.GetUserId(this.User);
-            await this.photosService.CreateAsync(input, user, $"{this.webHostEnvironment.WebRootPath}/images");
+            try
+            {
+                await this.photosService.CreateAsync(input, user, $"{this.webHostEnvironment.WebRootPath}/images");
+
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                return this.View(input);
+            }
             return this.Redirect("/");
         }
 
