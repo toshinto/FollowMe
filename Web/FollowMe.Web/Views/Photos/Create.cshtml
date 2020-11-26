@@ -3,7 +3,7 @@
 <form method="post" class="col-md-6 offset-md-3"
       enctype="multipart/form-data">
     <div class="form-group">
-        <label asp-for="Images"></label>
+        <label asp-for="Images">Allowed extensions are jpg, png and gif</label>
         <input asp-for="Images" class="form-control" />
         <span asp-validation-for="Images" class="text-danger"></span>
     </div>
