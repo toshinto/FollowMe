@@ -9,5 +9,10 @@ namespace FollowMe.Services.Data
         public Task CreateAsync(CreatePhotoInputModel model, string userId, string imagePath);
 
         IEnumerable<T> GetAll<T>(string userId);
+
+        Task DeleteAsync(string photoId, string userId);
+
+        string GetUserByPhotoId(string photoId);
+
     }
 }

@@ -1,10 +1,14 @@
 ﻿@model FollowMe.Web.ViewModels.Photos.PhotosAllViewModel
-<div class="row mt-2 mb-4">
-    @foreach (var photo in Model.Photos)
-    {
-        <div class="col-3">
-            <img src="@photo.ImagePath" id="personalPhotos" />
+    <form>
+        <div class="row mt-2 mb-4">
+            @foreach (var photo in Model.Photos)
+            {
+                <div class="col-3">
+                    <img src="@photo.ImagePath" id="personalPhotos" />
+                    <a class="btn btn-danger" href="/Photos/Delete?id=@photo.Id">DELETE</a>
+                </div>
+
+            }
         </div>
-    }
-</div>
-<div><input class="invisible" id="userId" name="userId" value="@Model.UserId" /></div>
+        <div><input class="invisible" id="userId" name="userId" value="@Model.UserId" /></div>
+    </form>

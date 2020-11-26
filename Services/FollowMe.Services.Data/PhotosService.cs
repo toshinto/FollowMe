@@ -54,5 +54,26 @@ namespace FollowMe.Services.Data
                 this.photosRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
             return photos.To<T>().ToList();
         }
+
+        public async Task DeleteAsync(string photoId, string userId)
+        {
+            var photo = this.photosRepository.All().Where(p => p.Id == photoId).FirstOrDefault();
+            if (photo.UserId == userId)
+            {
+                photo.IsDeleted = true;
+            }
+            else
+            {
+                return;
+            }
+
+            await this.photosRepository.SaveChangesAsync();
+        }
+
+        public string GetUserByPhotoId(string photoId)
+        {
+            var userId = this.photosRepository.All().Where(p => p.Id == photoId).Select(u => u.UserId).FirstOrDefault();
+            return userId;
+        }
     }
 }
