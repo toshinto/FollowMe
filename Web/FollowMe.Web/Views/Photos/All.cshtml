@@ -1,5 +1,10 @@
 ﻿@model FollowMe.Web.ViewModels.Photos.PhotosAllViewModel
-@foreach(var photo in Model.Photos)
-{
-    <img src="@photo.ImagePath" id="personalPhotos"/>
-}
+<div class="row mt-2 mb-4">
+    @foreach (var photo in Model.Photos)
+    {
+        <div class="col-3">
+            <img src="@photo.ImagePath" id="personalPhotos" />
+        </div>
+    }
+</div>
+<div><input class="invisible" id="userId" name="userId" value="@Model.UserId" /></div>

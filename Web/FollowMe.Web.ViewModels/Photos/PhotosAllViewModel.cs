@@ -9,6 +9,7 @@ namespace FollowMe.Web.ViewModels.Photos
     {
         public string Id { get; set; }
 
+        public string UserId { get; set; }
         public IEnumerable<AllPhotoViewModel> Photos { get; set; }
     }
 }

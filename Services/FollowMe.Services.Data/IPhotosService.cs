@@ -8,6 +8,6 @@ namespace FollowMe.Services.Data
     {
         public Task CreateAsync(CreatePhotoInputModel model, string userId, string imagePath);
 
-        IEnumerable<T> GetAll<T>();
+        IEnumerable<T> GetAll<T>(string userId);
     }
 }

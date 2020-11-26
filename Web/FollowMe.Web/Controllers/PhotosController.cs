@@ -41,14 +41,14 @@ namespace FollowMe.Web.Controllers
                 this.ModelState.AddModelError(string.Empty, ex.Message);
                 return this.View(input);
             }
-            return this.Redirect("/");
+            return this.Redirect($"/Photos/All?id={user}");
         }
 
-        public IActionResult All()
-        {
+        public IActionResult All(string id)
+        {   
             var viewModel = new PhotosAllViewModel
             {
-                Photos = this.photosService.GetAll<AllPhotoViewModel>(),
+                Photos = this.photosService.GetAll<AllPhotoViewModel>(id),
             };
 
             return this.View(viewModel);

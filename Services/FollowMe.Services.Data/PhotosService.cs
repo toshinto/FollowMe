@@ -48,10 +48,10 @@ namespace FollowMe.Services.Data
             }
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IEnumerable<T> GetAll<T>(string userId)
         {
             var photos =
-                this.photosRepository.All().OrderByDescending(x => x.CreatedOn);
+                this.photosRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
             return photos.To<T>().ToList();
         }
     }
