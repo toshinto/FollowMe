@@ -17,11 +17,7 @@ namespace FollowMe.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
-            this.PostsCreated = new HashSet<Post>();
-            this.PostsSent = new HashSet<Post>();
-            this.PhotosCreated = new HashSet<Photo>();
-            this.PhotosSent = new HashSet<Photo>();
-
+            this.Photos = new HashSet<Photo>();
         }
 
         // Audit info
@@ -41,19 +37,7 @@ namespace FollowMe.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
-
-        [InverseProperty("CreatedBy")]
-        public virtual ICollection<Post> PostsCreated { get; set; }
-
-        [InverseProperty("SentBy")]
-
-        public virtual ICollection<Post> PostsSent { get; set; }
-
-        [InverseProperty("User")]
-        public ICollection<Photo> PhotosCreated { get; set; }
-
-        [InverseProperty("SentBy")]
-        public ICollection<Photo> PhotosSent { get; set; }
+        public ICollection<Photo> Photos { get; set; }
 
     }
 }

@@ -108,7 +108,8 @@ namespace FollowMe.Web.Controllers
             {
                 return this.View(model);
             }
-            await this.commentsService.CreatePhotoCommentAsync(model.PhotoId, model.UserId, model.Content);
+            var userId = this.userManager.GetUserId(this.User);
+            await this.commentsService.CreatePhotoCommentAsync(model.PhotoId, model.UserId, model.Content, userId);
             return this.Redirect("/");
         }
     }

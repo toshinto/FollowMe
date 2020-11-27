@@ -40,6 +40,6 @@ namespace FollowMe.Web.ViewModels.Profiles
 
         public IEnumerable<PostInUserViewModel> UserPosts { get; set; }
 
-        public int UserPhotosCreatedCount { get; set; }
+        public int UserPhotosCount { get; set; }
     }
 }

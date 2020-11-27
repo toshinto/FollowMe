@@ -30,7 +30,7 @@ namespace FollowMe.Services.Data
             await this.commentsRepository.SaveChangesAsync();
         }
 
-        public async Task CreatePhotoCommentAsync(string photoId, string userId, string content)
+        public async Task CreatePhotoCommentAsync(string photoId, string userId, string content, string currentUser)
         {
             var comment = new Comment
             {
