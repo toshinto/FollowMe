@@ -18,6 +18,7 @@ namespace FollowMe.Data.Models
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
+
         public string Extension { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
