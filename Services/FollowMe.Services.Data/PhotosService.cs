@@ -75,5 +75,13 @@ namespace FollowMe.Services.Data
             var userId = this.photosRepository.All().Where(p => p.Id == photoId).Select(u => u.UserId).FirstOrDefault();
             return userId;
         }
+
+        public T GetByName<T>(string photoId)
+        {
+            var photoDetails = this.photosRepository.All()
+                .Where(x => x.Id == photoId)
+                .To<T>().FirstOrDefault();
+            return photoDetails;
+        }
     }
 }

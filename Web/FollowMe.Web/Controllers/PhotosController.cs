@@ -61,5 +61,12 @@ namespace FollowMe.Web.Controllers
             await this.photosService.DeleteAsync(id, currentUser);
             return this.Redirect($"/Photos/All?id={parentUserPhotos}");
         }
+
+        public IActionResult Photo(string id)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var viewModel = this.photosService.GetByName<AllPhotoViewModel>(id);
+            return this.View(viewModel);
+        }
     }
 }

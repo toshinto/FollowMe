@@ -13,7 +13,7 @@ namespace FollowMe.Web.ViewModels.Photos
         public string Id { get; set; }
 
         public string Extension { get; set; }
-        public void CreateMappings(IProfileExpression configuration)
+        public virtual void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Photo, AllPhotoViewModel>()
                  .ForMember(x => x.ImagePath, opt =>
