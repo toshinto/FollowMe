@@ -1,5 +1,5 @@
 ﻿using System;
-
+using AutoMapper;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 

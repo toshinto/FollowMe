@@ -21,6 +21,7 @@ namespace FollowMe.Web.ViewModels.Photos
         public int CommentsCount { get; set; }
 
         public IEnumerable<PhotoComments> Comments { get; set; }
+
         public virtual void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Photo, AllPhotoViewModel>()
