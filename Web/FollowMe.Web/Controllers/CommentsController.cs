@@ -110,7 +110,7 @@ namespace FollowMe.Web.Controllers
             }
             var userId = this.userManager.GetUserId(this.User);
             await this.commentsService.CreatePhotoCommentAsync(model.PhotoId, model.UserId, model.Content, userId);
-            return this.Redirect("/");
+            return this.Redirect($"/Photos/Photo?id={model.PhotoId}");
         }
     }
 }

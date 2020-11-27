@@ -37,6 +37,7 @@ namespace FollowMe.Services.Data
                 PhotoId = photoId,
                 UserId = userId,
                 Content = content,
+                SentById = currentUser,
             };
 
             await this.commentsRepository.AddAsync(comment);
