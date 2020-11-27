@@ -478,3 +478,4 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\System.IO.Pipeline
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Photos\Create.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Photos\All.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Photos\Photo.cshtml.g.cs
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Comments\CreatePhotoComment.cshtml.g.cs

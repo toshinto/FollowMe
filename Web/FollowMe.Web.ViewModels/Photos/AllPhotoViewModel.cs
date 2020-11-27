@@ -12,6 +12,8 @@ namespace FollowMe.Web.ViewModels.Photos
 
         public string Id { get; set; }
 
+        public string UserId { get; set; }
+
         public string Extension { get; set; }
         public virtual void CreateMappings(IProfileExpression configuration)
         {

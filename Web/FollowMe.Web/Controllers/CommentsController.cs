@@ -88,5 +88,27 @@ namespace FollowMe.Web.Controllers
             await this.commentsService.DeleteAsync(id, userId);
             return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{postId}");
         }
+
+        [HttpGet]
+        public IActionResult CreatePhotoComment(string id, string userId)
+        {
+            var viewModel = new CommentsPhotoModel
+            {
+                PhotoId = id,
+                UserId = userId,
+            };
+            return this.View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePhotoComment(CommentsPhotoModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+            await this.commentsService.CreatePhotoCommentAsync(model.PhotoId, model.UserId, model.Content);
+            return this.Redirect("/");
+        }
     }
 }

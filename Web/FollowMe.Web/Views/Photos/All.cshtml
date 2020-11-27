@@ -1,15 +1,22 @@
 ﻿@model FollowMe.Web.ViewModels.Photos.PhotosAllViewModel
-    <form>
-        <div class="row mt-2 mb-4">
-            @foreach (var photo in Model.Photos)
-            {
+@using Microsoft.AspNetCore.Identity;
+@using FollowMe.Data.Models
+@inject UserManager<ApplicationUser> user
+@{
+    var userId = this.user.GetUserId(this.User);
+}
+<form>
+    <div class="row mt-2 mb-4">
+        @foreach (var photo in Model.Photos)
+        {
             <div class="col-3">
                 <img src="@photo.ImagePath" id="personalPhotos" />
                 <a class="btn btn-danger" href="/Photos/Delete?id=@photo.Id">DELETE</a>
-                <a class="btn btn-primary" href="/Photos/Photo?id=@photo.Id">Comments</a>
+                <a class="btn btn-primary" href="/Photos/Photo?id=@photo.Id&userId=@userId">Comments</a>
             </div>
 
-            }
-        </div>
-        <div><input class="invisible" id="userId" name="userId" value="@Model.UserId" /></div>
-    </form>
+        }
+    </div>
+    <div><input class="invisible" id="userId" name="userId" value="@userId" /></div>
+    <div><input class="invisible" id="photoId" name="photoId" value="@Model.Id" /></div>
+</form>

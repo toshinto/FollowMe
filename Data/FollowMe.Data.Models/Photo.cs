@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FollowMe.Data.Common.Models;
 
 namespace FollowMe.Data.Models
@@ -8,6 +9,8 @@ namespace FollowMe.Data.Models
         public Photo()
         {
             this.Id = Guid.NewGuid().ToString();
+
+            this.Comments = new HashSet<Comment>();
         }
 
         public string ImagePath { get; set; }
@@ -17,5 +20,7 @@ namespace FollowMe.Data.Models
         public ApplicationUser User { get; set; }
 
         public string Extension { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

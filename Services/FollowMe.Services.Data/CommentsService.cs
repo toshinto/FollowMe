@@ -29,6 +29,19 @@ namespace FollowMe.Services.Data
             await this.commentsRepository.SaveChangesAsync();
         }
 
+        public async Task CreatePhotoCommentAsync(string photoId, string userId, string content)
+        {
+            var comment = new Comment
+            {
+                PhotoId = photoId,
+                UserId = userId,
+                Content = content,
+            };
+
+            await this.commentsRepository.AddAsync(comment);
+            await this.commentsRepository.SaveChangesAsync();
+        }
+
         public async Task DeleteAsync(string commentId, string userId)
         {
             var comment = this.commentsRepository.All().Where(c => c.Id == commentId).FirstOrDefault();
