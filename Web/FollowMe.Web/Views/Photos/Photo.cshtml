@@ -12,7 +12,7 @@
     @foreach (var comment in Model.Comments)
     {
         <div class="commentPhoto" id="@comment.Id">
-            <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
+            <a class="pull-left" href="/Profiles/Profile?id=@Model.UserId">
                 <img class="media-object" id="commentPicture" src="@comment.UserUserCharacteristicsCoverImageUrl" />
             </a>
             <p>

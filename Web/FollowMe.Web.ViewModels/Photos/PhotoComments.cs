@@ -1,8 +1,7 @@
-﻿using FollowMe.Data.Models;
+﻿using System;
+
+using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FollowMe.Web.ViewModels.Photos
 {

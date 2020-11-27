@@ -96,6 +96,7 @@ namespace FollowMe.Web.Controllers
             {
                 PhotoId = id,
                 UserId = userId,
+
             };
             return this.View(viewModel);
         }
