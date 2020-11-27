@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using FollowMe.Web.ViewModels.Comments;
 
@@ -19,5 +20,7 @@ namespace FollowMe.Services.Data
         Task EditMessageComment(string commentId, string content, string userId);
 
         bool IsUserCreatorOfComment(string commentId, string userId);
+
+        IEnumerable<T> GetByUserId<T>(string id);
     }
 }

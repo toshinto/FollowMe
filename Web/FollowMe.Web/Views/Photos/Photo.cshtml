@@ -6,4 +6,12 @@
 <div class="row justify-content-center">
     <a href="/Comments/CreatePhotoComment?id=@Model.Id&userId=@Model.UserId" class="btn btn-primary btn-lg text-center">Create comment</a>
 </div>
+<hr />
+<div>
+    @foreach (var comment in Model.Comments)
+    {
+        @comment.Content
+        @comment.CreatedOn
+    }
+</div>
 

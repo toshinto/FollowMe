@@ -15,12 +15,14 @@ namespace FollowMe.Web.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPhotosService photosService;
+        private readonly ICommentsService commentsService;
 
-        public PhotosController(IWebHostEnvironment webHostEnvironment, UserManager<ApplicationUser> userManager, IPhotosService photosService)
+        public PhotosController(IWebHostEnvironment webHostEnvironment, UserManager<ApplicationUser> userManager, IPhotosService photosService, ICommentsService commentsService)
         {
             this.webHostEnvironment = webHostEnvironment;
             this.userManager = userManager;
             this.photosService = photosService;
+            this.commentsService = commentsService;
         }
         public IActionResult Create()
         {
@@ -64,8 +66,8 @@ namespace FollowMe.Web.Controllers
 
         public IActionResult Photo(string id)
         {
-            var userId = this.userManager.GetUserId(this.User);
             var viewModel = this.photosService.GetByName<AllPhotoViewModel>(id);
+            viewModel.Comments = this.commentsService.GetByUserId<PhotoComments>(id);
             return this.View(viewModel);
         }
     }

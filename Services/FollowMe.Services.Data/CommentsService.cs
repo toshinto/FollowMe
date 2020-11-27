@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using FollowMe.Data.Common.Repositories;
@@ -74,6 +75,13 @@ namespace FollowMe.Services.Data
                    .Where(x => x.Id == commentId)
                    .To<T>().FirstOrDefault();
             return comment;
+        }
+
+        public IEnumerable<T> GetByUserId<T>(string id)
+        {
+            var comments = this.commentsRepository.All().Where(x => x.PhotoId == id).OrderByDescending(x => x.CreatedOn);
+
+            return comments.To<T>().ToList();
         }
 
         public string GetPostIdByCommentId(string id)

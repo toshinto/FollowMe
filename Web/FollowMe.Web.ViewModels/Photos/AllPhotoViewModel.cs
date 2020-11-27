@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 using AutoMapper;
 using FollowMe.Data.Models;
@@ -15,6 +17,10 @@ namespace FollowMe.Web.ViewModels.Photos
         public string UserId { get; set; }
 
         public string Extension { get; set; }
+
+        public int CommentsCount { get; set; }
+
+        public IEnumerable<PhotoComments> Comments { get; set; }
         public virtual void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Photo, AllPhotoViewModel>()

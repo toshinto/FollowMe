@@ -12,7 +12,7 @@
             <div class="col-3">
                 <img src="@photo.ImagePath" id="personalPhotos" />
                 <a class="btn btn-danger" href="/Photos/Delete?id=@photo.Id">DELETE</a>
-                <a class="btn btn-primary" href="/Photos/Photo?id=@photo.Id&userId=@userId">Comments</a>
+                <a class="btn btn-primary" href="/Photos/Photo?id=@photo.Id&userId=@userId">Comments (@photo.CommentsCount)</a>
             </div>
 
         }
