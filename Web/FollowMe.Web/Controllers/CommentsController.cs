@@ -53,6 +53,20 @@ namespace FollowMe.Web.Controllers
             return this.View(viewModel);
         }
 
+        [HttpGet]
+
+        public IActionResult EditPhotoComment(string id)
+        {
+            var user = this.userManager.GetUserId(this.User);
+            var photoId = this.commentsService.GetPhotoIdByCommentId(id);
+            if (!this.commentsService.IsUserCreatorOfPhotoComment(id, user))
+            {
+                return this.Redirect($"/Photos/Photo?id={photoId}");
+            }
+            var viewModel = this.commentsService.EditView<EditCommentViewModel>(id);
+            return this.View(viewModel);
+        }
+
         [HttpPost]
 
         public async Task<IActionResult> Edit(EditCommentViewModel input)
@@ -66,6 +80,20 @@ namespace FollowMe.Web.Controllers
             var postId = this.commentsService.GetPostIdByCommentId(input.CommentId);
             var parentUserProfile = this.postsService.GetUserByPostId(postId);
             return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{input.CommentId}");
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> EditPhotoComment(EditCommentViewModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+            var photoId = this.commentsService.GetPhotoIdByCommentId(input.CommentId);
+            var userId = this.userManager.GetUserId(this.User);
+            await this.commentsService.EditPhotoComment(input.CommentId, input.Content, userId);
+            return this.Redirect($"/Photos/Photo?id={photoId}");
         }
 
         [HttpPost]

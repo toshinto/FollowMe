@@ -19,11 +19,20 @@ namespace FollowMe.Services.Data
 
         string GetPhotoIdByCommentId(string id);
 
+        string GetCommentIdByPhotoId(string photoId);
+
         T EditView<T>(string commentId);
+
+        T EditPhotoCommentView<T>(string photoId);
 
         Task EditMessageComment(string commentId, string content, string userId);
 
+        Task EditPhotoComment(string photoId, string content, string userId);
+
         bool IsUserCreatorOfComment(string commentId, string userId);
+
+        bool IsUserCreatorOfPhotoComment(string photoId, string userId);
+
 
         IEnumerable<T> GetByUserId<T>(string id);
     }

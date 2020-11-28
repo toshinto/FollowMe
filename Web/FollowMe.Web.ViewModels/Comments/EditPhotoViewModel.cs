@@ -1,18 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
-using FollowMe.Common;
+﻿using FollowMe.Common;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
+using System.ComponentModel.DataAnnotations;
 
 namespace FollowMe.Web.ViewModels.Comments
 {
-    public class EditCommentViewModel : IMapFrom<Comment>
+    public class EditPhotoViewModel : IMapFrom<Comment>
     {
         public string Id { get; set; }
 
+        public string SentById { get; set; }
+
         [Required]
         public string CommentId { get; set; }
-
-        public string PhotoId { get; set; }
 
         [Required]
         [MinLength(3, ErrorMessage = GlobalConstants.ContentMinLength)]

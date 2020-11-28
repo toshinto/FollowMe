@@ -12,10 +12,12 @@ namespace FollowMe.Services.Data
     public class CommentsService : ICommentsService
     {
         private readonly IDeletableEntityRepository<Comment> commentsRepository;
+        private readonly IDeletableEntityRepository<Photo> photosRepository;
 
-        public CommentsService(IDeletableEntityRepository<Comment> commentsRepository)
+        public CommentsService(IDeletableEntityRepository<Comment> commentsRepository, IDeletableEntityRepository<Photo> photosRepository)
         {
             this.commentsRepository = commentsRepository;
+            this.photosRepository = photosRepository;
         }
         public async Task CreateAsync(string postId, string userId, string content)
         {
@@ -85,6 +87,26 @@ namespace FollowMe.Services.Data
             await this.commentsRepository.SaveChangesAsync();
         }
 
+        public async Task EditPhotoComment(string commentId, string content, string userId)
+        {
+            var comment = this.commentsRepository.All().Where(p => p.Id == commentId).FirstOrDefault();
+            if (comment.SentById != userId)
+            {
+                return;
+            }
+            comment.Content = content;
+
+            await this.commentsRepository.SaveChangesAsync();
+        }
+
+        public T EditPhotoCommentView<T>(string photoId)
+        {
+            var photoComment = this.commentsRepository.All()
+                .Where(x => x.PhotoId == photoId)
+                .To<T>().FirstOrDefault();
+            return photoComment;
+        }
+
         public T EditView<T>(string commentId)
         {
             var comment = this.commentsRepository.All()
@@ -98,6 +120,12 @@ namespace FollowMe.Services.Data
             var comments = this.commentsRepository.All().Where(x => x.PhotoId == id).OrderByDescending(x => x.CreatedOn);
 
             return comments.To<T>().ToList();
+        }
+
+        public string GetCommentIdByPhotoId(string photoId)
+        {
+            var commentId = this.commentsRepository.All().Where(p => p.PhotoId == photoId).Select(c => c.Id).FirstOrDefault();
+            return commentId;
         }
 
         public string GetPhotoIdByCommentId(string id)
@@ -116,6 +144,17 @@ namespace FollowMe.Services.Data
         {
             var comment = this.commentsRepository.All().Where(x => x.Id == commentId).FirstOrDefault();
             if (comment.UserId == userId)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsUserCreatorOfPhotoComment(string commentId, string userId)
+        {
+            var comment = this.commentsRepository.All().Where(x => x.Id == commentId).FirstOrDefault();
+            if (comment.SentById == userId)
             {
                 return true;
             }
