@@ -59,6 +59,21 @@ namespace FollowMe.Services.Data
             await this.commentsRepository.SaveChangesAsync();
         }
 
+        public async Task DeletePhotoCommentAsync(string commentId, string userId)
+        {
+            var comment = this.commentsRepository.All().Where(c => c.Id == commentId).FirstOrDefault();
+            if (comment.SentById == userId)
+            {
+                comment.IsDeleted = true;
+            }
+            else
+            {
+                return;
+            }
+
+            await this.commentsRepository.SaveChangesAsync();
+        }
+
         public async Task EditMessageComment(string commentId, string content, string userId)
         {
             var comment = this.commentsRepository.All().Where(x => x.Id == commentId).FirstOrDefault();
@@ -83,6 +98,12 @@ namespace FollowMe.Services.Data
             var comments = this.commentsRepository.All().Where(x => x.PhotoId == id).OrderByDescending(x => x.CreatedOn);
 
             return comments.To<T>().ToList();
+        }
+
+        public string GetPhotoIdByCommentId(string id)
+        {
+            var photoId = this.commentsRepository.All().Where(x => x.Id == id).Select(p => p.PhotoId).FirstOrDefault();
+            return photoId;
         }
 
         public string GetPostIdByCommentId(string id)

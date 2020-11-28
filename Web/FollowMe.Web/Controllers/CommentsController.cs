@@ -89,6 +89,14 @@ namespace FollowMe.Web.Controllers
             return this.Redirect($"/Profiles/Profile?id={parentUserProfile}#{postId}");
         }
 
+        public async Task<IActionResult> DeletePhotoComment(string id)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var photoId = this.commentsService.GetPhotoIdByCommentId(id);
+            await this.commentsService.DeletePhotoCommentAsync(id, userId);
+            return this.Redirect($"/Photos/Photo?id={photoId}");
+        }
+
         [HttpGet]
         public IActionResult CreatePhotoComment(string id, string userId)
         {

@@ -13,7 +13,11 @@ namespace FollowMe.Services.Data
 
         Task DeleteAsync(string commentId, string userId);
 
+        Task DeletePhotoCommentAsync(string commentId, string userId);
+
         string GetPostIdByCommentId(string id);
+
+        string GetPhotoIdByCommentId(string id);
 
         T EditView<T>(string commentId);
 
