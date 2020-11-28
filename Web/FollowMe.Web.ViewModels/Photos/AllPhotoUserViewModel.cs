@@ -2,7 +2,6 @@
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 
-
 namespace FollowMe.Web.ViewModels.Photos
 {
     public class AllPhotoUserViewModel : IMapFrom<Photo>, IHaveCustomMappings

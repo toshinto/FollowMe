@@ -1,7 +1,8 @@
-﻿using FollowMe.Common;
+﻿using System.ComponentModel.DataAnnotations;
+
+using FollowMe.Common;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
-using System.ComponentModel.DataAnnotations;
 
 namespace FollowMe.Web.ViewModels.Comments
 {

@@ -36,7 +36,6 @@ namespace FollowMe.Web.Controllers
             try
             {
                 await this.photosService.CreateAsync(input, user, $"{this.webHostEnvironment.WebRootPath}/images");
-
             }
             catch (Exception ex)
             {

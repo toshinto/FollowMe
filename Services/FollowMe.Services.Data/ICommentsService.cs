@@ -32,8 +32,6 @@ namespace FollowMe.Services.Data
         bool IsUserCreatorOfComment(string commentId, string userId);
 
         bool IsUserCreatorOfPhotoComment(string photoId, string userId);
-
-
         IEnumerable<T> GetByUserId<T>(string id);
     }
 }

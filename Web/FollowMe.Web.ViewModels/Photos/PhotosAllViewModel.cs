@@ -12,6 +12,5 @@ namespace FollowMe.Web.ViewModels.Photos
         public string UserId { get; set; }
 
         public IEnumerable<AllPhotoUserViewModel> Photos { get; set; }
-
     }
 }
