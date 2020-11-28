@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace FollowMe.Web.ViewModels.Photos
 {
@@ -21,7 +19,7 @@ namespace FollowMe.Web.ViewModels.Photos
 
         public virtual void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Photo, AllPhotoViewModel>()
+            configuration.CreateMap<Photo, AllPhotoUserViewModel>()
                  .ForMember(x => x.ImagePath, opt =>
                      opt.MapFrom(x =>
                          "/images/photos/" + x.Id + '.' + x.Extension));
