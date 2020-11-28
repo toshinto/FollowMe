@@ -8,10 +8,15 @@ namespace FollowMe.Web.ViewModels.Photos
     public class PhotoComments : IMapFrom<Comment>
     {
         public string Id { get; set; }
-        public string UserId { get; set; }
         public string UserUserCharacteristicsFullName { get; set; }
 
         public string UserUserCharacteristicsCoverImageUrl { get; set; }
+
+        public string SentByUserCharacteristicsCoverImageUrl { get; set; }
+
+        public string SentByUserCharacteristicsFullName { get; set; }
+
+        public string SentById { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

@@ -12,14 +12,14 @@
     @foreach (var comment in Model.Comments)
     {
         <div class="commentPhoto" id="@comment.Id">
-            <a class="pull-left" href="/Profiles/Profile?id=@Model.UserId">
-                <img class="media-object" id="commentPicture" src="@comment.UserUserCharacteristicsCoverImageUrl" />
+            <a class="pull-left" href="/Profiles/Profile?id=@comment.SentById">
+                <img class="media-object" id="commentPicture" src="@comment.SentByUserCharacteristicsCoverImageUrl" />
             </a>
             <p>
                 @comment.Content
             </p>
             <p class="text-right">
-                <i class="fas fa-user"></i>By @comment.UserUserCharacteristicsFullName
+                <i class="fas fa-user"></i>By @comment.SentByUserCharacteristicsFullName
             </p>
             <p>
                 @comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))

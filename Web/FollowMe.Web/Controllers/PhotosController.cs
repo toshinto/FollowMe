@@ -50,7 +50,7 @@ namespace FollowMe.Web.Controllers
         {
             var viewModel = new PhotosAllViewModel
             {
-                Photos = this.photosService.GetAll<AllPhotoViewModel>(id),
+                Photos = this.photosService.GetAll<AllPhotoUserViewModel>(id),
             };
 
             return this.View(viewModel);
