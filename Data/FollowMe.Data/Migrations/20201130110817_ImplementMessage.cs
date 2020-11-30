@@ -16,7 +16,7 @@ namespace FollowMe.Data.Migrations
                     UserName = table.Column<string>(nullable: false),
                     Text = table.Column<string>(nullable: false),
                     When = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
