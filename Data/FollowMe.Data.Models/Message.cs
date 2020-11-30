@@ -1,16 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
+using FollowMe.Data.Common.Models;
+
 namespace FollowMe.Data.Models
 {
-    public class Message
+    public class Message : BaseModel<int>
     {
         public Message()
         {
             this.When = DateTime.UtcNow;
         }
-
-        public int Id { get; set; }
 
         [Required]
         public string UserName { get; set; }

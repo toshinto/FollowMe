@@ -3,7 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FollowMe.Data;
 using FollowMe.Data.Models;
+using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels;
+using FollowMe.Web.ViewModels.Chats;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +18,13 @@ namespace FollowMe.Web.Controllers
     {
         private readonly ApplicationDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IMessagesService messagesService;
 
-        public ChatsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        public ChatsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMessagesService messagesService)
         {
             this.context = context;
             this.userManager = userManager;
+            this.messagesService = messagesService;
         }
 
         public async Task<IActionResult> Chat()
@@ -30,8 +34,10 @@ namespace FollowMe.Web.Controllers
             {
                 ViewBag.CurrentUserName = currentUser.UserName;
             }
+            var viewModel = new ChatMessages();
+            viewModel.Messages = this.messagesService.GetAll<ChatViewModel>();
             var messages = await this.context.Messages.ToListAsync();
-            return this.View(messages);
+            return this.View(viewModel);
         }
 
         public async Task<IActionResult> Create(Message message)
