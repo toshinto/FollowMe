@@ -21,5 +21,7 @@ namespace FollowMe.Web.ViewModels.Chats
         public DateTime When { get; set; }
 
         public string UserId { get; set; }
+
+        public string UserUserCharacteristicsFullName { get; set; }
     }
 }
