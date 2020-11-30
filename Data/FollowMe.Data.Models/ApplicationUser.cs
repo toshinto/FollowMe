@@ -20,7 +20,7 @@ namespace FollowMe.Data.Models
             this.PostsCreated = new HashSet<Post>();
             this.PostsSent = new HashSet<Post>();
             this.Photos = new HashSet<Photo>();
- 
+            this.Messages = new HashSet<Message>();
         }
 
         // Audit info
@@ -49,5 +49,7 @@ namespace FollowMe.Data.Models
         public virtual ICollection<Post> PostsSent { get; set; }
 
         public ICollection<Photo> Photos { get; set; }
+
+        public ICollection<Message> Messages { get; set; }
     }
 }

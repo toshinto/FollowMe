@@ -35,6 +35,8 @@
 
         public DbSet<Photo> Photos { get; set; }
 
+        public DbSet<Message> Messages { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -81,6 +83,11 @@
             {
                 foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            builder.Entity<Message>()
+                .HasOne<ApplicationUser>(a => a.User)
+                .WithMany(d => d.Messages)
+                .HasForeignKey(d => d.UserId);
         }
 
         private static void SetIsDeletedQueryFilter<T>(ModelBuilder builder)
