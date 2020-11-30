@@ -32,3 +32,6 @@ dotnet_diagnostic.SA1005.severity = silent
 
 # SA1122: Use string.Empty for empty strings
 dotnet_diagnostic.SA1122.severity = silent
+
+# CS0618: Type or member is obsolete
+dotnet_diagnostic.CS0618.severity = silent

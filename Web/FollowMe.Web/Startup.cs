@@ -11,6 +11,7 @@
     using FollowMe.Services.Data;
     using FollowMe.Services.Mapping;
     using FollowMe.Services.Messaging;
+    using FollowMe.Web.Hubs;
     using FollowMe.Web.ViewModels;
     using FollowMe.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Builder;
@@ -53,6 +54,8 @@
                         options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
                     }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
+
+            services.AddSignalR();
 
             services.AddSingleton(this.configuration);
 
@@ -103,6 +106,11 @@
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSignalR(route =>
+            {
+                route.MapHub<ChatHub>("/Chats/Chat");
+            });
 
             app.UseEndpoints(
                 endpoints =>
