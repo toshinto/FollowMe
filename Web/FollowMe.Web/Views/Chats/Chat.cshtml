@@ -1,0 +1,79 @@
+﻿<div class="jumbotron bg-light">
+    <h2 class="text-center text-primary">
+        <i class="fab fa-facebook-messenger"></i>&nbsp; Public Talk
+    </h2>
+    <div class="row">
+        <div class="col-md-12" id="chat">
+        </div>
+    </div>
+    </div>
+    @*@if (Model != null)
+        {
+            @foreach(var message in Model.Messages.OrderBy(m => m.When))
+            {
+                string containerClass = string.Empty;
+                string timePosition = string.Empty;
+                string textAlign = string.Empty;
+                string contColor = string.Empty;
+                string offset = string.Empty;
+                string userName = string.Empty;
+                if(userName == message.UserName)
+                {
+                    containerClass = "container darker";
+                    timePosition = "time-right text-light";
+                    textAlign = "time-right text-white";
+                    contColor = "bg-primary";
+                    offset = "col-md-6 offset-md-6";
+                }
+                else
+                {
+                    containerClass = "container";
+                    timePosition = "time-left";
+                    textAlign = "time-left";
+                    contColor = "bg-light";
+                    offset = "";
+                }*@
+
+
+    @*}
+        }*@
+@*</div>
+<div class="row">
+    <div class="">
+        <div class="">
+            <p class="sender"></p>
+            <p class=""> </p>
+            <span class=""></span>
+        </div>
+    </div>
+</div>*@
+    <div class="col-md-12">
+        <form asp-action="Create"
+              data-ajax-begin="clearInputField" data-ajax-complete=""
+              data-ajax-failure="alert('Fail')" data-ajax-success="sendMessage"
+              data-ajax="true" data-ajax-method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input name="Text" class="form-control" id="messageText" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send" id="submitButton" class="btn btn-primary" />
+            </div>
+            <input type="hidden" value="toshko" name="userName" />
+        </form>
+    </div>
+
+@if (this.User.Identity.IsAuthenticated)
+{
+    <script>
+    const userName = "@ViewBag.CurrentUserName";
+    </script>
+}
+
+@section Scripts
+{
+    <sript src="~/signalr/signalr.min.js"></sript>
+    <sript src="~/lib/jquery/dist/jquery.unobtrusive-ajax.min.js"></sript>
+    <sript src="~/js/chat.js"></sript>
+    <sript src="~/js/signrReqHandler.js"></sript>
+}

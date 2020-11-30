@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace FollowMe.Data.Models
+using FollowMe.Data.Models;
+using FollowMe.Services.Mapping;
+
+namespace FollowMe.Web.ViewModels.Chats
 {
-    public class Message
+    public class ChatViewModel : IMapFrom<Message>
     {
-        public Message()
-        {
-            this.When = DateTime.UtcNow;
-        }
         public int Id { get; set; }
 
         [Required]
@@ -22,7 +21,5 @@ namespace FollowMe.Data.Models
         public DateTime When { get; set; }
 
         public string UserId { get; set; }
-
-        public virtual ApplicationUser User { get; set; }
     }
 }

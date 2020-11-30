@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 using FollowMe.Data;
 using FollowMe.Data.Models;
 using FollowMe.Web.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FollowMe.Web.Controllers
 {
+    [Authorize]
     public class ChatsController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -24,9 +26,12 @@ namespace FollowMe.Web.Controllers
         public async Task<IActionResult> Chat()
         {
             var currentUser = await this.userManager.GetUserAsync(this.User);
-            ViewBag.CurrentUserName = currentUser.UserName;
+            if (this.User.Identity.IsAuthenticated)
+            {
+                ViewBag.CurrentUserName = currentUser.UserName;
+            }
             var messages = await this.context.Messages.ToListAsync();
-            return this.View();
+            return this.View(messages);
         }
 
         public async Task<IActionResult> Create(Message message)
@@ -38,7 +43,7 @@ namespace FollowMe.Web.Controllers
                 message.UserId = sender.Id;
                 await context.Messages.AddAsync(message);
                 await context.SaveChangesAsync();
-                return this.Ok();
+                return this.Redirect("/Chats/Chat");
             }
             return this.Error();
         }

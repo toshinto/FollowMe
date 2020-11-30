@@ -109,7 +109,7 @@
 
             app.UseSignalR(route =>
             {
-                route.MapHub<ChatHub>("/Chats/Chat");
+                route.MapHub<ChatHub>("/chatter");
             });
 
             app.UseEndpoints(
