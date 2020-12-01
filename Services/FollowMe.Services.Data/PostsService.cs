@@ -22,7 +22,7 @@ namespace FollowMe.Services.Data
 
         public async Task Create(string content, string userId, string sentBy, string title)
         {
-            var user = this.usersRepository.All().Where(x => x.Id == sentBy).Select(x => x.UserCharacteristics.Photo.Id + "." + x.UserCharacteristics.Photo.Extension).FirstOrDefault();
+            var userPhotoStorage = this.usersRepository.All().Where(x => x.Id == sentBy).Select(x => x.UserCharacteristics.Photo.Id + "." + x.UserCharacteristics.Photo.Extension).FirstOrDefault();
             var post = new Post
             {
                 Content = content,
@@ -30,7 +30,7 @@ namespace FollowMe.Services.Data
                 SentById = sentBy,
                 Title = title,
                 CreatedOn = DateTime.UtcNow,
-                ImagePath = "/images/photos/" + user,
+                ImagePath = "/images/photos/" + userPhotoStorage,
             };
             await this.postsRepository.AddAsync(post);
             await this.postsRepository.SaveChangesAsync();
