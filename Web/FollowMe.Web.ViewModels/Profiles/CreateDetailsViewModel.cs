@@ -24,9 +24,6 @@ namespace FollowMe.Web.ViewModels.Profiles
         [RegularExpression("[A-Z][a-z]{2,14}", ErrorMessage = GlobalConstants.LastName)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = GlobalConstants.CoverImageUrl)]
-        public string CoverImageUrl { get; set; }
-
         [Required(ErrorMessage = GlobalConstants.Birthday)]
         public DateTime Date { get; set; }
 

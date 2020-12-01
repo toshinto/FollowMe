@@ -4,14 +4,16 @@ using FollowMe.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FollowMe.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201201112411_CoverImageAllowsNull")]
+    partial class CoverImageAllowsNull
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,17 +274,11 @@ namespace FollowMe.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("PhotoId")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SentById")
                         .HasColumnType("nvarchar(450)");
@@ -298,8 +294,6 @@ namespace FollowMe.Data.Migrations
                     b.HasIndex("CreatedById");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PhotoId");
 
                     b.HasIndex("SentById");
 
@@ -592,10 +586,6 @@ namespace FollowMe.Data.Migrations
                     b.HasOne("FollowMe.Data.Models.ApplicationUser", "CreatedBy")
                         .WithMany("PostsCreated")
                         .HasForeignKey("CreatedById");
-
-                    b.HasOne("FollowMe.Data.Models.Photo", "Photo")
-                        .WithMany()
-                        .HasForeignKey("PhotoId");
 
                     b.HasOne("FollowMe.Data.Models.ApplicationUser", "SentBy")
                         .WithMany("PostsSent")

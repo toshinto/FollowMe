@@ -16,6 +16,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public DateTime BirthDate { get; set; }
 
         public DateTime Date { get; set; }
+
         public string CoverImageUrl { get; set; }
 
         public int Age { get; set; }
@@ -47,12 +48,12 @@ namespace FollowMe.Web.ViewModels.Profiles
 
         public string PhotoExtension { get; set; }
 
-        public string PhotoImagePath { get; set; }
+        public string UserUserCharacteristicsPhotoImagePath { get; set; }
 
         public virtual void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<UserCharacteristic, ProfileViewPersonalDetailsViewModel>()
-                 .ForMember(x => x.PhotoImagePath, opt =>
+                 .ForMember(x => x.UserUserCharacteristicsPhotoImagePath, opt =>
                      opt.MapFrom(x =>
                          "/images/photos/" + x.PhotoId + '.' + x.Photo.Extension));
         }

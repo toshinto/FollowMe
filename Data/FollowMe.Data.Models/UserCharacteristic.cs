@@ -20,7 +20,6 @@ namespace FollowMe.Data.Models
 
         public Photo Photo { get; set; }
 
-        [Required]
         public string CoverImageUrl { get; set; }
 
         [MaxLength(10)]

@@ -8,7 +8,7 @@ using FollowMe.Web.ViewModels.Comments;
 
 namespace FollowMe.Web.ViewModels.Profiles
 {
-    public class PostInUserViewModel : IMapFrom<Post>, IMapTo<Post>, IHaveCustomMappings
+    public class PostInUserViewModel : IMapFrom<Post>, IMapTo<Post>, IMapFrom<UserCharacteristic>, IMapFrom<Photo>, IHaveCustomMappings
     {
         public string Id { get; set; }
         public string Title { get; set; }
@@ -24,11 +24,9 @@ namespace FollowMe.Web.ViewModels.Profiles
         public IEnumerable<CommentsViewModel> Comments { get; set; }
 
         public int CommentsCount { get; set; }
-
         public string SentByUserCharacteristicsFullName { get; set; }
-
-        public string SentByUserCharacteristicsCoverImageUrl { get; set; }
-
+        public string ImagePath { get; set; }
+        public string SentByUserCharacteristicsPhotoImagePath { get; set; }
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Post, PostInUserViewModel>()
@@ -36,6 +34,11 @@ namespace FollowMe.Web.ViewModels.Profiles
                 {
                     options.MapFrom(p => p.Votes.Sum(v => (int)v.Type));
                 });
+
+            configuration.CreateMap<UserCharacteristic, PostInUserViewModel>()
+                 .ForMember(x => x.SentByUserCharacteristicsPhotoImagePath, opt =>
+                     opt.MapFrom(x =>
+                         "/images/photos/" + x.Photo.Id + '.' + x.Photo.Extension));
         }
     }
 }

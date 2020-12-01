@@ -41,7 +41,6 @@ namespace FollowMe.Services.Data
                 FirstName = details.FirstName,
                 LastName = details.LastName,
                 City = details.City,
-                CoverImageUrl = details.CoverImageUrl,
                 Height = details.Height,
                 Weight = details.Weight,
                 EyeColor = details.EyeColor,
@@ -71,7 +70,6 @@ namespace FollowMe.Services.Data
             await details.Image.CopyToAsync(fileStream);
             userCharacteristic.PhotoId = photo.Id;
             photo.ImagePath = physicalPath;
-
             await this.photosRepository.AddAsync(photo);
             await this.photosRepository.SaveChangesAsync();
             await this.usersRepository.AddAsync(userCharacteristic);

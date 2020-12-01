@@ -22,11 +22,6 @@
                     <span asp-validation-for="@Model.Date" class="text-danger"></span>
                 </div>
                 <div>
-                    <label asp-for="@Model.CoverImageUrl"></label>
-                    <input asp-for="@Model.CoverImageUrl" class="form-control" placeholder="Your profile picture" />
-                    <span asp-validation-for="@Model.CoverImageUrl" class="text-danger"></span>
-                </div>
-                <div>
                     <label asp-for="@Model.Height"></label>
                     <input asp-for="@Model.Height" class="form-control" placeholder="Enter your height" />
                     <span asp-validation-for="@Model.Height" class="text-danger"></span>
@@ -66,7 +61,7 @@
                     <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Image">Select your profile picutre, allowed extensions are jpg, png and gif</label>
+                    <label asp-for="Image">Select your profile picture, allowed extensions are jpg, png and gif</label>
                     <input asp-for="Image" class="form-control" />
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>

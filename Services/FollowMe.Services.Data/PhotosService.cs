@@ -41,8 +41,6 @@ namespace FollowMe.Services.Data
                 using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
                 await image.CopyToAsync(fileStream);
 
-                dbImage.ImagePath = physicalPath;
-
                 await this.photosRepository.AddAsync(dbImage);
                 await this.photosRepository.SaveChangesAsync();
             }

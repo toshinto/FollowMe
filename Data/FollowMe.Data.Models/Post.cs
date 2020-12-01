@@ -25,6 +25,11 @@ namespace FollowMe.Data.Models
 
         public virtual ApplicationUser SentBy { get; set; }
 
+        public string PhotoId { get; set; }
+
+        public Photo Photo { get; set; }
+
+        public string ImagePath { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
         public virtual ICollection<Vote> Votes { get; set; }

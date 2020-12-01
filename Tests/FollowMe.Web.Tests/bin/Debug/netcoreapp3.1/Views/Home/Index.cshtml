@@ -5,14 +5,14 @@
     {
     <div class="card col-6 col-lg-3 game-card">
         <div class="text-lg-center">
-        @if (user.CoverImageUrl == null)
+        @if (user.PhotoImagePath == null)
         {
             <img src="~/images/default-profile-picture1.jpg" ; text-align: center;"
                  class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
         }
         else
         {
-            <img src="@user.CoverImageUrl" ; text-align: center;"
+            <img src="@user.PhotoImagePath" ; text-align: center;"
                  class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
         }
         </div>

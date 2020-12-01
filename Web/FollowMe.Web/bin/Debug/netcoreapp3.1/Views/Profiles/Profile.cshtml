@@ -13,13 +13,13 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                    @if (@Model.PhotoImagePath == null)
+                    @if (@Model.UserUserCharacteristicsPhotoImagePath == null)
                     {
                         <div class="pv-lg"><img src="~/images/default-profile-picture1.jpg" id="profilePicture"></div>
                     }
                     else
                     {
-                        <div class="pv-lg"><img src="@Model.PhotoImagePath" id="profilePicture"></div>
+                        <div class="pv-lg"><img src="@Model.UserUserCharacteristicsPhotoImagePath" id="profilePicture"></div>
                     }
 
                     <h3 class="m0 text-bold"></h3>
@@ -89,7 +89,14 @@
         <div class="well">
             <div class="media">
                 <a class="pull-left" href="/Profiles/Profile?id=@post.SentById">
-                    <img class="media-object" src="@post.SentByUserCharacteristicsCoverImageUrl" id="postImage">
+                    @if (post.ImagePath == null)
+                    {
+                        <div class="photo"><img src="~/images/default-profile-picture1.jpg" id="postPicture"></div>
+                    }
+                    else
+                    {
+                        <img class="media-object" src="@post.ImagePath" id="postImage">
+                    }
                 </a>
                 <div class="media-body">
                     <div class="text-muted small ml-3">
@@ -137,7 +144,15 @@
                     {
                         <div class="comment" id="@comment.Id">
                             <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
-                                <img class="media-object" id="commentPicture" src="@comment.UserUserCharacteristicsCoverImageUrl" />
+                                @if (comment.UserUserCharacteristicsPhotoImagePath == null)
+                                {
+                                    <div class="photo"><img src="~/images/default-profile-picture1.jpg" id="postPicture"></div>
+                                }
+                                else
+                                {
+                                    <img class="media-object" id="commentPicture" src="@comment.UserUserCharacteristicsPhotoImagePath" />
+                                }
+
                             </a>
                             <p>
                                 @comment.Content
