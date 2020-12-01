@@ -20,9 +20,19 @@ namespace FollowMe.Web.ViewModels.Home
 
         public string FullName => this.FirstName + " " + this.LastName;
 
+        public string PhotoId { get; set; }
+
+        public string PhotoExtension { get; set; }
+
+        public string PhotoImagePath { get; set; }
+
         public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<ApplicationUser, IndexUserViewModel>();
+            configuration.CreateMap<UserCharacteristic, IndexUserViewModel>()
+                 .ForMember(x => x.PhotoImagePath, opt =>
+                     opt.MapFrom(x =>
+                         "/images/photos/" + x.PhotoId + '.' + x.Photo.Extension));
         }
     }
 }
