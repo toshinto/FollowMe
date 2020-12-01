@@ -5,7 +5,7 @@
     <div class="container">
         <h1 style="margin: 2%; text-align: center;">Add Personal Info</h1>
         <div style="padding: 5%;">
-            <form method="post">
+            <form method="post" enctype="application/x-www-form-urlencoded">
                 <div>
                     <label asp-for="@Model.FirstName"></label>
                     <input asp-for="@Model.FirstName" class="form-control" placeholder="Enter your first name" />
@@ -64,6 +64,11 @@
                 <div>
                     <label asp-for="@Model.City">Choose your city</label>
                     <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image">Allowed extensions are jpg, png and gif</label>
+                    <input asp-for="Image" class="form-control" />
+                    <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary text-uppercase">Submit</button>
             </form>

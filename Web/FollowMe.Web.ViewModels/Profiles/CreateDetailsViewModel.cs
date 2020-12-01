@@ -6,6 +6,7 @@ using FollowMe.Common;
 using FollowMe.Data.Models;
 using FollowMe.Data.Models.Enum;
 using FollowMe.Services.Mapping;
+using Microsoft.AspNetCore.Http;
 
 namespace FollowMe.Web.ViewModels.Profiles
 {
@@ -62,5 +63,9 @@ namespace FollowMe.Web.ViewModels.Profiles
 
         [Required]
         public WhatAreYouSearchingFor WhatAreYouSearchingFor { get; set; }
+
+        [Required]
+
+        public IFormFile Image { get; set; }
     }
 }
