@@ -16,6 +16,10 @@ namespace FollowMe.Data.Models
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
 
+        public string PhotoId { get; set; }
+
+        public Photo Photo { get; set; }
+
         [Required]
         public string CoverImageUrl { get; set; }
 

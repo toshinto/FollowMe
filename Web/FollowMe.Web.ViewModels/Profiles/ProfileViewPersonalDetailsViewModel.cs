@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoMapper;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 
 namespace FollowMe.Web.ViewModels.Profiles
 {
-    public class ProfileViewPersonalDetailsViewModel : IMapFrom<UserCharacteristic>
+    public class ProfileViewPersonalDetailsViewModel : IMapFrom<UserCharacteristic>, IMapFrom<Photo>, IHaveCustomMappings
     {
         public string UserId { get; set; }
         public string FirstName { get; set; }
@@ -41,5 +42,19 @@ namespace FollowMe.Web.ViewModels.Profiles
         public IEnumerable<PostInUserViewModel> UserPosts { get; set; }
 
         public int UserPhotosCount { get; set; }
+
+        public string PhotoId { get; set; }
+
+        public string PhotoExtension { get; set; }
+
+        public string PhotoImagePath { get; set; }
+
+        public virtual void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<UserCharacteristic, ProfileViewPersonalDetailsViewModel>()
+                 .ForMember(x => x.PhotoImagePath, opt =>
+                     opt.MapFrom(x =>
+                         "/images/photos/" + x.PhotoId + '.' + x.Photo.Extension));
+        }
     }
 }

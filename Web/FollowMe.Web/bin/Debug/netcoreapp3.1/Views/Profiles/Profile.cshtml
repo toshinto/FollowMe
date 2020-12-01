@@ -13,13 +13,13 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-body text-center">
-                    @if (@Model.CoverImageUrl == null)
+                    @if (@Model.PhotoImagePath == null)
                     {
                         <div class="pv-lg"><img src="~/images/default-profile-picture1.jpg" id="profilePicture"></div>
                     }
                     else
                     {
-                        <div class="pv-lg"><img src="@Model.CoverImageUrl" id="profilePicture"></div>
+                        <div class="pv-lg"><img src="@Model.PhotoImagePath" id="profilePicture"></div>
                     }
 
                     <h3 class="m0 text-bold"></h3>

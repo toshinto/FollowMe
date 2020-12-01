@@ -63,9 +63,6 @@ namespace FollowMe.Web.ViewModels.Profiles
 
         [Required]
         public WhatAreYouSearchingFor WhatAreYouSearchingFor { get; set; }
-
-        [Required]
-
         public IFormFile Image { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,15 +16,20 @@ namespace FollowMe.Services.Data
 {
     public class ProfilesService : IProfilesService
     {
+        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly IDeletableEntityRepository<UserCharacteristic> usersRepository;
+        private readonly IDeletableEntityRepository<Photo> photosRepository;
 
-        public ProfilesService(IDeletableEntityRepository<UserCharacteristic> usersRepository)
+        public ProfilesService(IDeletableEntityRepository<UserCharacteristic> usersRepository, IDeletableEntityRepository<Photo> photosRepository)
         {
             this.usersRepository = usersRepository;
+            this.photosRepository = photosRepository;
         }
 
-        public async Task Create(CreateDetailsViewModel details, string userId)
+        public async Task Create(CreateDetailsViewModel details, string userId, string imagePath)
         {
+            Directory.CreateDirectory($"{imagePath}/photos/");
+
             //var eye = Enum.TryParse(details.EyeColor, out EyesColor eyesColor);
             //var hair = Enum.TryParse(details.HairColor, out HairColor hairColor);
 
@@ -48,6 +54,26 @@ namespace FollowMe.Services.Data
                 Date = details.Date,
                 UserId = userId,
             };
+
+            var extension = Path.GetExtension(details.Image.FileName).TrimStart('.');
+            if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
+            {
+                throw new Exception($"Invalid image extension {extension}");
+            }
+
+            var photo = new Photo
+            {
+                UserId = userId,
+                Extension = extension,
+            };
+            var physicalPath = $"{imagePath}/photos/{photo.Id}.{extension}";
+            using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
+            await details.Image.CopyToAsync(fileStream);
+            userCharacteristic.PhotoId = photo.Id;
+            photo.ImagePath = physicalPath;
+
+            await this.photosRepository.AddAsync(photo);
+            await this.photosRepository.SaveChangesAsync();
             await this.usersRepository.AddAsync(userCharacteristic);
             await this.usersRepository.SaveChangesAsync();
         }

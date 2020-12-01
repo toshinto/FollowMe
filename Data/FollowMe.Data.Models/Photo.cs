@@ -21,5 +21,7 @@ namespace FollowMe.Data.Models
         public string Extension { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
+
+        public virtual UserCharacteristic UserCharacteristics { get; set; }
     }
 }

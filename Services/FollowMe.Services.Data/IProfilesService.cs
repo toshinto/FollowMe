@@ -12,7 +12,7 @@ namespace FollowMe.Services.Data
 
         T GetByName<T>(string userId, string currUser);
 
-        Task Create(CreateDetailsViewModel details, string userId);
+        Task Create(CreateDetailsViewModel details, string userId, string imagePath);
 
         Task EditPersonalDetails(EditDetailsViewModel model);
 
