@@ -16,13 +16,11 @@ namespace FollowMe.Web.Controllers
     [Authorize]
     public class ChatsController : Controller
     {
-        private readonly ApplicationDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IMessagesService messagesService;
 
-        public ChatsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMessagesService messagesService)
+        public ChatsController(UserManager<ApplicationUser> userManager, IMessagesService messagesService)
         {
-            this.context = context;
             this.userManager = userManager;
             this.messagesService = messagesService;
         }
@@ -36,19 +34,17 @@ namespace FollowMe.Web.Controllers
             }
             var viewModel = new ChatMessages();
             viewModel.Messages = this.messagesService.GetAll<ChatViewModel>();
-            var messages = await this.context.Messages.ToListAsync();
             return this.View(viewModel);
         }
 
-        public async Task<IActionResult> Create(Message message)
+        public async Task<IActionResult> Create(ChatViewModel model)
         {
             if (this.ModelState.IsValid)
             {
-                message.UserName = User.Identity.Name;
+                model.UserName = User.Identity.Name;
                 var sender = await this.userManager.GetUserAsync(this.User);
-                message.UserId = sender.Id;
-                await context.Messages.AddAsync(message);
-                await context.SaveChangesAsync();
+                model.UserId = sender.Id;
+                await this.messagesService.CreateMessageAsync(model.UserName, model.UserId, model.Text);
                 return this.Redirect("/Chats/Chat");
             }
             return this.Error();

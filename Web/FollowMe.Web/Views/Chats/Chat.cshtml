@@ -8,7 +8,7 @@
         </div>
     </div>
 </div>
-@foreach (var message in Model.Messages.OrderByDescending(m => m.When))
+@foreach (var message in Model.Messages.OrderBy(m => m.When))
 {
     var mes = message.UserUserCharacteristicsFullName + " " + message.Text + " " + message.When;
     @mes

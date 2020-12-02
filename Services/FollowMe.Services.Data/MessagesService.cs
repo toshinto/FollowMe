@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
@@ -17,6 +17,20 @@ namespace FollowMe.Services.Data
         {
             this.messagesRepository = messagesRepository;
         }
+
+        public async Task CreateMessageAsync(string userName, string userId, string text)
+        {
+            var message = new Message
+            {
+                UserName = userName,
+                UserId = userId,
+                Text = text,
+            };
+
+            await this.messagesRepository.AddAsync(message);
+            await this.messagesRepository.SaveChangesAsync();
+        }
+
         public IEnumerable<T> GetAll<T>()
         {
             var messages =
