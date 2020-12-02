@@ -12,12 +12,14 @@ namespace FollowMe.Services.Data
 {
     public class PhotosService : IPhotosService
     {
-        public PhotosService(IDeletableEntityRepository<Photo> photosRepository)
+        public PhotosService(IDeletableEntityRepository<Photo> photosRepository, IDeletableEntityRepository<ApplicationUser> usersRepository)
         {
             this.photosRepository = photosRepository;
+            this.usersRepository = usersRepository;
         }
         private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly IDeletableEntityRepository<Photo> photosRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
 
         public async Task CreateAsync(CreatePhotoInputModel model, string userId, string imagePath)
         {
@@ -80,6 +82,16 @@ namespace FollowMe.Services.Data
                 .Where(x => x.Id == photoId)
                 .To<T>().FirstOrDefault();
             return photoDetails;
+        }
+
+        public bool GetFirstNameById(string userId)
+        {
+            var userFirstName = this.usersRepository.All().Where(x => x.Id == userId).Select(s => s.UserCharacteristics.FirstName).FirstOrDefault();
+            if (userFirstName != null)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

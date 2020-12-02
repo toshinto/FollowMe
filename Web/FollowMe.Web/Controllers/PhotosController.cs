@@ -26,6 +26,11 @@ namespace FollowMe.Web.Controllers
         }
         public IActionResult Create()
         {
+            var currentUser = this.userManager.GetUserId(this.User);
+            if (!this.photosService.GetFirstNameById(currentUser))
+            {
+                return this.Redirect("/Profiles/Details");
+            }
             return this.View();
         }
 
@@ -65,6 +70,11 @@ namespace FollowMe.Web.Controllers
 
         public IActionResult Photo(string id)
         {
+            var currentUser = this.userManager.GetUserId(this.User);
+            if (!this.photosService.GetFirstNameById(currentUser))
+            {
+                return this.Redirect("/Profiles/Details");
+            }
             var viewModel = this.photosService.GetByName<AllPhotoViewModel>(id);
             viewModel.Comments = this.commentsService.GetByUserId<PhotoComments>(id);
             return this.View(viewModel);

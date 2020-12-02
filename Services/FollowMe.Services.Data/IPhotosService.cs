@@ -15,5 +15,6 @@ namespace FollowMe.Services.Data
         string GetUserByPhotoId(string photoId);
 
         T GetByName<T>(string photoId);
+        bool GetFirstNameById(string userId);
     }
 }
