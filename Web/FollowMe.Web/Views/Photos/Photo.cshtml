@@ -13,7 +13,14 @@
     {
         <div class="commentPhoto" id="@comment.Id">
             <a class="pull-left" href="/Profiles/Profile?id=@comment.SentById">
-                <img class="media-object" id="commentPicture" src="@comment.ImagePath" />
+                @if (comment.ImagePath == "/images/photos/")
+                {
+                    <div class="photo"><img src="~/images/default-profile-picture1.jpg" id="commentPhoto"></div>
+                }
+                else
+                {
+                    <img class="media-object" id="commentPicture" src="@comment.ImagePath" />
+                }
             </a>
             <p>
                 @comment.Content

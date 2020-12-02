@@ -13,6 +13,10 @@ a.navbar-brand {
 .commentPhoto {
     background-color: #AAC9FF;
 }
+#commentPhoto {
+    height: 50px;
+    width: 50px;
+}
 #singlePhoto{
     height:300px;
     width:300px;

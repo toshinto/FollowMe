@@ -82,7 +82,6 @@ namespace FollowMe.Services.Data
 
             userDetails.FirstName = model.FirstName;
             userDetails.LastName = model.LastName;
-            userDetails.CoverImageUrl = model.CoverImageUrl;
             userDetails.Height = model.Height;
             userDetails.Weight = model.Weight;
             userDetails.Description = model.Description;
