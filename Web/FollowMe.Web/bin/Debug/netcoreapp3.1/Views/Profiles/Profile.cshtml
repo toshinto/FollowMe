@@ -144,13 +144,13 @@
                     {
                         <div class="comment" id="@comment.Id">
                             <a class="pull-left" href="/Profiles/Profile?id=@comment.UserId">
-                                @if (comment.UserUserCharacteristicsPhotoImagePath == null)
+                                @if (comment.ImagePath == null)
                                 {
                                     <div class="photo"><img src="~/images/default-profile-picture1.jpg" id="postPicture"></div>
                                 }
                                 else
                                 {
-                                    <img class="media-object" id="commentPicture" src="@comment.UserUserCharacteristicsPhotoImagePath" />
+                                    <img class="media-object" id="commentPicture" src="@comment.ImagePath" />
                                 }
 
                             </a>

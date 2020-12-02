@@ -13,19 +13,23 @@ namespace FollowMe.Services.Data
     {
         private readonly IDeletableEntityRepository<Comment> commentsRepository;
         private readonly IDeletableEntityRepository<Photo> photosRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> usersRepository;
 
-        public CommentsService(IDeletableEntityRepository<Comment> commentsRepository, IDeletableEntityRepository<Photo> photosRepository)
+        public CommentsService(IDeletableEntityRepository<Comment> commentsRepository, IDeletableEntityRepository<Photo> photosRepository, IDeletableEntityRepository<ApplicationUser> usersRepository)
         {
             this.commentsRepository = commentsRepository;
             this.photosRepository = photosRepository;
+            this.usersRepository = usersRepository;
         }
         public async Task CreateAsync(string postId, string userId, string content)
         {
+            var userPhotoStorage = this.usersRepository.All().Where(x => x.Id == userId).Select(x => x.UserCharacteristics.Photo.Id + "." + x.UserCharacteristics.Photo.Extension).FirstOrDefault();
             var comment = new Comment
             {
                 PostId = postId,
                 UserId = userId,
                 Content = content,
+                ImagePath = "/images/photos/" + userPhotoStorage,
             };
 
             await this.commentsRepository.AddAsync(comment);
@@ -34,12 +38,14 @@ namespace FollowMe.Services.Data
 
         public async Task CreatePhotoCommentAsync(string photoId, string userId, string content, string currentUser)
         {
+            var userPhotoStorage = this.usersRepository.All().Where(x => x.Id == currentUser).Select(x => x.UserCharacteristics.Photo.Id + "." + x.UserCharacteristics.Photo.Extension).FirstOrDefault();
             var comment = new Comment
             {
                 PhotoId = photoId,
                 UserId = userId,
                 Content = content,
                 SentById = currentUser,
+                ImagePath = "/images/photos/" + userPhotoStorage,
             };
 
             await this.commentsRepository.AddAsync(comment);

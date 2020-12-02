@@ -29,5 +29,7 @@ namespace FollowMe.Data.Models
         public string PhotoId { get; set; }
 
         public Photo Photo { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }

@@ -21,6 +21,8 @@ namespace FollowMe.Web.ViewModels.Comments
 
         public string UserUserCharacteristicsPhotoImagePath { get; set; }
 
+        public string ImagePath { get; set; }
+
         public virtual void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<UserCharacteristic, ProfileViewPersonalDetailsViewModel>()
