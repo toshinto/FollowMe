@@ -52,7 +52,7 @@ namespace FollowMe.Services.Data
         {
             var photos =
                 this.photosRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
-            return photos.To<T>().ToList();
+            return photos.To<T>().Skip(1).ToList();
         }
 
         public async Task DeleteAsync(string photoId, string userId)
