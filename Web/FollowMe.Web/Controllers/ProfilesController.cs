@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
@@ -48,7 +49,15 @@ namespace FollowMe.Web.Controllers
                 return this.View(input);
             }
             var userId = this.userManager.GetUserId(this.User);
-            await this.profilesService.Create(input, userId, $"{this.webHostEnvironment.WebRootPath}/images");
+            try
+            {
+                await this.profilesService.Create(input, userId, $"{this.webHostEnvironment.WebRootPath}/images");
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                return this.View(input);
+            }
             return this.Redirect($"/Profiles/Profile?id={userId}");
         }
         public IActionResult EditDetails(string id)
