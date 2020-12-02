@@ -17,3 +17,5 @@ D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\Fo
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Common.pdb
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.ViewModels.dll
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.ViewModels.pdb
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.Infrastructure.dll
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.Infrastructure.pdb

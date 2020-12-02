@@ -475,6 +475,19 @@
           "bin/placeholder/FollowMe.Services.Mapping.dll": {}
         }
       },
+      "FollowMe.Web.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.7.0"
+        },
+        "compile": {
+          "bin/placeholder/FollowMe.Web.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FollowMe.Web.Infrastructure.dll": {}
+        }
+      },
       "FollowMe.Web.ViewModels/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
@@ -482,6 +495,7 @@
           "FollowMe.Common": "1.0.0",
           "FollowMe.Data.Models": "1.0.0",
           "FollowMe.Services.Mapping": "1.0.0",
+          "FollowMe.Web.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.0"
         },
         "compile": {
@@ -1420,6 +1434,11 @@
       "type": "project",
       "path": "../FollowMe.Services.Mapping/FollowMe.Services.Mapping.csproj",
       "msbuildProject": "../FollowMe.Services.Mapping/FollowMe.Services.Mapping.csproj"
+    },
+    "FollowMe.Web.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../../Web/FollowMe.Web.Infrastructure/FollowMe.Web.Infrastructure.csproj",
+      "msbuildProject": "../../Web/FollowMe.Web.Infrastructure/FollowMe.Web.Infrastructure.csproj"
     },
     "FollowMe.Web.ViewModels/1.0.0": {
       "type": "project",

@@ -3588,6 +3588,9 @@
       "FollowMe.Web.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.7.0"
+        },
         "compile": {
           "bin/placeholder/FollowMe.Web.Infrastructure.dll": {}
         },
@@ -3602,6 +3605,7 @@
           "FollowMe.Common": "1.0.0",
           "FollowMe.Data.Models": "1.0.0",
           "FollowMe.Services.Mapping": "1.0.0",
+          "FollowMe.Web.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.0"
         },
         "compile": {

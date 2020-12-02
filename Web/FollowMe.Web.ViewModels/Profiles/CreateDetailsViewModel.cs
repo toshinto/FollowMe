@@ -6,6 +6,7 @@ using FollowMe.Common;
 using FollowMe.Data.Models;
 using FollowMe.Data.Models.Enum;
 using FollowMe.Services.Mapping;
+using FollowMe.Web.Infrastructure.CustomAttribute;
 using Microsoft.AspNetCore.Http;
 
 namespace FollowMe.Web.ViewModels.Profiles
@@ -25,6 +26,7 @@ namespace FollowMe.Web.ViewModels.Profiles
         public string LastName { get; set; }
 
         [Required(ErrorMessage = GlobalConstants.Birthday)]
+        [RestrictionAge(14, ErrorMessage = GlobalConstants.BirthdayRestriction)]
         public DateTime Date { get; set; }
 
         [Required]

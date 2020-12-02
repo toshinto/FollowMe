@@ -24,6 +24,8 @@
 
         public const string Birthday = "Birthday is required";
 
+        public const string BirthdayRestriction = "You must be 14 years old to use this website.";
+
         public const string Height = "Height must be between 130 and 240";
 
         public const string Weight = "Weight must be between 35 and 250";
