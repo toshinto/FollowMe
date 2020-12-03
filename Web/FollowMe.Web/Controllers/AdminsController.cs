@@ -24,6 +24,7 @@ namespace FollowMe.Web.Controllers
             this.roleManager = roleManager;
             this.adminsService = adminsService;
         }
+        [Authorize]
         public async Task<IActionResult> AddUserToAdmin()
         {
             if (!await this.roleManager.RoleExistsAsync("Admin"))

@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Photos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FollowMe.Web.Controllers
 {
+    [Authorize]
     public class PhotosController : Controller
     {
         private readonly IWebHostEnvironment webHostEnvironment;

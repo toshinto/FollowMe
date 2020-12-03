@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FollowMe.Web.Controllers
 {
+    [Authorize]
     public class CommentsController : Controller
     {
         private readonly IPostsService postsService;

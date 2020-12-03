@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Profiles;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FollowMe.Web.Controllers
 {
+    [Authorize]
     public class ProfilesController : BaseController
     {
         private readonly IProfilesService profilesService;
