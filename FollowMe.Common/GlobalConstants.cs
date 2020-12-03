@@ -6,6 +6,8 @@
 
         public const string AdministratorRoleName = "Administrator";
 
+        public const string AdminRoleName = "Admin";
+
         public const int CountOfPeopleOnIndexView = 8;
 
         public const string ContentMinLength = "Content must be at least 3 characters long.";

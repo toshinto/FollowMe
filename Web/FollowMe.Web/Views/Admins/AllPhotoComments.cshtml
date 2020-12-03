@@ -1,0 +1,8 @@
+﻿@model FollowMe.Web.ViewModels.Admins.AdminCommentsViewModel
+@foreach(var comment in Model.Comments)
+{
+    @comment.Content
+    @comment.SentByUserCharacteristicsFullName
+    <a class="btn btn-danger" href="/Admins/DeleteComment?id=@comment.Id">DELETE</a>
+    <hr />
+}

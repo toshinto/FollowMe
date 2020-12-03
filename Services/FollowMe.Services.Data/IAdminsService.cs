@@ -9,6 +9,10 @@ namespace FollowMe.Services.Data
     {
         IEnumerable<T> GetAllPosts<T>();
 
+        IEnumerable<T> GetAllPhotoComments<T>();
+
         Task DeletePost(string postId);
+
+        Task DeleteComment(string commentId);
     }
 }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FollowMe.Web.Controllers
 {
+    [Authorize]
     public class AdminsController : Controller
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -46,10 +47,25 @@ namespace FollowMe.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> DeletePost(string id)
         {
             await this.adminsService.DeletePost(id);
             return this.Redirect("/Admins/AllPosts");
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult AllPhotoComments()
+        {
+            var viewModel = new AdminCommentsViewModel();
+            viewModel.Comments = this.adminsService.GetAllPhotoComments<AdminCommentsView>();
+            return this.View(viewModel);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeleteComment(string id)
+        {
+            await this.adminsService.DeleteComment(id);
+            return this.Redirect("/Admins/AllPhotoComments");
         }
     }
 }
