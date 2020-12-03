@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using FollowMe.Data.Models
+@model FollowMe.Web.ViewModels.Comments.CommentsCreateModel
+<h1 class="text-center suls-text-color">Comment on @Model.UserFullName's post</h1>
+<form asp-controller="Comments" asp-action="Create" method="post" id="AddHello">
+    <div class="top-border-line primary-separator"></div>
+    <div class="form-group">
+        <div>
+            <label asp-for="@Model.Content"></label>
+            <input asp-for="@Model.Content" class="form-control" />
+            <span asp-validation-for="@Model.Content" class="text-danger"></span>
+        </div>
+    </div>
+    <input class="invisible" id="postId" name="postId" value="@Model.PostId" />
+    <input class="invisible" id="userId" name="userId" value="@Model.UserId" />
+    <div class="top-border-line primary-separator"></div>
+    <div class="button-holder d-flex justify-content-center">
+        <input type="submit" class="btn btn-primary" value="Add comment" />
+    </div>
+</form>

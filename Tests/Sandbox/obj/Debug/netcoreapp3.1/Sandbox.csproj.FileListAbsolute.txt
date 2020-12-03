@@ -93,3 +93,5 @@ D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewMode
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewModels.pdb
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.dll
+D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.pdb

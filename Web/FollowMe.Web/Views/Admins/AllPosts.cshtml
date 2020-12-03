@@ -1,0 +1,9 @@
+﻿@model FollowMe.Web.ViewModels.Admins.AdminViewModel
+@foreach(var post in Model.Posts)
+{
+    @post.SentByUserCharacteristicsFullName
+    @post.Title
+    @post.Content
+    <a class="btn btn-danger" href="/Admins/Delete?id=@post.Id">DELETE</a>
+    <hr />
+}
