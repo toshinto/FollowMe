@@ -24,7 +24,6 @@ namespace FollowMe.Services.Data
         public async Task CreateAsync(CreatePhotoInputModel model, string userId, string imagePath)
         {
             Directory.CreateDirectory($"{imagePath}/photos/");
-
             foreach (var image in model.Images)
             {
                 var extension = Path.GetExtension(image.FileName).TrimStart('.');
@@ -52,7 +51,7 @@ namespace FollowMe.Services.Data
         {
             var photos =
                 this.photosRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
-            return photos.To<T>().Skip(1).ToList();
+            return photos.To<T>().ToList();
         }
 
         public async Task DeleteAsync(string photoId, string userId)
