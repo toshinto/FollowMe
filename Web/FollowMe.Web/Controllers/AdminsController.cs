@@ -67,5 +67,20 @@ namespace FollowMe.Web.Controllers
             await this.adminsService.DeleteComment(id);
             return this.Redirect("/Admins/AllPhotoComments");
         }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult AllPhotos()
+        {
+            var viewModel = new AdminPhotoView();
+            viewModel.Photos = this.adminsService.GetAllPhotos<AdminAllPhotosView>();
+            return this.View(viewModel);
+        }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeletePhoto(string id)
+        {
+            await this.adminsService.DeletePhoto(id);
+            return this.Redirect("/Admins/AllPhotos");
+        }
     }
 }

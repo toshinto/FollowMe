@@ -1,7 +1,8 @@
-﻿using AutoMapper;
+﻿using System;
+
+using AutoMapper;
 using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
-using System;
 
 namespace FollowMe.Web.ViewModels.Admins
 {
@@ -12,6 +13,8 @@ namespace FollowMe.Web.ViewModels.Admins
         public string Content { get; set; }
 
         public string SentByUserCharacteristicsFullName { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public void CreateMappings(IProfileExpression configuration)
         {

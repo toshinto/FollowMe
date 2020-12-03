@@ -1,0 +1,37 @@
+﻿@using System.Globalization;
+@model FollowMe.Web.ViewModels.Admins.AdminPhotoView
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="page-header text-center">
+                    <p>All Photos</p>
+                </div>
+                <div class="component">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name of creator</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Created On</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var photo in Model.Photos)
+                            {
+
+                                <tr class="table-light">
+                                    <th scope="row">@photo.UserUserCharacteristicsFullName</th>
+                                    <td><img src="@photo.ImagePath" id="adminPhotos" /></td>
+                                    <td>@photo.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</td>
+                                    <td> <a class="btn btn-danger" href="/Admins/DeletePhoto?id=@photo.Id">DELETE</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

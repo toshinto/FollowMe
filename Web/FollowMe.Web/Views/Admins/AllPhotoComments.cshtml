@@ -1,8 +1,37 @@
-﻿@model FollowMe.Web.ViewModels.Admins.AdminCommentsViewModel
-@foreach(var comment in Model.Comments)
-{
-    @comment.Content
-    @comment.SentByUserCharacteristicsFullName
-    <a class="btn btn-danger" href="/Admins/DeleteComment?id=@comment.Id">DELETE</a>
-    <hr />
-}
+﻿@using System.Globalization;
+@model FollowMe.Web.ViewModels.Admins.AdminCommentsViewModel
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="page-header text-center">
+                    <p>All Photo Comments</p>
+                </div>
+                <div class="component">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name of creator</th>
+                                    <th scope="col">Content</th>
+                                    <th scope="col">Created On</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var comment in Model.Comments)
+                                {
+
+                                <tr class="table-light">
+                                    <th scope="row">@comment.SentByUserCharacteristicsFullName</th>
+                                    <td>@comment.Content</td>
+                                    <td>@comment.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</td>
+                                    <td> <a class="btn btn-danger" href="/Admins/DeleteComment?id=@comment.Id">DELETE</a></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

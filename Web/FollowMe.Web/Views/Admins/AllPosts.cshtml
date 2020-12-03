@@ -1,9 +1,39 @@
-﻿@model FollowMe.Web.ViewModels.Admins.AdminViewModel
-@foreach(var post in Model.Posts)
-{
-    @post.SentByUserCharacteristicsFullName
-    @post.Title
-    @post.Content
-    <a class="btn btn-danger" href="/Admins/DeletePost?id=@post.Id">DELETE</a>
-    <hr />
-}
+﻿@using System.Globalization;
+@model FollowMe.Web.ViewModels.Admins.AdminViewModel
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="page-header text-center">
+                        <p>All Posts</p>
+                    </div>
+                    <div class="component">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name of creator</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Content</th>
+                                    <th scope="col">Created On</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var post in Model.Posts)
+                                {
+
+                                <tr class="table-light">
+                                    <th scope="row">@post.SentByUserCharacteristicsFullName</th>
+                                    <td>@post.Title</td>
+                                    <td>@post.Content</td>
+                                    <td>@post.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</td>
+                                    <td> <a class="btn btn-danger" href="/Admins/DeletePost?id=@post.Id">DELETE</a></td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

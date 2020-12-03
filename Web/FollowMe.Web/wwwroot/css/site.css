@@ -21,6 +21,10 @@ a.navbar-brand {
     height:300px;
     width:300px;
 }
+#adminPhotos {
+    height: 100px;
+    width: 100px;
+}
 #personalPhotos {
     width:200px;
     height:200px;

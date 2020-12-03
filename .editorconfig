@@ -38,3 +38,6 @@ dotnet_diagnostic.CS0618.severity = silent
 
 # CS0414: The field 'PhotosService.counter' is assigned but its value is never used
 dotnet_diagnostic.CS0414.severity = none
+
+# SA1121: Use built-in type alias
+dotnet_diagnostic.SA1121.severity = silent

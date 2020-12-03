@@ -16,5 +16,7 @@ namespace FollowMe.Web.ViewModels.Admins
         public string Content { get; set; }
 
         public string SentByUserCharacteristicsFullName { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }
