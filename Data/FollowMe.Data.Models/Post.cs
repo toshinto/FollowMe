@@ -24,11 +24,6 @@ namespace FollowMe.Data.Models
         public string SentById { get; set; }
 
         public virtual ApplicationUser SentBy { get; set; }
-
-        public string PhotoId { get; set; }
-
-        public Photo Photo { get; set; }
-
         public string ImagePath { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
 
