@@ -6,5 +6,6 @@ namespace FollowMe.Services.Data
 {
     public interface ICategoriesService
     {
+        IEnumerable<T> GetRandom<T>();
     }
 }

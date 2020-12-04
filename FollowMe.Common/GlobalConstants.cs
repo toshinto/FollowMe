@@ -10,6 +10,8 @@
 
         public const int CountOfPeopleOnIndexView = 8;
 
+        public const int CountOfRandomPeopleOn = 12;
+
         public const string ContentMinLength = "Content must be at least 3 characters long.";
 
         public const string ContentMaxLength = "Content must be between 3 and 100 characters long.";
