@@ -24,8 +24,8 @@ namespace FollowMe.Web.ViewModels.Categories
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<ApplicationUser, RandomPeopleViewModel>();
-            configuration.CreateMap<UserCharacteristic, RandomPeopleViewModel>()
+            configuration.CreateMap<ApplicationUser, GeneralAllPeopleView>();
+            configuration.CreateMap<UserCharacteristic, GeneralAllPeopleView>()
                  .ForMember(x => x.PhotoImagePath, opt =>
                      opt.MapFrom(x =>
                          "/images/photos/" + x.PhotoId + '.' + x.Photo.Extension));
