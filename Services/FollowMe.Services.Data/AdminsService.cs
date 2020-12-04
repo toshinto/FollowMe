@@ -12,12 +12,16 @@ namespace FollowMe.Services.Data
         private readonly IDeletableEntityRepository<Post> postsRepository;
         private readonly IDeletableEntityRepository<Comment> commentsRepository;
         private readonly IDeletableEntityRepository<Photo> photosRepository;
+        private readonly IDeletableEntityRepository<UserCharacteristic> usersRepository;
+        private readonly IDeletableEntityRepository<ApplicationUser> appUserRepository;
 
-        public AdminsService(IDeletableEntityRepository<Post> postsRepository, IDeletableEntityRepository<Comment> commentsRepository, IDeletableEntityRepository<Photo> photosRepository)
+        public AdminsService(IDeletableEntityRepository<Post> postsRepository, IDeletableEntityRepository<Comment> commentsRepository, IDeletableEntityRepository<Photo> photosRepository, IDeletableEntityRepository<UserCharacteristic> usersRepository, IDeletableEntityRepository<ApplicationUser> appUserRepository)
         {
             this.postsRepository = postsRepository;
             this.commentsRepository = commentsRepository;
             this.photosRepository = photosRepository;
+            this.usersRepository = usersRepository;
+            this.appUserRepository = appUserRepository;
         }
 
         public async Task DeleteComment(string commentId)
@@ -41,6 +45,13 @@ namespace FollowMe.Services.Data
             await this.postsRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteUser(string userId)
+        {
+            var userToDelete = this.appUserRepository.All().Where(x => x.Id == userId).FirstOrDefault();
+            userToDelete.IsDeleted = true;
+            await this.appUserRepository.SaveChangesAsync();
+        }
+
         public IEnumerable<T> GetAllPhotoComments<T>()
         {
             var comments = this.commentsRepository.All().OrderByDescending(x => x.CreatedOn).Where(x => x.UserId != null && x.SentById != null);
@@ -57,6 +68,12 @@ namespace FollowMe.Services.Data
         {
             var posts = this.postsRepository.All().OrderByDescending(x => x.CreatedOn);
             return posts.To<T>().ToList();
+        }
+
+        public IEnumerable<T> GetAllUsers<T>()
+        {
+            var users = this.usersRepository.All().OrderByDescending(x => x.CreatedOn);
+            return users.To<T>().ToList();
         }
     }
 }
