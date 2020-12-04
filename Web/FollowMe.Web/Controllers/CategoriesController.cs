@@ -44,7 +44,11 @@ namespace FollowMe.Web.Controllers
         }
         public IActionResult Birthdays()
         {
-            return this.View();
+            var viewModel = new GeneralView()
+            {
+                People = this.categoriesService.GetBirhtdaysPeople<GeneralAllPeopleView>(),
+            };
+            return this.View(viewModel);
         }
         public IActionResult Random()
         {

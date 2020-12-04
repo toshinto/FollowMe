@@ -11,5 +11,7 @@ namespace FollowMe.Services.Data
         IEnumerable<T> GetTopMen<T>();
 
         IEnumerable<T> GetTopWomen<T>();
+
+        IEnumerable<T> GetBirhtdaysPeople<T>();
     }
 }

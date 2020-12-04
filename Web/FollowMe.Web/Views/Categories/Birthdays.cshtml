@@ -1,1 +1,28 @@
-﻿<h1>Hello from birthdays</h1>
+﻿@model FollowMe.Web.ViewModels.Categories.GeneralView
+<h1 class="text-center mt-2">Random people</h1>
+<div class="row mt-2 mb-4">
+    @foreach (var user in Model.People)
+    {
+        <div class="card col-6 col-lg-3 game-card">
+            <div class="text-lg-center">
+                @if (user.PhotoImagePath == null)
+                {
+                    <img src="~/images/default-profile-picture1.jpg" ; text-align: center;"
+                         class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
+                }
+                else
+                {
+                    <img src="@user.PhotoImagePath" ; text-align: center;"
+                         class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
+                }
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
+                    title="Description:<br>">
+                    @user.FullName
+                </h5>
+                <a href="/Profiles/Profile?id=@user.UserId" class="btn btn-block btn-primary">Profile</a>
+            </div>
+        </div>
+    }
+</div>
