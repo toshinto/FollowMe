@@ -4,7 +4,7 @@ using FollowMe.Services.Mapping;
 
 namespace FollowMe.Web.ViewModels.Categories
 {
-    public class RandomPeopleViewModel : IMapFrom<UserCharacteristic>, IHaveCustomMappings
+    public class GeneralAllPeopleView : IMapFrom<UserCharacteristic>, IHaveCustomMappings
     {
         public string Id { get; set; }
 

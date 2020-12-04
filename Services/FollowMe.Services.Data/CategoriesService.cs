@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using FollowMe.Common;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Data.Models.Enum;
 using FollowMe.Services.Mapping;
 
 namespace FollowMe.Services.Data
@@ -22,6 +24,20 @@ namespace FollowMe.Services.Data
             var randomPeople =
                 this.usersRepository.All().OrderBy(x => Guid.NewGuid());
             return randomPeople.To<T>().Take(GlobalConstants.CountOfRandomPeopleOn).ToList();
+        }
+
+        public IEnumerable<T> GetTopMen<T>()
+        {
+            var topMen =
+                this.usersRepository.All().Where(x => x.Gender == Gender.Male).OrderByDescending(x => x.User.Photos.Count());
+            return topMen.To<T>().Take(GlobalConstants.CountOfRandomPeopleOn).ToList();
+        }
+
+        public IEnumerable<T> GetTopWomen<T>()
+        {
+            var topWomen =
+                this.usersRepository.All().Where(x => x.Gender == Gender.Female).OrderByDescending(x => x.User.Photos.Count());
+            return topWomen.To<T>().Take(GlobalConstants.CountOfRandomPeopleOn).ToList();
         }
     }
 }

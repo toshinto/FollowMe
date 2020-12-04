@@ -28,11 +28,19 @@ namespace FollowMe.Web.Controllers
         }
         public IActionResult Men()
         {
-            return this.View();
+            var viewModel = new GeneralView()
+            {
+                People = this.categoriesService.GetTopMen<GeneralAllPeopleView>(),
+            };
+            return this.View(viewModel);
         }
         public IActionResult Women()
         {
-            return this.View();
+            var viewModel = new GeneralView()
+            {
+                People = this.categoriesService.GetTopWomen<GeneralAllPeopleView>(),
+            };
+            return this.View(viewModel);
         }
         public IActionResult Birthdays()
         {
