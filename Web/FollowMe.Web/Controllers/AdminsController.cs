@@ -85,10 +85,18 @@ namespace FollowMe.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult AllUsers()
+        public IActionResult AllUsers(int id = 1)
         {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+            const int ItemPerPage = 12;
             var viewModel = new AdminUserView();
-            viewModel.Users = this.adminsService.GetAllUsers<AdminAllUsersView>();
+            viewModel.PageNumber = id;
+            viewModel.ItemsPerPage = ItemPerPage;
+            viewModel.UsersCount = this.adminsService.GetCountOfUsers();
+            viewModel.Users = this.adminsService.GetAllUsers<AdminAllUsersView>(id, ItemPerPage);
             return this.View(viewModel);
         }
 

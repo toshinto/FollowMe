@@ -70,10 +70,15 @@ namespace FollowMe.Services.Data
             return posts.To<T>().ToList();
         }
 
-        public IEnumerable<T> GetAllUsers<T>()
+        public IEnumerable<T> GetAllUsers<T>(int page, int itemsPerPage = 12)
         {
-            var users = this.usersRepository.All().OrderByDescending(x => x.CreatedOn);
-            return users.To<T>().ToList();
+            var users = this.usersRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<T>().ToList();
+            return users;
+        }
+
+        public int GetCountOfUsers()
+        {
+            return this.usersRepository.All().Count();
         }
     }
 }

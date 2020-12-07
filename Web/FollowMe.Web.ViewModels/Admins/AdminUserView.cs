@@ -5,7 +5,7 @@ using FollowMe.Services.Mapping;
 
 namespace FollowMe.Web.ViewModels.Admins
 {
-    public class AdminUserView : IMapFrom<UserCharacteristic>
+    public class AdminUserView : PagingViewModel, IMapFrom<UserCharacteristic>
     {
         public IEnumerable<AdminAllUsersView> Users { get; set; }
     }

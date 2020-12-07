@@ -13,7 +13,9 @@ namespace FollowMe.Services.Data
 
         IEnumerable<T> GetAllPhotos<T>();
 
-        IEnumerable<T> GetAllUsers<T>();
+        IEnumerable<T> GetAllUsers<T>(int page, int itemsPerPage);
+
+        int GetCountOfUsers();
 
         Task DeletePost(string postId);
 
