@@ -53,5 +53,7 @@ namespace FollowMe.Data.Models
 
         [Required]
         public string Description { get; set; }
+
+        public int Age => DateTime.UtcNow.Year - Date.Year;
     }
 }
