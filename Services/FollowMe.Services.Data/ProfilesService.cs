@@ -11,6 +11,7 @@ using FollowMe.Data.Models;
 using FollowMe.Data.Models.Enum;
 using FollowMe.Services.Mapping;
 using FollowMe.Web.ViewModels.Profiles;
+using FollowMe.Web.ViewModels.Search;
 
 namespace FollowMe.Services.Data
 {
@@ -109,6 +110,12 @@ namespace FollowMe.Services.Data
             IQueryable<UserCharacteristic> query =
                 this.usersRepository.All().OrderByDescending(x => x.CreatedOn);
             return query.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
+        }
+
+        public IEnumerable<T> GetAllSearch<T>(SearchIndexViewModel model)
+        {
+            var people = this.usersRepository.All().Where(x => x.Gender == model.Gender && x.City == model.City && x.WhatAreYouSearchingFor == model.SearchingFor);
+            return people.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
         }
 
         public T GetByName<T>(string id, string userId)

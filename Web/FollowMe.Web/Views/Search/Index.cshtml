@@ -1,0 +1,35 @@
+﻿@using FollowMe.Data.Models;
+@using FollowMe.Data.Models.Enum
+@model FollowMe.Web.ViewModels.Search.SearchIndexViewModel
+    <section class="py-5">
+        <div class="container">
+            <h1 style="margin: 2%; text-align: center;">Add Personal Info</h1>
+            <div style="padding: 5%;">
+                <form asp-action="List" method="get">
+                    @*<div>
+                        <label asp-for="@Model.FromAge">From Age</label>
+                        <input asp-for="@Model.FromAge" class="form-control" />
+                        <span asp-validation-for="@Model.FromAge" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="@Model.ToAge">To Age</label>
+                        <input asp-for="@Model.ToAge" class="form-control" />
+                        <span asp-validation-for="@Model.ToAge" class="text-danger"></span>
+                    </div>*@
+                    <div>
+                        <label asp-for="@Model.Gender">Choose your gender</label>
+                        <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                    </div>
+                    <div>
+                        <label asp-for="@Model.SearchingFor">Choose what are you searching for</label>
+                        <select asp-for="SearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
+                    </div>
+                    <div>
+                        <label asp-for="@Model.City">Choose your city</label>
+                        <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
+                    </div>
+                    <button class="btn btn-primary">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
