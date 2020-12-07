@@ -32,27 +32,27 @@
                 </div>
                 <div>
                     <label asp-for="@Model.City">Edit your city</label>
-                    <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
+                    <select class="form-control" asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.Gender">Edit your gender</label>
-                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                    <select class="form-control" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.EyeColor">Edit your eyes color</label>
-                    <select asp-for="EyeColor" asp-items="Html.GetEnumSelectList<EyesColor>()"></select>
+                    <select class="form-control" asp-for="EyeColor" asp-items="Html.GetEnumSelectList<EyesColor>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.HairColor">Edit your hair color</label>
-                    <select asp-for="HairColor" asp-items="Html.GetEnumSelectList<HairColor>()"></select>
+                    <select class="form-control" asp-for="HairColor" asp-items="Html.GetEnumSelectList<HairColor>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.WeddingStatus">Edit your wedding status</label>
-                    <select asp-for="WeddingStatus" asp-items="Html.GetEnumSelectList<WeddingStatus>()"></select>
+                    <select class="form-control" asp-for="WeddingStatus" asp-items="Html.GetEnumSelectList<WeddingStatus>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.WhatAreYouSearchingFor">Edit what are you searching for</label>
-                    <select asp-for="WhatAreYouSearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
+                    <select class="form-control" asp-for="WhatAreYouSearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
                 </div>
                 <input class="invisible" id="userId" name="userId" value="@Model.UserId" />
                 <div class="button-holder d-flex justify-content-center">
