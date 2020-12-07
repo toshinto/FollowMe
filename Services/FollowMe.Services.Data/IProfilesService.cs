@@ -12,7 +12,6 @@ namespace FollowMe.Services.Data
         IEnumerable<T> GetAll<T>();
 
         IEnumerable<T> GetAllSearch<T>(SearchIndexViewModel model);
-
         T GetByName<T>(string userId, string currUser);
 
         Task Create(CreateDetailsViewModel details, string userId, string imagePath);

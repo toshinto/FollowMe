@@ -1,4 +1,6 @@
-﻿using FollowMe.Services.Data;
+﻿using System.Linq;
+
+using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Categories;
 using FollowMe.Web.ViewModels.Search;
 using Microsoft.AspNetCore.Mvc;
