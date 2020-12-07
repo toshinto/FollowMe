@@ -21,5 +21,7 @@ namespace FollowMe.Web.ViewModels
         public int UsersCount { get; set; }
 
         public int ItemsPerPage { get; set; }
+
+        public string Action { get; set; }
     }
 }

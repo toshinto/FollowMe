@@ -96,6 +96,7 @@ namespace FollowMe.Web.Controllers
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemPerPage;
             viewModel.UsersCount = this.adminsService.GetCountOfUsers();
+            viewModel.Action = "AllUsers";
             viewModel.Users = this.adminsService.GetAllUsers<AdminAllUsersView>(id, ItemPerPage);
             return this.View(viewModel);
         }
