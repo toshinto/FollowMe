@@ -9,7 +9,7 @@ namespace FollowMe.Services.Data
     {
         IEnumerable<T> GetAllPosts<T>(int page, int itemsPerPage);
 
-        IEnumerable<T> GetAllPhotoComments<T>();
+        IEnumerable<T> GetAllPhotoComments<T>(int page, int itemsPerPage);
 
         IEnumerable<T> GetAllPhotos<T>(int page, int itemsPerPage);
 
@@ -20,6 +20,8 @@ namespace FollowMe.Services.Data
         int GetCountOfPhotos();
 
         int GetCountOfPosts();
+
+        int GetCountOfPhotosComments();
 
         Task DeletePost(string postId);
 

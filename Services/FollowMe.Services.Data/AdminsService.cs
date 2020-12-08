@@ -52,9 +52,9 @@ namespace FollowMe.Services.Data
             await this.appUserRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetAllPhotoComments<T>()
+        public IEnumerable<T> GetAllPhotoComments<T>(int page, int itemsPerPage)
         {
-            var comments = this.commentsRepository.All().OrderByDescending(x => x.CreatedOn).Where(x => x.UserId != null && x.SentById != null);
+            var comments = this.commentsRepository.All().OrderByDescending(x => x.CreatedOn).Where(x => x.UserId != null && x.SentById != null).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
             return comments.To<T>().ToList();
         }
 
@@ -79,6 +79,11 @@ namespace FollowMe.Services.Data
         public int GetCountOfPhotos()
         {
             return photosRepository.All().Count();
+        }
+
+        public int GetCountOfPhotosComments()
+        {
+            return this.commentsRepository.All().OrderByDescending(x => x.CreatedOn).Where(x => x.UserId != null && x.SentById != null).Count();
         }
 
         public int GetCountOfPosts()

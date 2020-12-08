@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FollowMe.Web.ViewModels.Admins
 {
-    public class AdminCommentsViewModel
+    public class AdminCommentsViewModel : PagingViewModel
     {
         public IEnumerable<AdminCommentsView> Comments { get; set; }
     }

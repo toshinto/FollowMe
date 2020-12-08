@@ -64,10 +64,19 @@ namespace FollowMe.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult AllPhotoComments()
+        public IActionResult AllPhotoComments(int id = 1)
         {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+            const int ItemsPerPage = 12;
             var viewModel = new AdminCommentsViewModel();
-            viewModel.Comments = this.adminsService.GetAllPhotoComments<AdminCommentsView>();
+            viewModel.PageNumber = id;
+            viewModel.ItemsPerPage = 12;
+            viewModel.Action = "AllPhotoComments";
+            viewModel.UsersCount = this.adminsService.GetCountOfPhotosComments();
+            viewModel.Comments = this.adminsService.GetAllPhotoComments<AdminCommentsView>(id, ItemsPerPage);
             return this.View(viewModel);
         }
 
