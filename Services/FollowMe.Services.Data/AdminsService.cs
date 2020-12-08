@@ -58,15 +58,15 @@ namespace FollowMe.Services.Data
             return comments.To<T>().ToList();
         }
 
-        public IEnumerable<T> GetAllPhotos<T>()
+        public IEnumerable<T> GetAllPhotos<T>(int page, int itemsPerPage = 12)
         {
-            var photos = this.photosRepository.All().OrderByDescending(x => x.CreatedOn);
+            var photos = this.photosRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
             return photos.To<T>().ToList();
         }
 
-        public IEnumerable<T> GetAllPosts<T>()
+        public IEnumerable<T> GetAllPosts<T>(int page, int itemsPerPage)
         {
-            var posts = this.postsRepository.All().OrderByDescending(x => x.CreatedOn);
+            var posts = this.postsRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
             return posts.To<T>().ToList();
         }
 
@@ -74,6 +74,16 @@ namespace FollowMe.Services.Data
         {
             var users = this.usersRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<T>().ToList();
             return users;
+        }
+
+        public int GetCountOfPhotos()
+        {
+            return photosRepository.All().Count();
+        }
+
+        public int GetCountOfPosts()
+        {
+            return this.postsRepository.All().Count();
         }
 
         public int GetCountOfUsers()

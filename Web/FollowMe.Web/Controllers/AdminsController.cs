@@ -40,10 +40,19 @@ namespace FollowMe.Web.Controllers
             return this.Json(result);
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult AllPosts()
+        public IActionResult AllPosts(int id = 1)
         {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+            const int ItemsPerPage = 12;
             var viewModel = new AdminViewModel();
-            viewModel.Posts = this.adminsService.GetAllPosts<AdminPostsView>();
+            viewModel.PageNumber = id;
+            viewModel.ItemsPerPage = ItemsPerPage;
+            viewModel.Action = "AllPosts";
+            viewModel.UsersCount = this.adminsService.GetCountOfPosts();
+            viewModel.Posts = this.adminsService.GetAllPosts<AdminPostsView>(id, ItemsPerPage);
             return this.View(viewModel);
         }
 
@@ -70,10 +79,19 @@ namespace FollowMe.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        public IActionResult AllPhotos()
+        public IActionResult AllPhotos(int id = 1)
         {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+            const int ItemPerPage = 12;
             var viewModel = new AdminPhotoView();
-            viewModel.Photos = this.adminsService.GetAllPhotos<AdminAllPhotosView>();
+            viewModel.PageNumber = id;
+            viewModel.ItemsPerPage = ItemPerPage;
+            viewModel.UsersCount = this.adminsService.GetCountOfPhotos();
+            viewModel.Action = "AllPhotos";
+            viewModel.Photos = this.adminsService.GetAllPhotos<AdminAllPhotosView>(id, ItemPerPage);
             return this.View(viewModel);
         }
 

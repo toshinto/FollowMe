@@ -7,15 +7,19 @@ namespace FollowMe.Services.Data
 {
     public interface IAdminsService
     {
-        IEnumerable<T> GetAllPosts<T>();
+        IEnumerable<T> GetAllPosts<T>(int page, int itemsPerPage);
 
         IEnumerable<T> GetAllPhotoComments<T>();
 
-        IEnumerable<T> GetAllPhotos<T>();
+        IEnumerable<T> GetAllPhotos<T>(int page, int itemsPerPage);
 
         IEnumerable<T> GetAllUsers<T>(int page, int itemsPerPage);
 
         int GetCountOfUsers();
+
+        int GetCountOfPhotos();
+
+        int GetCountOfPosts();
 
         Task DeletePost(string postId);
 
