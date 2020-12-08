@@ -114,7 +114,7 @@ namespace FollowMe.Services.Data
 
         public IEnumerable<T> GetAllSearch<T>(SearchIndexViewModel model)
         {
-            var people = this.usersRepository.All().Where(x => x.Gender == model.Gender && x.City == model.City && x.WhatAreYouSearchingFor == model.SearchingFor && model.FromAge <= DateTime.UtcNow.Year - x.Date.Year && DateTime.UtcNow.Year - x.Date.Year <= model.ToAge);
+            var people = this.usersRepository.All().Where(x => x.Gender == model.Gender && x.City == model.City && x.WhatAreYouSearchingFor == model.SearchingFor && model.MinimumAge <= DateTime.UtcNow.Year - x.Date.Year && DateTime.UtcNow.Year - x.Date.Year <= model.MaximumAge);
             return people.To<T>().Take(GlobalConstants.CountOfPeopleOnCategories).ToList();
         }
 

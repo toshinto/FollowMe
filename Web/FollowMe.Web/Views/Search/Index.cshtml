@@ -8,14 +8,14 @@
             <div style="padding: 5%;">
                 <form asp-action="List" method="get">
                     <div>
-                        <label asp-for="@Model.FromAge">Minimum age</label>
-                        <input asp-for="@Model.FromAge" class="form-control" />
-                        <span asp-validation-for="@Model.FromAge" class="text-danger"></span>
+                        <label asp-for="@Model.MinimumAge">Minimum age</label>
+                        <input asp-for="@Model.MinimumAge" class="form-control" />
+                        <span asp-validation-for="@Model.MinimumAge" class="text-danger"></span>
                     </div>
                     <div>
-                        <label asp-for="@Model.ToAge">Maximum age</label>
-                        <input asp-for="@Model.ToAge" class="form-control" />
-                        <span asp-validation-for="@Model.ToAge" class="text-danger"></span>
+                        <label asp-for="@Model.MaximumAge">Maximum age</label>
+                        <input asp-for="@Model.MaximumAge" class="form-control" />
+                        <span asp-validation-for="@Model.MaximumAge" class="text-danger"></span>
                     </div>
                     <div>
                         <label asp-for="@Model.Gender">Choose your gender</label>

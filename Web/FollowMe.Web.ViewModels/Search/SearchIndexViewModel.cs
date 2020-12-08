@@ -9,10 +9,10 @@ namespace FollowMe.Web.ViewModels.Search
     public class SearchIndexViewModel : IMapFrom<UserCharacteristic>
     {
         [Range(14, 104)]
-        public int FromAge { get; set; }
+        public int MinimumAge { get; set; }
 
         [Range(14, 104)]
-        public int ToAge { get; set; }
+        public int MaximumAge { get; set; }
 
         public DateTime Date { get; set; }
 
