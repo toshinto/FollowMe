@@ -10,5 +10,7 @@ namespace FollowMe.Services.Data
         IEnumerable<T> GetAll<T>();
 
         Task CreateMessageAsync(string userName, string userId, string text);
+
+        Task DeleteFifteenthCommnet();
     }
 }

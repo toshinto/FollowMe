@@ -31,6 +31,13 @@ namespace FollowMe.Services.Data
             await this.messagesRepository.SaveChangesAsync();
         }
 
+        public async Task DeleteFifteenthCommnet()
+        {
+            var message = this.messagesRepository.All().OrderBy(x => x.When).FirstOrDefault();
+            this.messagesRepository.Delete(message);
+            await this.messagesRepository.SaveChangesAsync();
+        }
+
         public IEnumerable<T> GetAll<T>()
         {
             var messages =

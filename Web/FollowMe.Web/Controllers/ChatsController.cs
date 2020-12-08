@@ -34,6 +34,10 @@ namespace FollowMe.Web.Controllers
             }
             var viewModel = new ChatMessages();
             viewModel.Messages = this.messagesService.GetAll<ChatViewModel>();
+            if (viewModel.Messages.Count() == 15)
+            {
+                await this.messagesService.DeleteFifteenthCommnet();
+            }
             return this.View(viewModel);
         }
 
