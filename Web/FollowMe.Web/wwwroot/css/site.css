@@ -6,7 +6,10 @@ a.navbar-brand {
     text-align: center;
     word-break: break-all;
 }
-
+#errorImage{
+    height:500px;
+    width:800px;
+}
 .comment {
     background-color: #24b9b7;
 }

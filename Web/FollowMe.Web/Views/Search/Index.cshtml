@@ -8,12 +8,12 @@
             <div style="padding: 5%;">
                 <form asp-action="List" method="get">
                     <div>
-                        <label asp-for="@Model.FromAge">From Age</label>
+                        <label asp-for="@Model.FromAge">Minimum age</label>
                         <input asp-for="@Model.FromAge" class="form-control" />
                         <span asp-validation-for="@Model.FromAge" class="text-danger"></span>
                     </div>
                     <div>
-                        <label asp-for="@Model.ToAge">To Age</label>
+                        <label asp-for="@Model.ToAge">Maximum age</label>
                         <input asp-for="@Model.ToAge" class="form-control" />
                         <span asp-validation-for="@Model.ToAge" class="text-danger"></span>
                     </div>

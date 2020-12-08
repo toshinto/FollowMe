@@ -495,3 +495,5 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Catego
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Search\Index.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Search\List.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PagingPartial.cshtml.g.cs
+D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\wwwroot\images\error.jpg
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\StatusCodeError.cshtml.g.cs

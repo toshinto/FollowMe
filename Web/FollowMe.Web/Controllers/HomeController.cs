@@ -33,6 +33,10 @@
             return this.View(viewModel);
         }
 
+        public IActionResult StatusCodeError(int errorCode)
+        {
+            return this.View();
+        }
         public IActionResult Privacy()
         {
             return this.View();
