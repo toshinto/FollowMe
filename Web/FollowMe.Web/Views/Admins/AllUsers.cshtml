@@ -26,7 +26,7 @@
                                     <th scope="row">@user.UserUserCharacteristicsFullName</th>
                                     <td>@user.UserUserName</td>
                                     <td>@user.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</td>
-                                    <td> <a class="btn btn-danger" href="/Admins/DeleteUser?id=@user.UserId">DELETE</a></td>
+                                    <td> <form method="post"><a class="btn btn-danger" href="/Admins/DeleteUser?id=@user.UserId">DELETE</a></form></td>
                                 </tr>
                             }
                         </tbody>

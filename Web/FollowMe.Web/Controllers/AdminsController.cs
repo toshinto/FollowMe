@@ -62,7 +62,6 @@ namespace FollowMe.Web.Controllers
             await this.adminsService.DeletePost(id);
             return this.Redirect("/Admins/AllPosts");
         }
-
         [Authorize(Roles = "Admin")]
         public IActionResult AllPhotoComments(int id = 1)
         {
@@ -79,7 +78,6 @@ namespace FollowMe.Web.Controllers
             viewModel.Comments = this.adminsService.GetAllPhotoComments<AdminCommentsView>(id, ItemsPerPage);
             return this.View(viewModel);
         }
-
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteComment(string id)
         {
@@ -104,7 +102,6 @@ namespace FollowMe.Web.Controllers
             return this.View(viewModel);
         }
 
-        [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePhoto(string id)
         {

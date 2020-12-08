@@ -25,7 +25,7 @@
                                     <th scope="row">@photo.UserUserCharacteristicsFullName</th>
                                     <td><img src="@photo.ImagePath" id="adminPhotos" /></td>
                                     <td>@photo.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</td>
-                                    <td> <a class="btn btn-danger" href="/Admins/DeletePhoto?id=@photo.Id">DELETE</a></td>
+                                    <td> <form method="post"><a class="btn btn-danger" href="/Admins/DeletePhoto?id=@photo.Id">DELETE</a> </form></td>
                                 </tr>
                             }
                         </tbody>

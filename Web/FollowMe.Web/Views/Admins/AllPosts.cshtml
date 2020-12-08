@@ -27,7 +27,7 @@
                                     <td>@post.Title</td>
                                     <td>@post.Content</td>
                                     <td>@post.CreatedOn.ToString("MM/dd/yy H:mm:ss", CultureInfo.CreateSpecificCulture("en-US"))</td>
-                                    <td> <a class="btn btn-danger" href="/Admins/DeletePost?id=@post.Id">DELETE</a></td>
+                                    <td> <form method="post"><a class="btn btn-danger" href="/Admins/DeletePost?id=@post.Id">DELETE</a> </form></td>
                                 </tr>
                             }
                         </tbody>
