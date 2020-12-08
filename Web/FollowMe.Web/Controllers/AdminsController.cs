@@ -104,6 +104,7 @@ namespace FollowMe.Web.Controllers
             return this.View(viewModel);
         }
 
+        [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePhoto(string id)
         {
