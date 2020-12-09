@@ -10,7 +10,7 @@
 </div>
 @foreach (var message in Model.Messages.OrderBy(m => m.When))
 {
-    var mes = message.UserUserCharacteristicsFullName + " " + message.Text + " " + message.When;
+    var mes = message.UserUserCharacteristicsFullName + " " + (message.Text) + " " + message.When;
     @mes
 
     <hr />
@@ -22,7 +22,7 @@
           data-ajax="true" data-ajax-method="POST">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <input name="Text" class="form-control" id="messageText" onkeyup='saveValue(this)' ; />
+            <input name="Text" class="form-control" id="messageText" onkeyup='saveValue(this)'/>
         </div>
         <div class="form-group">
             <input type="submit" value="Send" id="submitButton" class="btn btn-primary" />
@@ -74,5 +74,4 @@
             return localStorage.getItem(v);
         }
     </script>
-
 }
