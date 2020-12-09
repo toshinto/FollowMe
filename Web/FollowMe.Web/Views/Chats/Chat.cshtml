@@ -41,8 +41,18 @@
 
 @section Scripts
 {
+<script>
+
+    $.ajax({
+        url: "/Chats/Chat",
+        context: document.body
+    }); setInterval(function () {
+        location.reload();
+    }, 10000);
+</script>
     <sript src="~/signalr/signalr.min.js"></sript>
     <sript src="~/lib/jquery/dist/jquery.unobtrusive-ajax.min.js"></sript>
     <sript src="~/js/chat.js"></sript>
     <sript src="~/js/signrReqHandler.js"></sript>
+
 }

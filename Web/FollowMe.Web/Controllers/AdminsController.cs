@@ -51,7 +51,7 @@ namespace FollowMe.Web.Controllers
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemsPerPage;
             viewModel.Action = "AllPosts";
-            viewModel.UsersCount = this.adminsService.GetCountOfPosts();
+            viewModel.CountOfElements = this.adminsService.GetCountOfPosts();
             viewModel.Posts = this.adminsService.GetAllPosts<AdminPostsView>(id, ItemsPerPage);
             return this.View(viewModel);
         }
@@ -74,7 +74,7 @@ namespace FollowMe.Web.Controllers
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = 12;
             viewModel.Action = "AllPhotoComments";
-            viewModel.UsersCount = this.adminsService.GetCountOfPhotosComments();
+            viewModel.CountOfElements = this.adminsService.GetCountOfPhotosComments();
             viewModel.Comments = this.adminsService.GetAllPhotoComments<AdminCommentsView>(id, ItemsPerPage);
             return this.View(viewModel);
         }
@@ -96,7 +96,7 @@ namespace FollowMe.Web.Controllers
             var viewModel = new AdminPhotoView();
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemPerPage;
-            viewModel.UsersCount = this.adminsService.GetCountOfPhotos();
+            viewModel.CountOfElements = this.adminsService.GetCountOfPhotos();
             viewModel.Action = "AllPhotos";
             viewModel.Photos = this.adminsService.GetAllPhotos<AdminAllPhotosView>(id, ItemPerPage);
             return this.View(viewModel);
@@ -120,7 +120,7 @@ namespace FollowMe.Web.Controllers
             var viewModel = new AdminUserView();
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemPerPage;
-            viewModel.UsersCount = this.adminsService.GetCountOfUsers();
+            viewModel.CountOfElements = this.adminsService.GetCountOfUsers();
             viewModel.Action = "AllUsers";
             viewModel.Users = this.adminsService.GetAllUsers<AdminAllUsersView>(id, ItemPerPage);
             return this.View(viewModel);
