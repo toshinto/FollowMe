@@ -51,7 +51,8 @@ namespace FollowMe.Web.Controllers
                 await this.messagesService.CreateMessageAsync(model.UserName, model.UserId, model.Text);
                 return this.Redirect("/Chats/Chat");
             }
-            return this.Error();
+
+            return this.View(model);
         }
 
         public IActionResult Error()

@@ -22,7 +22,7 @@
           data-ajax="true" data-ajax-method="POST">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <input name="Text" class="form-control" id="messageText" />
+            <input name="Text" class="form-control" id="messageText" onkeyup='saveValue(this)' ; />
         </div>
         <div class="form-group">
             <input type="submit" value="Send" id="submitButton" class="btn btn-primary" />
@@ -41,18 +41,38 @@
 
 @section Scripts
 {
-<script>
+    <script>
 
-    $.ajax({
-        url: "/Chats/Chat",
-        context: document.body
-    }); setInterval(function () {
-        location.reload();
-    }, 10000);
-</script>
+        $.ajax({
+            url: "/Chats/Chat",
+            context: document.body
+        }); setInterval(function () {
+            location.reload();
+        }, 10000);
+    </script>
     <sript src="~/signalr/signalr.min.js"></sript>
     <sript src="~/lib/jquery/dist/jquery.unobtrusive-ajax.min.js"></sript>
     <sript src="~/js/chat.js"></sript>
     <sript src="~/js/signrReqHandler.js"></sript>
+
+    <script type="text/javascript">
+        document.getElementById("messageText").value = getSavedValue("messageText");    // set the value to this input
+        /* Here you can add more inputs to set value. if it's saved */
+
+        //Save the value function - save it to localStorage as (ID, VALUE)
+        function saveValue(e) {
+            var id = e.id;  // get the sender's id to save it .
+            var val = e.value; // get the value.
+            localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override .
+        }
+
+        //get the saved value function - return the value of "v" from localStorage.
+        function getSavedValue(v) {
+            if (!localStorage.getItem(v)) {
+                return "";// You can change this to your defualt value.
+            }
+            return localStorage.getItem(v);
+        }
+    </script>
 
 }
