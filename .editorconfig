@@ -41,3 +41,12 @@ dotnet_diagnostic.CS0414.severity = none
 
 # SA1121: Use built-in type alias
 dotnet_diagnostic.SA1121.severity = silent
+
+# xUnit2013: Do not use equality check to check for collection size.
+dotnet_diagnostic.xUnit2013.severity = silent
+
+# xUnit2004: Do not use equality check to test for boolean conditions
+dotnet_diagnostic.xUnit2004.severity = silent
+
+# SA1508: Closing braces should not be preceded by blank line
+dotnet_diagnostic.SA1508.severity = silent

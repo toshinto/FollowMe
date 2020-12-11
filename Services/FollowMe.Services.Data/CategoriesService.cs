@@ -36,7 +36,7 @@ namespace FollowMe.Services.Data
         public IEnumerable<T> GetTopMen<T>()
         {
             var topMen =
-                this.usersRepository.All().Where(x => x.Gender == Gender.Male).OrderByDescending(x => x.User.Photos.Count);
+                this.usersRepository.All().Where(x => x.Gender == Gender.Male).OrderByDescending(x => x.User.Photos.Count());
             return topMen.To<T>().Take(GlobalConstants.CountOfPeopleOnCategories).ToList();
         }
 
