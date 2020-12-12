@@ -110,21 +110,73 @@ namespace FollowMe.Services.Data.Tests
             var appUser = new ApplicationUser
             {
                 Id = "1",
+                UserCharacteristics = new UserCharacteristic
+                {
+                    Id = "1",
+                    FirstName = "Pesho",
+                },
             };
-            var userCh = new UserCharacteristic
+            var secondAppUser = new ApplicationUser
             {
-                Id = "1",
-                FirstName = "Xaxax",
+                Id = "2",
             };
+
             photos.Add(photoToCheck);
             appUsers.Add(appUser);
-            userChar.Add(userCh);
-            dbContext.Users.Add(appUser);
-            dbContext.Photos.Add(photoToCheck);
-            userCh.FirstName = "xaxaxa";
-            var userId = service.GetFirstNameById("1");
+            var result = service.GetFirstNameById("2");
 
-            Assert.Equal(false, userId);
+            Assert.Equal(false, result);
+        }
+
+        [Fact]
+        public void GetFirstNameByIdShouldReturnTrue()
+        {
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChar = new List<UserCharacteristic>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+            var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+
+            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase("test");
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
+            var photoToCheck = new Photo
+            {
+                Id = "1",
+                UserId = "1",
+            };
+            var appUser = new ApplicationUser
+            {
+                Id = "1",
+                UserCharacteristics = new UserCharacteristic
+                {
+                    Id = "1",
+                    FirstName = "Pesho",
+                },
+            };
+            var secondAppUser = new ApplicationUser
+            {
+                Id = "2",
+            };
+
+            photos.Add(photoToCheck);
+            appUsers.Add(appUser);
+            var result = service.GetFirstNameById("1");
+
+            Assert.Equal(true, result);
         }
     }
 }
