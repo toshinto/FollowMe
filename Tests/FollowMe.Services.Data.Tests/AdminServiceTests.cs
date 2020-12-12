@@ -15,7 +15,7 @@ namespace FollowMe.Services.Data.Tests
     public class AdminServiceTests
     {
         [Fact]
-        public void GetCountOfUsers()
+        public void GetCountOfUsersShouldWorkCorrectly()
         {
             var user = new UserCharacteristic
             {
@@ -62,7 +62,7 @@ namespace FollowMe.Services.Data.Tests
         }
 
         [Fact]
-        public void GetCountOfPosts()
+        public void GetCountOfPostsShouldWorkCorrectly()
         {
             var post = new Post
             {
@@ -113,7 +113,7 @@ namespace FollowMe.Services.Data.Tests
         }
 
         [Fact]
-        public void GetCountOfPhotos()
+        public void GetCountOfPhotosShouldWorkCorrectly()
         {
             var photo = new Photo
             {
@@ -162,7 +162,7 @@ namespace FollowMe.Services.Data.Tests
 
         }
         [Fact]
-        public void GetCountOfPhotosComments()
+        public void GetCountOfPhotosCommentsShouldWorkCorrectly()
         {
             var photo = new Photo
             {
@@ -231,7 +231,7 @@ namespace FollowMe.Services.Data.Tests
         }
         [Fact]
 
-        public async Task DeleteComment()
+        public async Task DeleteCommentShouldWorkCorrectly()
         {
             var list = new List<Post>();
             var comment = new List<Comment>();
@@ -281,7 +281,7 @@ namespace FollowMe.Services.Data.Tests
 
         [Fact]
 
-        public async Task DeletePhoto()
+        public async Task DeletePhotoShouldWorkCorrectly()
         {
             var list = new List<Post>();
             var comment = new List<Comment>();
@@ -328,7 +328,7 @@ namespace FollowMe.Services.Data.Tests
 
         [Fact]
 
-        public async Task DeletePost()
+        public async Task DeletePostShouldWorkCorrectly()
         {
             var post = new List<Post>();
             var comment = new List<Comment>();
@@ -375,7 +375,7 @@ namespace FollowMe.Services.Data.Tests
 
         [Fact]
 
-        public async Task DeleteUser()
+        public async Task DeleteUserShouldWorkCorrectly()
         {
             var post = new List<Post>();
             var comment = new List<Comment>();

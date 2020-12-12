@@ -11,7 +11,7 @@
     public class VoteServiceTests
     {
         [Fact]
-        public async Task WhenUserVoteTwoTimesOnlyOneVoteShouldBeCountet()
+        public async Task WhenUserVoteTwoTimesOnlyOneVoteShouldBeCounted()
         {
             var list = new List<Vote>();
             var mockRepo = new Mock<IRepository<Vote>>();
