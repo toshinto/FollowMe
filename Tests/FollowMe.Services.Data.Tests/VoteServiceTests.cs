@@ -16,6 +16,7 @@
             var votes = new List<Vote>();
 
             var mockRepo = new Mock<IRepository<Vote>>();
+
             mockRepo.Setup(x => x.All()).Returns(votes.AsQueryable());
             mockRepo.Setup(x => x.AddAsync(It.IsAny<Vote>())).Callback((Vote vote) => votes.Add(vote));
 
@@ -34,6 +35,7 @@
             var votes = new List<Vote>();
 
             var mockRepo = new Mock<IRepository<Vote>>();
+
             mockRepo.Setup(x => x.All()).Returns(votes.AsQueryable());
             mockRepo.Setup(x => x.AddAsync(It.IsAny<Vote>())).Callback((Vote vote) => votes.Add(vote));
 
