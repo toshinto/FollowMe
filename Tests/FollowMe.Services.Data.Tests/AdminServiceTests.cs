@@ -22,38 +22,38 @@ namespace FollowMe.Services.Data.Tests
                 Id = "1",
             };
 
-            var list = new List<Post>();
-            var comment = new List<Comment>();
-            var photo = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => list.Add(post));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-            userChar.Add(user);
+            userChars.Add(user);
 
             var result = service.GetCountOfUsers();
 
@@ -71,31 +71,31 @@ namespace FollowMe.Services.Data.Tests
                 Content = "I am 16 yo and...",
             };
 
-            var list = new List<Post>();
-            var comment = new List<Comment>();
-            var photo = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => list.Add(post));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -104,7 +104,7 @@ namespace FollowMe.Services.Data.Tests
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
             dbContext.Posts.Add(post);
             dbContext.SaveChanges();
-            list.Add(post);
+            posts.Add(post);
             var result = service.GetCountOfPosts();
             var expectedResult = 1;
 
@@ -122,31 +122,31 @@ namespace FollowMe.Services.Data.Tests
 
             };
 
-            var list = new List<Post>();
-            var comment = new List<Comment>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
             var photos = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => list.Add(post));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
             mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
             mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -187,15 +187,15 @@ namespace FollowMe.Services.Data.Tests
                 SentById = "1",
             };
 
-            var list = new List<Post>();
+            var posts = new List<Post>();
             var comments = new List<Comment>();
             var photos = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => list.Add(post));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
@@ -206,12 +206,12 @@ namespace FollowMe.Services.Data.Tests
             mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -233,31 +233,31 @@ namespace FollowMe.Services.Data.Tests
 
         public async Task DeleteCommentShouldWorkCorrectly()
         {
-            var list = new List<Post>();
-            var comment = new List<Comment>();
-            var photo = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => list.Add(post));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -274,7 +274,7 @@ namespace FollowMe.Services.Data.Tests
             };
             dbContext.Comments.Add(newComment);
             dbContext.SaveChanges();
-            comment.Add(newComment);
+            comments.Add(newComment);
             await service.DeleteComment("123");
             Assert.Equal(true, newComment.IsDeleted);
         }
@@ -283,31 +283,31 @@ namespace FollowMe.Services.Data.Tests
 
         public async Task DeletePhotoShouldWorkCorrectly()
         {
-            var list = new List<Post>();
-            var comment = new List<Comment>();
-            var photo = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => list.Add(post));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -315,46 +315,46 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            var ph = new Photo
+            var photo = new Photo
             {
                 Id = "123",
             };
-            dbContext.Photos.Add(ph);
+            dbContext.Photos.Add(photo);
             dbContext.SaveChanges();
-            photo.Add(ph);
+            photos.Add(photo);
             await service.DeletePhoto("123");
-            Assert.Equal(true, ph.IsDeleted);
+            Assert.Equal(true, photo.IsDeleted);
         }
 
         [Fact]
 
         public async Task DeletePostShouldWorkCorrectly()
         {
-            var post = new List<Post>();
-            var comment = new List<Comment>();
-            var photo = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(post.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post ps) => post.Add(ps));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post ps) => posts.Add(ps));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -368,7 +368,7 @@ namespace FollowMe.Services.Data.Tests
             };
             dbContext.Posts.Add(postToDelete);
             dbContext.SaveChanges();
-            post.Add(postToDelete);
+            posts.Add(postToDelete);
             await service.DeletePost("123");
             Assert.Equal(true, postToDelete.IsDeleted);
         }
@@ -377,31 +377,31 @@ namespace FollowMe.Services.Data.Tests
 
         public async Task DeleteUserShouldWorkCorrectly()
         {
-            var post = new List<Post>();
-            var comment = new List<Comment>();
-            var photo = new List<Photo>();
-            var appUser = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var posts = new List<Post>();
+            var comments = new List<Comment>();
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(post.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post ps) => post.Add(ps));
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post ps) => posts.Add(ps));
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
-            mockCommentRepo.Setup(x => x.All()).Returns(comment.AsQueryable());
-            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comment.Add(comm));
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUser.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUser.Add(appU));
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var service = new AdminsService(mockPostRepo.Object, mockCommentRepo.Object, mockPhoto.Object, mockUserChar.Object, mockAppUser.Object);
 
@@ -415,7 +415,7 @@ namespace FollowMe.Services.Data.Tests
             };
             dbContext.Users.Add(user);
             dbContext.SaveChanges();
-            appUser.Add(user);
+            appUsers.Add(user);
             await service.DeleteUser("123");
             Assert.Equal(true, user.IsDeleted);
         }
