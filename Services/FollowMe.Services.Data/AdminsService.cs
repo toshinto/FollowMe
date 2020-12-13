@@ -26,53 +26,92 @@ namespace FollowMe.Services.Data
 
         public async Task DeleteComment(string commentId)
         {
-            var commentToDelete = this.commentsRepository.All().Where(c => c.Id == commentId).FirstOrDefault();
+            var commentToDelete = this.commentsRepository
+                .All()
+                .Where(c => c.Id == commentId)
+                .FirstOrDefault();
+
             commentToDelete.IsDeleted = true;
             await this.commentsRepository.SaveChangesAsync();
         }
 
         public async Task DeletePhoto(string photoId)
         {
-            var photoToDelete = this.photosRepository.All().Where(p => p.Id == photoId).FirstOrDefault();
+            var photoToDelete = this.photosRepository
+                .All()
+                .Where(p => p.Id == photoId)
+                .FirstOrDefault();
+
             photoToDelete.IsDeleted = true;
             await this.photosRepository.SaveChangesAsync();
         }
 
         public async Task DeletePost(string postId)
         {
-            var postToDelete = this.postsRepository.All().Where(x => x.Id == postId).FirstOrDefault();
+            var postToDelete = this.postsRepository
+                .All()
+                .Where(x => x.Id == postId)
+                .FirstOrDefault();
+
             postToDelete.IsDeleted = true;
             await this.postsRepository.SaveChangesAsync();
         }
 
         public async Task DeleteUser(string userId)
         {
-            var userToDelete = this.appUserRepository.All().Where(x => x.Id == userId).FirstOrDefault();
+            var userToDelete = this.appUserRepository
+                .All()
+                .Where(x => x.Id == userId)
+                .FirstOrDefault();
+
             userToDelete.IsDeleted = true;
             await this.appUserRepository.SaveChangesAsync();
         }
 
         public IEnumerable<T> GetAllPhotoComments<T>(int page, int itemsPerPage)
         {
-            var comments = this.commentsRepository.All().OrderByDescending(x => x.CreatedOn).Where(x => x.UserId != null && x.SentById != null).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
+            var comments = this.commentsRepository
+                .All()
+                .OrderByDescending(x => x.CreatedOn)
+                .Where(x => x.UserId != null && x.SentById != null)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
+
             return comments.To<T>().ToList();
         }
 
         public IEnumerable<T> GetAllPhotos<T>(int page, int itemsPerPage = 12)
         {
-            var photos = this.photosRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
+            var photos = this.photosRepository
+                .All()
+                .OrderByDescending(x => x.CreatedOn)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
+
             return photos.To<T>().ToList();
         }
 
         public IEnumerable<T> GetAllPosts<T>(int page, int itemsPerPage)
         {
-            var posts = this.postsRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage);
+            var posts = this.postsRepository
+                .All()
+                .OrderByDescending(x => x.CreatedOn)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage);
+
             return posts.To<T>().ToList();
         }
 
         public IEnumerable<T> GetAllUsers<T>(int page, int itemsPerPage = 12)
         {
-            var users = this.usersRepository.All().OrderByDescending(x => x.CreatedOn).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<T>().ToList();
+            var users = this.usersRepository
+                .All()
+                .OrderByDescending(x => x.CreatedOn)
+                .Skip((page - 1) * itemsPerPage)
+                .Take(itemsPerPage)
+                .To<T>()
+                .ToList();
+
             return users;
         }
 
@@ -83,7 +122,11 @@ namespace FollowMe.Services.Data
 
         public int GetCountOfPhotosComments()
         {
-            return this.commentsRepository.All().OrderByDescending(x => x.CreatedOn).Where(x => x.UserId != null && x.SentById != null).Count();
+            return this.commentsRepository
+                .All()
+                .OrderByDescending(x => x.CreatedOn)
+                .Where(x => x.UserId != null && x.SentById != null)
+                .Count();
         }
 
         public int GetCountOfPosts()
