@@ -35,15 +35,15 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            var photoToCheck = new Photo
+            var photo = new Photo
             {
                 Id = "1",
                 UserId = "1",
             };
-            photos.Add(photoToCheck);
+            photos.Add(photo);
             await service.DeleteAsync("1", "1");
 
-            Assert.Equal(true, photoToCheck.IsDeleted);
+            Assert.Equal(true, photo.IsDeleted);
         }
 
         [Fact]
@@ -66,12 +66,12 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            var photoToCheck = new Photo
+            var photo = new Photo
             {
                 Id = "1",
                 UserId = "1",
             };
-            photos.Add(photoToCheck);
+            photos.Add(photo);
             var userId = service.GetUserByPhotoId("1");
 
             Assert.Equal("1", userId);
@@ -82,7 +82,7 @@ namespace FollowMe.Services.Data.Tests
         {
             var photos = new List<Photo>();
             var appUsers = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
             mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
@@ -93,8 +93,8 @@ namespace FollowMe.Services.Data.Tests
             mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
 
@@ -102,7 +102,7 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            var photoToCheck = new Photo
+            var photo = new Photo
             {
                 Id = "1",
                 UserId = "1",
@@ -121,7 +121,7 @@ namespace FollowMe.Services.Data.Tests
                 Id = "2",
             };
 
-            photos.Add(photoToCheck);
+            photos.Add(photo);
             appUsers.Add(appUser);
             var result = service.GetFirstNameById("2");
 
@@ -133,7 +133,7 @@ namespace FollowMe.Services.Data.Tests
         {
             var photos = new List<Photo>();
             var appUsers = new List<ApplicationUser>();
-            var userChar = new List<UserCharacteristic>();
+            var userChars = new List<UserCharacteristic>();
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
             mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
@@ -144,8 +144,8 @@ namespace FollowMe.Services.Data.Tests
             mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
 
@@ -153,7 +153,7 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            var photoToCheck = new Photo
+            var photo = new Photo
             {
                 Id = "1",
                 UserId = "1",
@@ -172,7 +172,7 @@ namespace FollowMe.Services.Data.Tests
                 Id = "2",
             };
 
-            photos.Add(photoToCheck);
+            photos.Add(photo);
             appUsers.Add(appUser);
             var result = service.GetFirstNameById("1");
 
