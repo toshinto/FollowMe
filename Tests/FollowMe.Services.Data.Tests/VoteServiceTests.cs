@@ -13,27 +13,29 @@
         [Fact]
         public async Task WhenUserVoteTwoTimesOnlyOneVoteShouldBeCounted()
         {
-            var list = new List<Vote>();
+            var votes = new List<Vote>();
+
             var mockRepo = new Mock<IRepository<Vote>>();
-            mockRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockRepo.Setup(x => x.AddAsync(It.IsAny<Vote>())).Callback((Vote vote) => list.Add(vote));
+            mockRepo.Setup(x => x.All()).Returns(votes.AsQueryable());
+            mockRepo.Setup(x => x.AddAsync(It.IsAny<Vote>())).Callback((Vote vote) => votes.Add(vote));
 
             var service = new VotesService(mockRepo.Object);
 
             await service.VoteAsync("1", "1", false);
             await service.VoteAsync("1", "1", true);
 
-            Assert.Equal(1, list.Count);
-            Assert.Equal("UpVote", list.First().Type.ToString());
+            Assert.Equal(1, votes.Count);
+            Assert.Equal("UpVote", votes.First().Type.ToString());
         }
         [Fact]
 
         public async Task WhenTwoUsersGiveUpVoteSumShouldbeEqualToTwo()
         {
-            var list = new List<Vote>();
+            var votes = new List<Vote>();
+
             var mockRepo = new Mock<IRepository<Vote>>();
-            mockRepo.Setup(x => x.All()).Returns(list.AsQueryable());
-            mockRepo.Setup(x => x.AddAsync(It.IsAny<Vote>())).Callback((Vote vote) => list.Add(vote));
+            mockRepo.Setup(x => x.All()).Returns(votes.AsQueryable());
+            mockRepo.Setup(x => x.AddAsync(It.IsAny<Vote>())).Callback((Vote vote) => votes.Add(vote));
 
             var service = new VotesService(mockRepo.Object);
 

@@ -14,19 +14,20 @@ namespace FollowMe.Services.Data.Tests
         [Fact]
         public async Task EditPersonalDetailsShouldWorkCorrectly()
         {
-            var photo = new List<Photo>();
-            var userChar = new List<UserCharacteristic>();
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
 
-            var userCh = new UserCharacteristic
+            var userChar = new UserCharacteristic
             {
                 Id = "1",
                 FirstName = "Todor",
@@ -42,7 +43,7 @@ namespace FollowMe.Services.Data.Tests
                 WeddingStatus = WeddingStatus.Single,
                 WhatAreYouSearchingFor = WhatAreYouSearchingFor.Date,
             };
-            userChar.Add(userCh);
+            userChars.Add(userChar);
             await service.EditPersonalDetails(new Web.ViewModels.Profiles.EditDetailsViewModel
             {
                 Id = "1",
@@ -60,30 +61,31 @@ namespace FollowMe.Services.Data.Tests
                 WhatAreYouSearchingFor = WhatAreYouSearchingFor.Flirt,
             });
 
-            Assert.Equal("Simona", userCh.FirstName);
-            Assert.Equal("Kasabova", userCh.LastName);
-            Assert.Equal(150, userCh.Weight);
-            Assert.Equal(150, userCh.Height);
-            Assert.Equal(City.Dobrich, userCh.City);
-            Assert.Equal(Gender.Female, userCh.Gender);
-            Assert.Equal(EyesColor.Brown, userCh.EyeColor);
-            Assert.Equal(HairColor.Red, userCh.HairColor);
-            Assert.Equal(WeddingStatus.Married, userCh.WeddingStatus);
-            Assert.Equal(WhatAreYouSearchingFor.Flirt, userCh.WhatAreYouSearchingFor);
+            Assert.Equal("Simona", userChar.FirstName);
+            Assert.Equal("Kasabova", userChar.LastName);
+            Assert.Equal(150, userChar.Weight);
+            Assert.Equal(150, userChar.Height);
+            Assert.Equal(City.Dobrich, userChar.City);
+            Assert.Equal(Gender.Female, userChar.Gender);
+            Assert.Equal(EyesColor.Brown, userChar.EyeColor);
+            Assert.Equal(HairColor.Red, userChar.HairColor);
+            Assert.Equal(WeddingStatus.Married, userChar.WeddingStatus);
+            Assert.Equal(WhatAreYouSearchingFor.Flirt, userChar.WhatAreYouSearchingFor);
         }
 
         [Fact]
         public void GetIdShouldWorkCorrectly()
         {
-            var photo = new List<Photo>();
-            var userChar = new List<UserCharacteristic>();
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
 
@@ -92,7 +94,7 @@ namespace FollowMe.Services.Data.Tests
                 Id = "2",
             };
 
-            userChar.Add(user);
+            userChars.Add(user);
 
             string userId = service.GetId("2");
             Assert.Equal("2", userId);
@@ -101,15 +103,16 @@ namespace FollowMe.Services.Data.Tests
         [Fact]
         public void IsUserDetailsPageShouldReturnTrue()
         {
-            var photo = new List<Photo>();
-            var userChar = new List<UserCharacteristic>();
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
 
@@ -119,7 +122,7 @@ namespace FollowMe.Services.Data.Tests
                 UserId = "1",
             };
 
-            userChar.Add(user);
+            userChars.Add(user);
 
             bool result = service.IsUserDetailsPage("1", "1");
             Assert.Equal(true, result);
@@ -128,15 +131,16 @@ namespace FollowMe.Services.Data.Tests
         [Fact]
         public void IsUserDetailsPageShouldReturnFalse()
         {
-            var photo = new List<Photo>();
-            var userChar = new List<UserCharacteristic>();
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photo.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photo.Add(ph));
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
-            mockUserChar.Setup(x => x.All()).Returns(userChar.AsQueryable());
-            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChar.Add(uc));
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
 
@@ -151,8 +155,8 @@ namespace FollowMe.Services.Data.Tests
                 UserId = "2",
             };
 
-            userChar.Add(user);
-            userChar.Add(secondUser);
+            userChars.Add(user);
+            userChars.Add(secondUser);
 
             bool result = service.IsUserDetailsPage("1", "2");
             Assert.Equal(false, result);
