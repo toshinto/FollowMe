@@ -50,13 +50,22 @@ namespace FollowMe.Services.Data
         public IEnumerable<T> GetAll<T>(string userId)
         {
             var photos =
-             this.photosRepository.All().Where(x => x.UserId == userId).OrderByDescending(x => x.CreatedOn);
+                this.photosRepository
+                .All()
+                .Where(x => x.UserId == userId)
+                .OrderByDescending(x => x.CreatedOn);
+
             return photos.To<T>().ToList();
         }
 
         public async Task DeleteAsync(string photoId, string userId)
         {
-            var photo = this.photosRepository.All().Where(p => p.Id == photoId).FirstOrDefault();
+            var photo =
+                this.photosRepository
+                .All()
+                .Where(p => p.Id == photoId)
+                .FirstOrDefault();
+
             if (photo.UserId == userId)
             {
                 photo.IsDeleted = true;
@@ -71,13 +80,21 @@ namespace FollowMe.Services.Data
 
         public string GetUserByPhotoId(string photoId)
         {
-            var userId = this.photosRepository.All().Where(p => p.Id == photoId).Select(u => u.UserId).FirstOrDefault();
+            var userId =
+                this.photosRepository
+                .All()
+                .Where(p => p.Id == photoId)
+                .Select(u => u.UserId)
+                .FirstOrDefault();
+
             return userId;
         }
 
         public T GetByName<T>(string photoId)
         {
-            var photoDetails = this.photosRepository.All()
+            var photoDetails =
+                this.photosRepository
+                .All()
                 .Where(x => x.Id == photoId)
                 .To<T>().FirstOrDefault();
             return photoDetails;
@@ -85,7 +102,13 @@ namespace FollowMe.Services.Data
 
         public bool GetFirstNameById(string userId)
         {
-            var userFirstName = this.usersRepository.All().Where(x => x.Id == userId).Select(s => s.UserCharacteristics.FirstName).FirstOrDefault();
+            var userFirstName =
+                this.usersRepository
+                .All()
+                .Where(x => x.Id == userId)
+                .Select(s => s.UserCharacteristics.FirstName)
+                .FirstOrDefault();
+
             if (userFirstName != null)
             {
                 return true;
