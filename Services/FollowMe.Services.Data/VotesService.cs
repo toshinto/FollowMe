@@ -20,15 +20,22 @@ namespace FollowMe.Services.Data
 
         public int GetVotes(string postId)
         {
-            var votes = this.votesRepository.All()
-                .Where(x => x.PostId == postId).Sum(x => (int)x.Type);
+            var votes =
+                this.votesRepository
+                .All()
+                .Where(x => x.PostId == postId)
+                .Sum(x => (int)x.Type);
+
             return votes;
         }
 
         public async Task VoteAsync(string postId, string userId, bool isUpVote)
         {
-            var vote = this.votesRepository.All()
+            var vote =
+                this.votesRepository
+                .All()
                 .FirstOrDefault(x => x.PostId == postId && x.UserId == userId);
+
             if (vote != null)
             {
                 vote.Type = isUpVote ? VoteType.UpVote : VoteType.DownVote;

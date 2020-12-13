@@ -79,7 +79,11 @@ namespace FollowMe.Services.Data
 
         public async Task EditPersonalDetails(EditDetailsViewModel model)
         {
-            var userDetails = this.usersRepository.All().Where(x => x.UserId == model.UserId).FirstOrDefault();
+            var userDetails =
+                this.usersRepository
+                .All()
+                .Where(x => x.UserId == model.UserId)
+                .FirstOrDefault();
 
             userDetails.FirstName = model.FirstName;
             userDetails.LastName = model.LastName;
@@ -99,43 +103,66 @@ namespace FollowMe.Services.Data
 
         public T EditView<T>(string userId)
         {
-            var userDetails = this.usersRepository.All()
-                   .Where(x => x.UserId == userId)
-                   .To<T>().FirstOrDefault();
+            var userDetails =
+                this.usersRepository
+                .All()
+                .Where(x => x.UserId == userId)
+                .To<T>().FirstOrDefault();
+
             return userDetails;
         }
 
         public IEnumerable<T> GetAll<T>()
         {
-            IQueryable<UserCharacteristic> query =
-                this.usersRepository.All().OrderByDescending(x => x.CreatedOn);
-            return query.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
+            var people =
+                this.usersRepository
+                .All()
+                .OrderByDescending(x => x.CreatedOn);
+
+            return people.To<T>().Take(GlobalConstants.CountOfPeopleOnIndexView).ToList();
         }
 
         public IEnumerable<T> GetAllSearch<T>(SearchIndexViewModel model)
         {
-            var people = this.usersRepository.All().Where(x => x.Gender == model.Gender && x.City == model.City && x.WhatAreYouSearchingFor == model.SearchingFor && model.MinimumAge <= DateTime.UtcNow.Year - x.Date.Year && DateTime.UtcNow.Year - x.Date.Year <= model.MaximumAge);
+            var people =
+                this.usersRepository
+                .All()
+                .Where(x => x.Gender == model.Gender && x.City == model.City && x.WhatAreYouSearchingFor == model.SearchingFor && model.MinimumAge <= DateTime.UtcNow.Year - x.Date.Year && DateTime.UtcNow.Year - x.Date.Year <= model.MaximumAge);
+
             return people.To<T>().Take(GlobalConstants.CountOfPeopleOnCategories).ToList();
         }
 
         public T GetByName<T>(string id, string userId)
         {
-            var userDetail = this.usersRepository.All()
+            var userDetail =
+                this.usersRepository
+                .All()
                 .Where(x => x.UserId == id)
                 .To<T>().FirstOrDefault();
+
             return userDetail;
         }
 
         public string GetId(string id)
         {
-            var userId = this.usersRepository.All().Where(x => x.Id == id).Select(x => x.Id).FirstOrDefault();
+            var userId =
+                this.usersRepository
+                .All()
+                .Where(x => x.Id == id)
+                .Select(x => x.Id)
+                .FirstOrDefault();
 
             return userId;
         }
 
         public bool IsUserDetailsPage(string userId, string currentUser)
         {
-            var user = this.usersRepository.All().Where(x => x.UserId == userId).FirstOrDefault();
+            var user =
+                this.usersRepository
+                .All()
+                .Where(x => x.UserId == userId)
+                .FirstOrDefault();
+
             if (user.UserId == currentUser)
             {
                 return true;
