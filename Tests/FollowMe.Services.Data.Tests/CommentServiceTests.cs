@@ -37,9 +37,9 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            Task task = service.CreateAsync("1", "1", "1");
+            await service.CreateAsync("1", "1", "1");
 
-            Assert.True(task.IsCompleted);
+            Assert.Equal(1, comments.Count());
         }
 
         [Fact]
@@ -67,9 +67,9 @@ namespace FollowMe.Services.Data.Tests
                .UseInMemoryDatabase("test");
             var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
-            Task task = service.CreatePhotoCommentAsync("1", "1", "asd", "1");
+            await service.CreatePhotoCommentAsync("1", "1", "asd", "1");
 
-            Assert.True(task.IsCompleted);
+            Assert.Equal(1, comments.Count());
         }
 
         [Fact]
