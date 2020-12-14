@@ -264,5 +264,50 @@ namespace FollowMe.Services.Data.Tests
             Assert.Equal(user.FirstName, usr.FirstName);
             Assert.Equal(user.LastName, usr.LastName);
         }
+
+        [Fact]
+        public void GetAllSearchShouldReturn1Count()
+        {
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
+
+            var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
+
+
+            string dateString = "5/14/1995";
+            DateTime birthday = DateTime.Parse(dateString,
+                          System.Globalization.CultureInfo.InvariantCulture);
+            var user = new UserCharacteristic
+            {
+                Id = "1",
+                UserId = "1",
+                FirstName = "Todor",
+                LastName = "Georgiev",
+                Gender = Gender.Male,
+                City = City.Burgas,
+                WhatAreYouSearchingFor = WhatAreYouSearchingFor.Flirt,
+                Date = birthday,
+            };
+            userChars.Add(user);
+
+            var users = service.GetAllSearch<ProfileViewModel>(new Web.ViewModels.Search.SearchIndexViewModel
+            {
+                City = City.Burgas,
+                Gender = Gender.Male,
+                MinimumAge = 14,
+                MaximumAge = 40,
+                SearchingFor = WhatAreYouSearchingFor.Flirt,
+            });
+
+            Assert.Equal(1, users.Count());
+        }
     }
 }
