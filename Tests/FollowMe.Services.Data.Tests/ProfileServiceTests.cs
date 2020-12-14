@@ -281,7 +281,6 @@ namespace FollowMe.Services.Data.Tests
 
             var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
 
-
             string dateString = "5/14/1995";
             DateTime birthday = DateTime.Parse(dateString,
                           System.Globalization.CultureInfo.InvariantCulture);

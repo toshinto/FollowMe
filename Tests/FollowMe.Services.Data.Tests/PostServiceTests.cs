@@ -280,26 +280,11 @@ namespace FollowMe.Services.Data.Tests
         //    {
         //        Id = "1",
         //        UserId = "1",
-        //        Content = "xaxa",
-        //        Title = "xaxaa",
         //        SentById = "1",
         //    };
-
         //    posts.Add(post);
-        //    var appUser = new ApplicationUser
-        //    {
-        //        Id = "1",
-        //        UserCharacteristics = new UserCharacteristic
-        //        {
-        //            Id = "1",
-        //            FirstName = "Pesho",
-        //            LastName = "Pesho",
-        //        },
-        //    };
-
-        //    appUsers.Add(appUser);
         //    var userFullName = service.GetCreatorOfPostByCommentId("1");
-        //    Assert.Equal("Pesho Pesho", userFullName);
+        //    Assert.Equal("Todor Georgiev", userFullName);
 
         //}
         [Fact]
