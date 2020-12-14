@@ -25,7 +25,7 @@ namespace FollowMe.Services.Data.Tests
         }
 
         //[Fact]
-        //public void GetAllPostsCountShouldWorkCorrectly()
+        //public async Task GetAllPostsCountShouldWorkCorrectly()
         //{
         //    var posts = new List<Post>();
         //    var appUsers = new List<ApplicationUser>();
@@ -39,42 +39,13 @@ namespace FollowMe.Services.Data.Tests
         //    mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
         //    var adminsService = new AdminsService(mockPostRepo.Object, null, null, null, null);
+        //    var postsService = new PostsService(mockAppUser.Object, mockPostRepo.Object);
 
-        //    var user = new ApplicationUser
-        //    {
-        //        Id = "1",
-        //        UserName = "Pesho",
-        //    };
+        //    await postsService.Create("I am not", "1", "1", "Are you crazy");
 
-        //    var secondUser = new ApplicationUser
-        //    {
-        //        Id = "2",
-        //        UserName = "Gosho",
-        //    };
+        //    await postsService.Create("I am not", "1", "1", "Are you badass");
 
-        //    appUsers.Add(user);
-        //    appUsers.Add(secondUser);
-
-        //    var post = new Post
-        //    {
-        //        Id = "1",
-        //        UserId = "1",
-        //        SentById = "1",
-        //        Content = "Xaxa",
-        //    };
-
-        //    var secondPost = new Post
-        //    {
-        //        Id = "2",
-        //        UserId = "2",
-        //        SentById = "2",
-        //        Content = "Xaxa",
-        //    };
-
-        //    posts.Add(post);
-        //    posts.Add(secondPost);
-
-        //    var allPosts = adminsService.GetAllPosts<PostsViewModel>(2, 12);
+        //    var allPosts = adminsService.GetAllPosts<PostsViewModel>(0,0);
 
         //    Assert.Equal(2, allPosts.Count());
 
