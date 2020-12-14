@@ -18,6 +18,10 @@
 
         }
     </div>
+    <hr/>
+    <div class="text text-center">
+        <a class="btn btn-primary" href="/Profiles/Profile?id=@Model.Photos.Select(x => x.UserId).FirstOrDefault()">Back</a>
+    </div>
     <div><input class="invisible" id="userId" name="userId" value="@userId" /></div>
     <div><input class="invisible" id="photoId" name="photoId" value="@Model.Id" /></div>
 </form>
