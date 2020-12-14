@@ -226,7 +226,6 @@ namespace FollowMe.Services.Data.Tests
 
         //    Assert.Equal(1, photos.Count());
         //}
-
         [Fact]
         public async Task GetAllShouldReturnCount2()
         {
@@ -262,6 +261,39 @@ namespace FollowMe.Services.Data.Tests
             var photosCount = service.GetAll<PhotoViewModel>("1");
 
             Assert.Equal(2, photosCount.Count());
+        }
+
+        [Fact]
+        public async Task GetByNameShouldWorkCorrectly()
+        {
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase("test");
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
+            var photo = new Photo
+            {
+                Id = "1",
+                UserId = "1",
+                ImagePath = "Test",
+            };
+
+            photos.Add(photo);
+            var ph = service.GetByName<PhotoViewModel>("1");
+
+            Assert.Equal(photo.ImagePath, ph.ImagePath);
         }
     }
 }

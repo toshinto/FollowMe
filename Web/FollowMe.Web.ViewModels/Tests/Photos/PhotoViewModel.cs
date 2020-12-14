@@ -12,5 +12,7 @@ namespace FollowMe.Web.ViewModels.Tests.Photos
         public string Id { get; set; }
 
         public string UserId { get; set; }
+
+        public string ImagePath { get; set; }
     }
 }
