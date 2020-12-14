@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Data.Models.Enum;
 using Moq;
 using Xunit;
-using FollowMe.Data.Models.Enum;
-using System;
 
 namespace FollowMe.Services.Data.Tests
 {

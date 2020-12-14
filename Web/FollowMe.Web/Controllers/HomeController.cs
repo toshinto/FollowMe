@@ -28,7 +28,7 @@
             }
             var viewModel = new UsersIndexViewModel
             {
-                UserCharacteristics = this.profilesService.GetAll<IndexUserViewModel>(),
+                People = this.profilesService.GetAll<IndexUserViewModel>(),
             };
             return this.View(viewModel);
         }
