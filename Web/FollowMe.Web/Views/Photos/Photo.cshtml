@@ -1,6 +1,9 @@
 ﻿@using System.Globalization;
 @model FollowMe.Web.ViewModels.Photos.AllPhotoViewModel
 <div class="text-sm-center">
+    <div class="text text-left">
+        <a class="btn btn-primary" href="/Photos/All?id=@Model.UserId">Back</a>
+    </div>
     <img src="@Model.ImagePath" id="singlePhoto" />
     <div><input class="invisible" id="photoId" name="photoId" value="@Model.Id" /></div>
 </div>
