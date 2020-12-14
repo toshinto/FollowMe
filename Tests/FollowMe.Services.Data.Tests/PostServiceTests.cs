@@ -396,5 +396,31 @@ namespace FollowMe.Services.Data.Tests
             Assert.Equal(false, result);
 
         }
+
+        [Fact]
+        public async Task PhotoCreateCountShouldBeOne()
+        {
+            var posts = new List<Post>();
+            var appUsers = new List<ApplicationUser>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase("test");
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
+            await service.Create("Text", "1", "1", "Are you crazy>");
+
+            Assert.Equal(1, posts.Count());
+
+        }
     }
 }

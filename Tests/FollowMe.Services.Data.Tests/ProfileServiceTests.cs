@@ -6,6 +6,7 @@ using FollowMe.Data.Models;
 using Moq;
 using Xunit;
 using FollowMe.Data.Models.Enum;
+using System;
 
 namespace FollowMe.Services.Data.Tests
 {

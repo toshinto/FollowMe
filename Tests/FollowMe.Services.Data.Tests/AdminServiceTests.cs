@@ -23,62 +23,62 @@ namespace FollowMe.Services.Data.Tests
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
         }
-        [Fact]
 
-        public void GetAllPostsCountShouldWorkCorrectly()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
+        //[Fact]
+        //public void GetAllPostsCountShouldWorkCorrectly()
+        //{
+        //    var posts = new List<Post>();
+        //    var appUsers = new List<ApplicationUser>();
 
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+        //    var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+        //    mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+        //    mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
 
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+        //    var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+        //    mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+        //    mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
-            var adminsService = new AdminsService(mockPostRepo.Object, null, null, null, null);
+        //    var adminsService = new AdminsService(mockPostRepo.Object, null, null, null, null);
 
-            var user = new ApplicationUser
-            {
-                Id = "1",
-                UserName = "Pesho",
-            };
+        //    var user = new ApplicationUser
+        //    {
+        //        Id = "1",
+        //        UserName = "Pesho",
+        //    };
 
-            var secondUser = new ApplicationUser
-            {
-                Id = "2",
-                UserName = "Gosho",
-            };
+        //    var secondUser = new ApplicationUser
+        //    {
+        //        Id = "2",
+        //        UserName = "Gosho",
+        //    };
 
-            appUsers.Add(user);
-            appUsers.Add(secondUser);
+        //    appUsers.Add(user);
+        //    appUsers.Add(secondUser);
 
-            var post = new Post
-            {
-                Id = "1",
-                UserId = "1",
-                SentById = "1",
-                Content = "Xaxa",
-            };
+        //    var post = new Post
+        //    {
+        //        Id = "1",
+        //        UserId = "1",
+        //        SentById = "1",
+        //        Content = "Xaxa",
+        //    };
 
-            var secondPost = new Post
-            {
-                Id = "2",
-                UserId = "2",
-                SentById = "2",
-                Content = "Xaxa",
-            };
+        //    var secondPost = new Post
+        //    {
+        //        Id = "2",
+        //        UserId = "2",
+        //        SentById = "2",
+        //        Content = "Xaxa",
+        //    };
 
-            posts.Add(post);
-            posts.Add(secondPost);
+        //    posts.Add(post);
+        //    posts.Add(secondPost);
 
-            var allPosts = adminsService.GetAllPosts<PostsViewModel>(2, 12);
+        //    var allPosts = adminsService.GetAllPosts<PostsViewModel>(2, 12);
 
-            Assert.Equal(2, allPosts.Count());
+        //    Assert.Equal(2, allPosts.Count());
 
-        }
+        //}
         [Fact]
         public void GetCountOfUsersShouldWorkCorrectly()
         {

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using FollowMe.Data;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Web.ViewModels.Photos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
@@ -178,5 +180,44 @@ namespace FollowMe.Services.Data.Tests
 
             Assert.Equal(true, result);
         }
+
+        //[Fact]
+        //public async Task CreatePhotoAsyncShouldWorkCorrectly()
+        //{
+        //    var photos = new List<Photo>();
+        //    var appUsers = new List<ApplicationUser>();
+        //    var userChars = new List<UserCharacteristic>();
+
+        //    var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+        //    mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+        //    mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+        //    var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+        //    mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+        //    mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+        //    var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+        //    mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+        //    mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
+
+        //    var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
+
+        //    var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+        //       .UseInMemoryDatabase("test");
+        //    var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
+        //    var photo = new Photo
+        //    {
+        //        Id = "1",
+        //    };
+
+        //    await service.CreateAsync(new CreatePhotoInputModel
+        //    {
+        //        Images = null,
+
+        //    }, "1", "/images/photos/") ;
+
+        //    Assert.Equal(1, photos.Count());
+        //}
     }
 }

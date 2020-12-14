@@ -31,7 +31,6 @@
         //    Assert.Equal(3, service.GetCount());
         //    repository.Verify(x => x.All(), Times.Once);
         //}
-
         [Fact]
         public async Task GetCountShouldReturnCorrectNumberUsingDbContext()
         {
