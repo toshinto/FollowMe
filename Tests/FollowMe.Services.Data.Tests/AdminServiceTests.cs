@@ -10,6 +10,7 @@ using FollowMe.Data.Models;
 using FollowMe.Services.Mapping;
 using FollowMe.Web.ViewModels;
 using FollowMe.Web.ViewModels.Admins;
+using FollowMe.Web.ViewModels.Tests.Admins;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
@@ -73,7 +74,7 @@ namespace FollowMe.Services.Data.Tests
             posts.Add(post);
             posts.Add(secondPost);
 
-            var allPosts = adminsService.GetAllPosts<AdminPostsView>(2, 12);
+            var allPosts = adminsService.GetAllPosts<PostsViewModel>(2, 12);
 
             Assert.Equal(2, allPosts.Count());
 

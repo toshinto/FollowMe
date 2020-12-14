@@ -3,16 +3,25 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
     using FollowMe.Data;
     using FollowMe.Data.Common.Repositories;
     using FollowMe.Data.Models;
+    using FollowMe.Services.Mapping;
+    using FollowMe.Web.ViewModels.Categories;
+    using FollowMe.Web.ViewModels.Chats;
+    using FollowMe.Web.ViewModels.Tests.Messages;
     using Microsoft.EntityFrameworkCore;
     using Moq;
     using Xunit;
 
     public class MessageServiceTesst
     {
+        public MessageServiceTesst()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(ChatViewModel).GetTypeInfo().Assembly);
+        }
         [Fact]
         public async Task DeleteFiftteenthCommentShouldWorkCorrectly()
         {
@@ -55,9 +64,46 @@
             messages.Add(thirdMessage);
             messages.Add(secondMessage);
             messages.Add(message);
-            await service.DeleteFifteenthCommnet();
-            Assert.Equal(2, messages.Count());
+            var success = service.DeleteFifteenthCommnet();
+            Assert.True(success.IsCompleted);
 
+        }
+
+        [Fact]
+        public async Task CreateMessageAsyncShouldWorkCorrectly()
+        {
+            var messages = new List<Message>();
+
+            var mockMessRepo = new Mock<IRepository<Message>>();
+
+            mockMessRepo.Setup(x => x.All()).Returns(messages.AsQueryable());
+            mockMessRepo.Setup(x => x.AddAsync(It.IsAny<Message>())).Callback((Message message) => messages.Add(message));
+
+            var service = new MessagesService(mockMessRepo.Object);
+
+            await service.CreateMessageAsync("Toshko@abv.bg", "1", "I am a developer");
+
+            Assert.Equal(1, messages.Count());
+        }
+
+        [Fact]
+        public async Task GetAllMessagesCountShouldBe2()
+        {
+            var messages = new List<Message>();
+
+            var mockMessRepo = new Mock<IRepository<Message>>();
+
+            mockMessRepo.Setup(x => x.All()).Returns(messages.AsQueryable());
+            mockMessRepo.Setup(x => x.AddAsync(It.IsAny<Message>())).Callback((Message message) => messages.Add(message));
+
+            var service = new MessagesService(mockMessRepo.Object);
+
+            await service.CreateMessageAsync("Toshko@abv.bg", "1", "I am a developer");
+            await service.CreateMessageAsync("Toshkoo@abv.bg", "2", "I am a dancer");
+
+            var messageCount = service.GetAll<MessageViewModel>();
+
+            Assert.Equal(2, messageCount.Count());
         }
     }
 }
