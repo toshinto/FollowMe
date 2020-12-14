@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 using FollowMe.Data;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Services.Mapping;
 using FollowMe.Web.ViewModels.Photos;
+using FollowMe.Web.ViewModels.Tests.Photos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -17,6 +20,10 @@ namespace FollowMe.Services.Data.Tests
 {
     public class PhotoServiceTests
     {
+        public PhotoServiceTests()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(PhotoViewModel).GetTypeInfo().Assembly);
+        }
         [Fact]
         public async Task DeletePhotoAsyncShouldWorkCorrectly()
         {
@@ -219,5 +226,42 @@ namespace FollowMe.Services.Data.Tests
 
         //    Assert.Equal(1, photos.Count());
         //}
+
+        [Fact]
+        public async Task GetAllShouldReturnCount2()
+        {
+            var photos = new List<Photo>();
+            var appUsers = new List<ApplicationUser>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
+
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
+               .UseInMemoryDatabase("test");
+            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+
+            var photo = new Photo
+            {
+                Id = "1",
+                UserId = "1",
+            };
+            var secondPhoto = new Photo
+            {
+                Id = "2",
+                UserId = "1",
+            };
+            photos.Add(photo);
+            photos.Add(secondPhoto);
+            var photosCount = service.GetAll<PhotoViewModel>("1");
+
+            Assert.Equal(2, photosCount.Count());
+        }
     }
 }
