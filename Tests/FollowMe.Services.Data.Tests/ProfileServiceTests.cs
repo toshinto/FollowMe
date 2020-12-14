@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
 using FollowMe.Data.Models.Enum;
+using FollowMe.Services.Mapping;
+using FollowMe.Web.ViewModels.Tests.Profile;
 using Moq;
 using Xunit;
 
@@ -13,6 +16,10 @@ namespace FollowMe.Services.Data.Tests
 {
     public class ProfileServiceTests
     {
+        public ProfileServiceTests()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(ProfileViewModel).GetTypeInfo().Assembly);
+        }
         [Fact]
         public async Task EditPersonalDetailsShouldWorkCorrectly()
         {
@@ -162,6 +169,100 @@ namespace FollowMe.Services.Data.Tests
 
             bool result = service.IsUserDetailsPage("1", "2");
             Assert.Equal(false, result);
+        }
+
+        [Fact]
+        public void GetAllShouldReturnCount2()
+        {
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
+
+            var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
+
+            var user = new UserCharacteristic
+            {
+                Id = "1",
+                UserId = "1",
+            };
+            var secondUser = new UserCharacteristic
+            {
+                Id = "1",
+                UserId = "2",
+            };
+
+            userChars.Add(user);
+            userChars.Add(secondUser);
+
+            var users = service.GetAll<ProfileViewModel>();
+            Assert.Equal(2, users.Count());
+        }
+
+        [Fact]
+        public void GetByNameShouldWorkCorrectly()
+        {
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
+
+            var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
+
+            var user = new UserCharacteristic
+            {
+                Id = "1",
+                UserId = "1",
+                FirstName = "Todor",
+                LastName = "Georgiev",
+            };
+            userChars.Add(user);
+
+            var usr = service.GetByName<ProfileViewModel>("1", "1");
+            Assert.Equal(user.FirstName, usr.FirstName);
+            Assert.Equal(user.LastName, usr.LastName);
+        }
+
+        [Fact]
+        public void EditViewShouldWorkCorrectly()
+        {
+            var photos = new List<Photo>();
+            var userChars = new List<UserCharacteristic>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+            mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+            mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
+
+            var service = new ProfilesService(mockUserChar.Object, mockPhoto.Object);
+
+            var user = new UserCharacteristic
+            {
+                Id = "1",
+                UserId = "1",
+                FirstName = "Todor",
+                LastName = "Georgiev",
+            };
+            userChars.Add(user);
+
+            var usr = service.EditView<ProfileViewModel>("1");
+            Assert.Equal(user.FirstName, usr.FirstName);
+            Assert.Equal(user.LastName, usr.LastName);
         }
     }
 }
