@@ -10,6 +10,7 @@
         "dependencies": {
           "FollowMe.Data": "1.0.0",
           "FollowMe.Services.Data": "1.0.0",
+          "FollowMe.Web.ViewModels": "1.0.0",
           "Microsoft.EntityFrameworkCore.InMemory": "3.1.9",
           "Microsoft.NET.Test.Sdk": "16.7.1",
           "Moq": "4.14.7",

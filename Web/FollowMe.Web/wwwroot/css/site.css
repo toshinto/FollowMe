@@ -11,7 +11,9 @@ a.navbar-brand {
     width:800px;
 }
 .comment {
-    background-color: #24b9b7;
+    background-color: white;
+    border-style: solid;
+    border-color: #AAC9FF;
 }
 .commentPhoto {
     background-color: #AAC9FF;

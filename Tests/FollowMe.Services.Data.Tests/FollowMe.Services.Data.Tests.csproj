@@ -29,6 +29,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\FollowMe.Data\FollowMe.Data.csproj" />
     <ProjectReference Include="..\..\Services\FollowMe.Services.Data\FollowMe.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Web\FollowMe.Web.ViewModels\FollowMe.Web.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

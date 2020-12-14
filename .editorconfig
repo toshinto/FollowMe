@@ -53,3 +53,6 @@ dotnet_diagnostic.SA1508.severity = silent
 
 # CS1998: Async method lacks 'await' operators and will run synchronously
 dotnet_diagnostic.CS1998.severity = silent
+
+# AD0001: Analyzer Failure
+dotnet_diagnostic.AD0001.severity = silent

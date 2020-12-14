@@ -8757,6 +8757,7 @@
     ".NETCoreApp,Version=v3.1": [
       "FollowMe.Data >= 1.0.0",
       "FollowMe.Services.Data >= 1.0.0",
+      "FollowMe.Web.ViewModels >= 1.0.0",
       "Microsoft.EntityFrameworkCore.InMemory >= 3.1.9",
       "Microsoft.NET.Test.Sdk >= 16.7.1",
       "Moq >= 4.14.7",
@@ -8801,6 +8802,9 @@
             },
             "D:\\FollowMe\\FollowMe\\Services\\FollowMe.Services.Data\\FollowMe.Services.Data.csproj": {
               "projectPath": "D:\\FollowMe\\FollowMe\\Services\\FollowMe.Services.Data\\FollowMe.Services.Data.csproj"
+            },
+            "D:\\FollowMe\\FollowMe\\Web\\FollowMe.Web.ViewModels\\FollowMe.Web.ViewModels.csproj": {
+              "projectPath": "D:\\FollowMe\\FollowMe\\Web\\FollowMe.Web.ViewModels\\FollowMe.Web.ViewModels.csproj"
             }
           }
         }

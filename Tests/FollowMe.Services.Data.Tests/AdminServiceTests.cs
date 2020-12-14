@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using FollowMe.Data;
 using FollowMe.Data.Common.Repositories;
 using FollowMe.Data.Models;
+using FollowMe.Services.Mapping;
+using FollowMe.Web.ViewModels;
+using FollowMe.Web.ViewModels.Admins;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 using Xunit;
@@ -14,6 +18,66 @@ namespace FollowMe.Services.Data.Tests
 {
     public class AdminServiceTests
     {
+        public AdminServiceTests()
+        {
+            AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
+        }
+        [Fact]
+
+        public void GetAllPostsCountShouldWorkCorrectly()
+        {
+            var posts = new List<Post>();
+            var appUsers = new List<ApplicationUser>();
+
+            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var adminsService = new AdminsService(mockPostRepo.Object, null, null, null, null);
+
+            var user = new ApplicationUser
+            {
+                Id = "1",
+                UserName = "Pesho",
+            };
+
+            var secondUser = new ApplicationUser
+            {
+                Id = "2",
+                UserName = "Gosho",
+            };
+
+            appUsers.Add(user);
+            appUsers.Add(secondUser);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                SentById = "1",
+                Content = "Xaxa",
+            };
+
+            var secondPost = new Post
+            {
+                Id = "2",
+                UserId = "2",
+                SentById = "2",
+                Content = "Xaxa",
+            };
+
+            posts.Add(post);
+            posts.Add(secondPost);
+
+            var allPosts = adminsService.GetAllPosts<AdminPostsView>(2, 12);
+
+            Assert.Equal(2, allPosts.Count());
+
+        }
         [Fact]
         public void GetCountOfUsersShouldWorkCorrectly()
         {
