@@ -47,9 +47,10 @@ namespace FollowMe.Services.Data.Tests
             userChars.Add(user);
             userChars.Add(secondUser);
 
+            var expectedResult = 2;
             var randomPeople = categoryService.GetRandom<CategoryViewModel>();
 
-            Assert.Equal(2, randomPeople.Count());
+            Assert.Equal(expectedResult, randomPeople.Count());
         }
 
         [Fact]
@@ -77,9 +78,10 @@ namespace FollowMe.Services.Data.Tests
             userChars.Add(user);
             userChars.Add(secondUser);
 
+            var expectedResult = 2;
             var birthdayPeople = categoryService.GetBirhtdaysPeople<CategoryViewModel>();
 
-            Assert.Equal(2, birthdayPeople.Count());
+            Assert.Equal(expectedResult, birthdayPeople.Count());
         }
 
         //[Fact]
