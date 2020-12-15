@@ -39,7 +39,7 @@
                 Id = 1,
                 UserName = "Pesho",
                 UserId = "1",
-                Text = "Xaxaax",
+                Text = "Test",
                 When = DateTime.UtcNow,
             };
 
@@ -48,7 +48,7 @@
                 Id = 2,
                 UserName = "Gosho",
                 UserId = "2",
-                Text = "Xaxax",
+                Text = "Test",
                 When = DateTime.UtcNow,
             };
 
@@ -57,7 +57,7 @@
                 Id = 3,
                 UserName = "Nikola",
                 UserId = "3",
-                Text = "Xaxax",
+                Text = "Test",
                 When = DateTime.UtcNow,
             };
 
@@ -82,8 +82,8 @@
             var service = new MessagesService(mockMessRepo.Object);
 
             await service.CreateMessageAsync("Toshko@abv.bg", "1", "I am a developer");
-
-            Assert.Equal(1, messages.Count());
+            var expectedResult = 1;
+            Assert.Equal(expectedResult, messages.Count());
         }
 
         [Fact]
@@ -103,7 +103,8 @@
 
             var messageCount = service.GetAll<MessageViewModel>();
 
-            Assert.Equal(2, messageCount.Count());
+            var expectedResult = 2;
+            Assert.Equal(expectedResult, messageCount.Count());
         }
     }
 }

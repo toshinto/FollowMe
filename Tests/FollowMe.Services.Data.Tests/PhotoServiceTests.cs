@@ -28,21 +28,12 @@ namespace FollowMe.Services.Data.Tests
         public async Task DeletePhotoAsyncShouldWorkCorrectly()
         {
             var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
             mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
             mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new PhotosService(mockPhoto.Object, null);
 
             var photo = new Photo
             {
@@ -56,24 +47,37 @@ namespace FollowMe.Services.Data.Tests
         }
 
         [Fact]
-        public void GetUserByPhotoIdShouldWorkCorrectly()
+        public async Task DeletePhotoAsyncShouldReturnFalse()
         {
             var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
             mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
             mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+            var service = new PhotosService(mockPhoto.Object, null);
 
-            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
+            var photo = new Photo
+            {
+                Id = "1",
+                UserId = "1",
+            };
+            photos.Add(photo);
+            Task result = service.DeleteAsync("1", "2");
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            Assert.False(result.IsFaulted);
+        }
+
+        [Fact]
+        public void GetUserByPhotoIdShouldWorkCorrectly()
+        {
+            var photos = new List<Photo>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var service = new PhotosService(mockPhoto.Object, null);
 
             var photo = new Photo
             {
@@ -83,7 +87,8 @@ namespace FollowMe.Services.Data.Tests
             photos.Add(photo);
             var userId = service.GetUserByPhotoId("1");
 
-            Assert.Equal("1", userId);
+            var expectedOutput = "1";
+            Assert.Equal(expectedOutput, userId);
         }
 
         [Fact]
@@ -106,10 +111,6 @@ namespace FollowMe.Services.Data.Tests
             mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
 
             var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
 
             var photo = new Photo
             {
@@ -158,10 +159,6 @@ namespace FollowMe.Services.Data.Tests
 
             var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
             var photo = new Photo
             {
                 Id = "1",
@@ -186,6 +183,59 @@ namespace FollowMe.Services.Data.Tests
             var result = service.GetFirstNameById("1");
 
             Assert.Equal(true, result);
+        }
+
+        [Fact]
+        public async Task GetAllShouldReturnCount2()
+        {
+            var photos = new List<Photo>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var service = new PhotosService(mockPhoto.Object, null);
+
+            var photo = new Photo
+            {
+                Id = "1",
+                UserId = "1",
+            };
+            var secondPhoto = new Photo
+            {
+                Id = "2",
+                UserId = "1",
+            };
+            photos.Add(photo);
+            photos.Add(secondPhoto);
+            var photosCount = service.GetAll<PhotoViewModel>("1");
+
+            var expectedResult = 2;
+            Assert.Equal(expectedResult, photosCount.Count());
+        }
+
+        [Fact]
+        public async Task GetByNameShouldWorkCorrectly()
+        {
+            var photos = new List<Photo>();
+
+            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+            var service = new PhotosService(mockPhoto.Object, null);
+
+            var photo = new Photo
+            {
+                Id = "1",
+                UserId = "1",
+                ImagePath = "Test",
+            };
+
+            photos.Add(photo);
+            var ph = service.GetByName<PhotoViewModel>("1");
+
+            Assert.Equal(photo.ImagePath, ph.ImagePath);
         }
 
         //[Fact]
@@ -226,74 +276,5 @@ namespace FollowMe.Services.Data.Tests
 
         //    Assert.Equal(1, photos.Count());
         //}
-        [Fact]
-        public async Task GetAllShouldReturnCount2()
-        {
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var photo = new Photo
-            {
-                Id = "1",
-                UserId = "1",
-            };
-            var secondPhoto = new Photo
-            {
-                Id = "2",
-                UserId = "1",
-            };
-            photos.Add(photo);
-            photos.Add(secondPhoto);
-            var photosCount = service.GetAll<PhotoViewModel>("1");
-
-            Assert.Equal(2, photosCount.Count());
-        }
-
-        [Fact]
-        public async Task GetByNameShouldWorkCorrectly()
-        {
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PhotosService(mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var photo = new Photo
-            {
-                Id = "1",
-                UserId = "1",
-                ImagePath = "Test",
-            };
-
-            photos.Add(photo);
-            var ph = service.GetByName<PhotoViewModel>("1");
-
-            Assert.Equal(photo.ImagePath, ph.ImagePath);
-        }
     }
 }
