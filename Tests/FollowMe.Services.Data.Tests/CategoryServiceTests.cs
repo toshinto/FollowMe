@@ -27,20 +27,10 @@ namespace FollowMe.Services.Data.Tests
         public void GetRandomPeopleCountShouldWorkCorrectly()
         {
             var userChars = new List<UserCharacteristic>();
-            var appUsers = new List<ApplicationUser>();
-            var photos = new List<Photo>();
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
             mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
             mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var categoryService = new CategoriesService(mockUserChar.Object);
 
@@ -66,20 +56,10 @@ namespace FollowMe.Services.Data.Tests
         public void GetBirthDaysPeopleCountShouldWorkCorrectly()
         {
             var userChars = new List<UserCharacteristic>();
-            var appUsers = new List<ApplicationUser>();
-            var photos = new List<Photo>();
 
             var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
             mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
             mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
 
             var categoryService = new CategoriesService(mockUserChar.Object);
 

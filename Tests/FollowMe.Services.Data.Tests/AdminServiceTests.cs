@@ -41,9 +41,10 @@ namespace FollowMe.Services.Data.Tests
             };
             userChars.Add(user);
 
+            var expectedResult = 1;
             var result = service.GetCountOfUsers();
 
-            Assert.Equal(1, result);
+            Assert.Equal(expectedResult, result);
 
         }
 
