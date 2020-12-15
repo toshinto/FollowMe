@@ -392,26 +392,12 @@ namespace FollowMe.Services.Data.Tests
         public void IsUserCreatorOfCommentShouldReturnFalse()
         {
             var comments = new List<Comment>();
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
             mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new CommentsService(mockCommentRepo.Object, mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
 
             var comment = new Comment
             {
@@ -419,7 +405,7 @@ namespace FollowMe.Services.Data.Tests
                 UserId = "1",
                 SentById = "1",
                 PhotoId = "1",
-                Content = "Xaxaxa",
+                Content = "Are you crazy?",
                 PostId = "1",
             };
             comments.Add(comment);
@@ -432,26 +418,12 @@ namespace FollowMe.Services.Data.Tests
         public void IsUserCreatorOfPhotoCommentShouldReturnTrue()
         {
             var comments = new List<Comment>();
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
             mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new CommentsService(mockCommentRepo.Object, mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
 
             var comment = new Comment
             {
@@ -459,7 +431,7 @@ namespace FollowMe.Services.Data.Tests
                 UserId = "1",
                 SentById = "1",
                 PhotoId = "1",
-                Content = "Xaxaxa",
+                Content = "Are you crazy?",
                 PostId = "1",
             };
             comments.Add(comment);
@@ -472,26 +444,12 @@ namespace FollowMe.Services.Data.Tests
         public void IsUserCreatorOfPhotoCommentShouldReturnFalse()
         {
             var comments = new List<Comment>();
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
             mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new CommentsService(mockCommentRepo.Object, mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
 
             var comment = new Comment
             {
@@ -499,7 +457,7 @@ namespace FollowMe.Services.Data.Tests
                 UserId = "1",
                 SentById = "1",
                 PhotoId = "1",
-                Content = "Xaxaxa",
+                Content = "Are you crazy?",
                 PostId = "1",
             };
             comments.Add(comment);
@@ -512,32 +470,18 @@ namespace FollowMe.Services.Data.Tests
         public async Task GetByUserIdShouldReturnCount2()
         {
             var comments = new List<Comment>();
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
             mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new CommentsService(mockCommentRepo.Object, mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
 
             var comment = new Comment
             {
                 Id = "1",
                 PhotoId = "1",
-                Content = "test",
+                Content = "Test",
             };
             var secondComment = new Comment
             {
@@ -550,39 +494,26 @@ namespace FollowMe.Services.Data.Tests
             comments.Add(secondComment);
             var countOfCommentsByUser = service.GetByUserId<CommentViewModel>("1");
 
-            Assert.Equal(2, countOfCommentsByUser.Count());
+            var expectedResult = 2;
+            Assert.Equal(expectedResult, countOfCommentsByUser.Count());
         }
 
         [Fact]
         public async Task EditViewShouldWorkCorrectly()
         {
             var comments = new List<Comment>();
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
             mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new CommentsService(mockCommentRepo.Object, mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
 
             var comment = new Comment
             {
                 Id = "1",
                 PhotoId = "1",
-                Content = "test",
+                Content = "Test",
             };
 
             comments.Add(comment);
@@ -596,32 +527,18 @@ namespace FollowMe.Services.Data.Tests
         public async Task EditPhotoCommentViewShouldWorkCorrectly()
         {
             var comments = new List<Comment>();
-            var photos = new List<Photo>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
             mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
             mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
 
-            var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
-            mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
-            mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new CommentsService(mockCommentRepo.Object, mockPhoto.Object, mockAppUser.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
 
             var comment = new Comment
             {
                 Id = "1",
                 PhotoId = "1",
-                Content = "test",
+                Content = "Test",
             };
 
             comments.Add(comment);
