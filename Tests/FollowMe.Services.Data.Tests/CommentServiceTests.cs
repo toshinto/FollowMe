@@ -115,6 +115,28 @@ namespace FollowMe.Services.Data.Tests
         }
 
         [Fact]
+        public async Task DeleteShouldReturnFalse()
+        {
+            var comments = new List<Comment>();
+
+            var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
+
+            var service = new CommentsService(mockCommentRepo.Object, null, null);
+
+            var commentToDelete = new Comment
+            {
+                Id = "1",
+                UserId = "1",
+            };
+            comments.Add(commentToDelete);
+            Task result = service.DeleteAsync("2", "1");
+
+            Assert.True(!result.IsCompletedSuccessfully);
+        }
+
+        [Fact]
         public async Task DeletePhotoCommentShouldReturnTrue()
         {
             var comments = new List<Comment>();
@@ -169,6 +191,34 @@ namespace FollowMe.Services.Data.Tests
             Task result = service.DeletePhotoCommentAsync("2", "1");
 
             Assert.True(result.IsFaulted);
+        }
+
+        [Fact]
+        public async Task DeletePhotoCommentShouldNotDelete()
+        {
+            var comments = new List<Comment>();
+            var appUsers = new List<ApplicationUser>();
+
+            var mockCommentRepo = new Mock<IDeletableEntityRepository<Comment>>();
+            mockCommentRepo.Setup(x => x.All()).Returns(comments.AsQueryable());
+            mockCommentRepo.Setup(x => x.AddAsync(It.IsAny<Comment>())).Callback((Comment comm) => comments.Add(comm));
+
+            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+            var service = new CommentsService(mockCommentRepo.Object, null, mockAppUser.Object);
+
+            var commentToDelete = new Comment
+            {
+                Id = "1",
+                UserId = "1",
+                SentById = "1",
+            };
+            comments.Add(commentToDelete);
+            Task result = service.DeletePhotoCommentAsync("2", "1");
+
+            Assert.True(!result.IsCompletedSuccessfully);
         }
 
         [Fact]

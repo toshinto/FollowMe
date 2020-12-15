@@ -10,7 +10,7 @@
 </div>
 @foreach (var message in Model.Messages.OrderBy(m => m.When))
 {
-    var mes = message.UserUserCharacteristicsFullName + " " + (message.Text) + " " + message.When;
+    var mes = message.UserUserCharacteristicsFullName + " " + "said" + " " + (message.Text) + " " + "on" +  " " +  message.When;
     @mes
 
     <hr />
