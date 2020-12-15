@@ -37,5 +37,14 @@
         public const string DescriptionMinLength = "Description must be at least 3 characters long.";
 
         public const string DescriptionMaxLength = "Description must be between 3 and 100 characters long.";
+
+        public const string MinimumAge = "Minimum age is 14";
+
+        public const string MaximumAge = "Maximum age is 104";
+
+        public const string MinimumAgeIsRequired = "Minimum age is required";
+
+        public const string MaximumAgeIsRequired = "Maximum age is required";
+
     }
 }
