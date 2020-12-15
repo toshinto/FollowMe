@@ -25,8 +25,11 @@
             await service.VoteAsync("1", "1", false);
             await service.VoteAsync("1", "1", true);
 
-            Assert.Equal(1, votes.Count);
-            Assert.Equal("UpVote", votes.First().Type.ToString());
+            var expectedResult = 1;
+            var expectedOutput = "UpVote";
+
+            Assert.Equal(expectedResult, votes.Count);
+            Assert.Equal(expectedOutput, votes.First().Type.ToString());
         }
         [Fact]
 
@@ -46,7 +49,8 @@
 
             var sum = service.GetVotes("1");
 
-            Assert.Equal(2, sum);
+            var expectedResult = 2;
+            Assert.Equal(expectedResult, sum);
         }
     }
 }
