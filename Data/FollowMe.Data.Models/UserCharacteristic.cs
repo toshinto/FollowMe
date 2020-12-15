@@ -20,8 +20,6 @@ namespace FollowMe.Data.Models
 
         public Photo Photo { get; set; }
 
-        public string CoverImageUrl { get; set; }
-
         [MaxLength(10)]
         public string FirstName { get; set; }
 
@@ -54,6 +52,5 @@ namespace FollowMe.Data.Models
         [Required]
         public string Description { get; set; }
 
-        public int Age => DateTime.UtcNow.Year - Date.Year;
     }
 }

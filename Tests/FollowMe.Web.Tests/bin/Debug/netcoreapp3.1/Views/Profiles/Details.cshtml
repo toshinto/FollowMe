@@ -38,27 +38,27 @@
                 </div>
                 <div>
                     <label asp-for="@Model.EyeColor">Choose your eyes color</label>
-                    <select asp-for="EyeColor" asp-items="Html.GetEnumSelectList<EyesColor>()"></select>
+                    <select class="form-control" asp-for="EyeColor" asp-items="Html.GetEnumSelectList<EyesColor>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.Gender">Choose your gender</label>
-                    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                    <select class="form-control" asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.HairColor">Choose your hair color</label>
-                    <select asp-for="HairColor" asp-items="Html.GetEnumSelectList<HairColor>()"></select>
+                    <select class="form-control" asp-for="HairColor" asp-items="Html.GetEnumSelectList<HairColor>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.WeddingStatus">Choose your wedding status</label>
-                    <select asp-for="WeddingStatus" asp-items="Html.GetEnumSelectList<WeddingStatus>()"></select>
+                    <select class="form-control" asp-for="WeddingStatus" asp-items="Html.GetEnumSelectList<WeddingStatus>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.WhatAreYouSearchingFor">Choose what are you searching for</label>
-                    <select asp-for="WhatAreYouSearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
+                    <select class="form-control" asp-for="WhatAreYouSearchingFor" asp-items="Html.GetEnumSelectList<WhatAreYouSearchingFor>()"></select>
                 </div>
                 <div>
                     <label asp-for="@Model.City">Choose your city</label>
-                    <select asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
+                    <select class="form-control" asp-for="City" asp-items="Html.GetEnumSelectList<City>()"></select>
                 </div>
                 <div class="form-group">
                     <label asp-for="Image">Select your profile picture, allowed extensions are jpg, png and gif</label>
