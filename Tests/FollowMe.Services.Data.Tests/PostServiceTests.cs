@@ -24,21 +24,12 @@ namespace FollowMe.Services.Data.Tests
         public async Task DeletePostAsyncShouldWorkCorrectly()
         {
             var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
             mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
             mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new PostsService(null, mockPostRepo.Object);
 
             var post = new Post
             {
@@ -52,31 +43,44 @@ namespace FollowMe.Services.Data.Tests
         }
 
         [Fact]
-        public async Task EditPostAsyncShouldWorkCorrectly()
+        public async Task DeletePostAsyncShouldReturnFalse()
         {
             var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
             mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
             mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
 
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            var service = new PostsService(null, mockPostRepo.Object);
 
             var post = new Post
             {
                 Id = "1",
                 UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
+            };
+            posts.Add(post);
+            Task result = service.Delete("1", "2");
+
+            Assert.False(result.IsFaulted);
+        }
+
+        [Fact]
+        public async Task EditPostAsyncShouldWorkCorrectly()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+                Title = "Test",
                 SentById = "1",
             };
             posts.Add(post);
@@ -84,6 +88,31 @@ namespace FollowMe.Services.Data.Tests
 
             Assert.Equal("newContent", post.Content);
             Assert.Equal("newTitle", post.Title);
+        }
+
+        [Fact]
+        public async Task EditPostAsyncShouldReturnFalse()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+                Title = "Test",
+                SentById = "2",
+            };
+            posts.Add(post);
+            Task result = service.EditPost("1", "newContent", "newTitle", "1");
+
+            Assert.False(result.IsFaulted);
         }
 
         [Fact]
@@ -102,16 +131,12 @@ namespace FollowMe.Services.Data.Tests
 
             var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
             var post = new Post
             {
                 Id = "1",
                 UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
+                Content = "Test",
+                Title = "Test",
                 SentById = "1",
             };
             posts.Add(post);
@@ -126,7 +151,9 @@ namespace FollowMe.Services.Data.Tests
             appUsers.Add(appUser);
 
             var userName = service.GetNameById("1");
-            Assert.Equal("Pesho", appUser.UserCharacteristics.FirstName);
+
+            var expectedOutput = "Pesho";
+            Assert.Equal(expectedOutput, appUser.UserCharacteristics.FirstName);
 
         }
 
@@ -146,16 +173,12 @@ namespace FollowMe.Services.Data.Tests
 
             var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
             var post = new Post
             {
                 Id = "1",
                 UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
+                Content = "Test",
+                Title = "Test",
                 SentById = "1",
             };
             posts.Add(post);
@@ -190,16 +213,12 @@ namespace FollowMe.Services.Data.Tests
 
             var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
             var post = new Post
             {
                 Id = "1",
                 UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
+                Content = "Test",
+                Title = "Test",
                 SentById = "1",
             };
             posts.Add(post);
@@ -226,6 +245,108 @@ namespace FollowMe.Services.Data.Tests
         public void GetPostByIdShouldWorkCorrectly()
         {
             var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+                Title = "Test",
+                SentById = "1",
+            };
+            posts.Add(post);
+            var postId = service.GetPostById("1");
+            var expectedOutput = "1";
+            Assert.Equal(expectedOutput, postId);
+
+        }
+
+        [Fact]
+        public void GetUserByPostIdShouldWorkCorrectly()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+                Title = "Test",
+                SentById = "1",
+            };
+            posts.Add(post);
+            var userId = service.GetPostById("1");
+            var expectedOutput = "1";
+            Assert.Equal(expectedOutput, userId);
+
+        }
+
+        [Fact]
+        public void IsUserCreatorOfPostShouldReturnTrue()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+                Title = "Test",
+                SentById = "1",
+            };
+            posts.Add(post);
+            var result = service.IsUserCreatorOfPost("1", "1");
+            Assert.Equal(true, result);
+
+        }
+
+        [Fact]
+        public void IsUserCreatorOfPostShouldReturnFalse()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+                Title = "Test",
+                SentById = "2",
+            };
+            posts.Add(post);
+            var result = service.IsUserCreatorOfPost("1", "1");
+            Assert.Equal(false, result);
+
+        }
+
+        [Fact]
+        public async Task PhotoCreateCountShouldBeOne()
+        {
+            var posts = new List<Post>();
             var appUsers = new List<ApplicationUser>();
 
             var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
@@ -238,21 +359,66 @@ namespace FollowMe.Services.Data.Tests
 
             var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
 
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
+            await service.Create("Text", "1", "1", "Are you crazy?");
+
+            var expectedResult = 1;
+            Assert.Equal(expectedResult, posts.Count());
+
+        }
+
+        [Fact]
+        public async Task GetByUserIdShouldReturnCount2()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
 
             var post = new Post
             {
                 Id = "1",
                 UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
-                SentById = "1",
+            };
+            var secondPost = new Post
+            {
+                Id = "2",
+                UserId = "1",
             };
             posts.Add(post);
-            var postId = service.GetPostById("1");
-            Assert.Equal("1", postId);
+            posts.Add(secondPost);
+
+            var postsCount = service.GetByUserId<PostsViewModel>("1");
+            var expectedResult = 2;
+            Assert.Equal(expectedResult, postsCount.Count());
+
+        }
+
+        [Fact]
+        public async Task EditPostViewShouldWorkCorrectly()
+        {
+            var posts = new List<Post>();
+
+            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
+            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
+            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
+
+            var service = new PostsService(null, mockPostRepo.Object);
+
+            var post = new Post
+            {
+                Id = "1",
+                UserId = "1",
+                Content = "Test",
+            };
+
+            posts.Add(post);
+
+            var ps = service.EditView<PostsViewModel>("1");
+
+            Assert.Equal(post.Content, ps.Content);
 
         }
 
@@ -287,206 +453,5 @@ namespace FollowMe.Services.Data.Tests
         //    Assert.Equal("Todor Georgiev", userFullName);
 
         //}
-        [Fact]
-        public void GetUserByPostIdShouldWorkCorrectly()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var post = new Post
-            {
-                Id = "1",
-                UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
-                SentById = "1",
-            };
-            posts.Add(post);
-            var userId = service.GetPostById("1");
-            Assert.Equal("1", userId);
-
-        }
-
-        [Fact]
-        public void IsUserCreatorOfPostShouldReturnTrue()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var post = new Post
-            {
-                Id = "1",
-                UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
-                SentById = "1",
-            };
-            posts.Add(post);
-            var result = service.IsUserCreatorOfPost("1", "1");
-            Assert.Equal(true, result);
-
-        }
-
-        [Fact]
-        public void IsUserCreatorOfPostShouldReturnFalse()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var post = new Post
-            {
-                Id = "1",
-                UserId = "1",
-                Content = "xaxa",
-                Title = "xaxaa",
-                SentById = "2",
-            };
-            posts.Add(post);
-            var result = service.IsUserCreatorOfPost("1", "1");
-            Assert.Equal(false, result);
-
-        }
-
-        [Fact]
-        public async Task PhotoCreateCountShouldBeOne()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            await service.Create("Text", "1", "1", "Are you crazy>");
-
-            Assert.Equal(1, posts.Count());
-
-        }
-
-        [Fact]
-        public async Task GetByUserIdShouldReturnCount2()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var post = new Post
-            {
-                Id = "1",
-                UserId = "1",
-            };
-            var secondPost = new Post
-            {
-                Id = "2",
-                UserId = "1",
-            };
-            posts.Add(post);
-            posts.Add(secondPost);
-
-            var postsCount = service.GetByUserId<PostsViewModel>("1");
-
-            Assert.Equal(2, postsCount.Count());
-
-        }
-
-        [Fact]
-        public async Task EditPostViewShouldWorkCorrectly()
-        {
-            var posts = new List<Post>();
-            var appUsers = new List<ApplicationUser>();
-
-            var mockPostRepo = new Mock<IDeletableEntityRepository<Post>>();
-            mockPostRepo.Setup(x => x.All()).Returns(posts.AsQueryable());
-            mockPostRepo.Setup(x => x.AddAsync(It.IsAny<Post>())).Callback((Post post) => posts.Add(post));
-
-            var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
-            mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
-            mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
-
-            var service = new PostsService(mockAppUser.Object, mockPostRepo.Object);
-
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
-               .UseInMemoryDatabase("test");
-            var dbContext = new ApplicationDbContext(optionsBuilder.Options);
-
-            var post = new Post
-            {
-                Id = "1",
-                UserId = "1",
-                Content = "Test",
-            };
-
-            posts.Add(post);
-
-            var ps = service.EditView<PostsViewModel>("1");
-
-            Assert.Equal(post.Content, ps.Content);
-
-        }
     }
 }
