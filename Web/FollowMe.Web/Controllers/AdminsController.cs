@@ -24,21 +24,23 @@ namespace FollowMe.Web.Controllers
             this.roleManager = roleManager;
             this.adminsService = adminsService;
         }
-        [Authorize]
-        public async Task<IActionResult> AddUserToAdmin()
-        {
-            if (!await this.roleManager.RoleExistsAsync("Admin"))
-            {
-                await this.roleManager.CreateAsync(new ApplicationRole
-                {
-                    Name = "Admin",
-                });
-            }
 
-            var user = await this.userManager.GetUserAsync(this.User);
-            var result = await this.userManager.AddToRoleAsync(user, "Admin");
-            return this.Json(result);
-        }
+        //[Authorize]
+
+        //public async Task<IActionResult> AddUserToAdmin()
+        //{
+        //    if (!await this.roleManager.RoleExistsAsync("Admin"))
+        //    {
+        //        await this.roleManager.CreateAsync(new ApplicationRole
+        //        {
+        //            Name = "Admin",
+        //        });
+        //    }
+
+        //    var user = await this.userManager.GetUserAsync(this.User);
+        //    var result = await this.userManager.AddToRoleAsync(user, "Admin");
+        //    return this.Json(result);
+        //}
         [Authorize(Roles = "Admin")]
         public IActionResult AllPosts(int id = 1)
         {
