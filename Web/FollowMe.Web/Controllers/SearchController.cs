@@ -3,10 +3,12 @@
 using FollowMe.Services.Data;
 using FollowMe.Web.ViewModels.Categories;
 using FollowMe.Web.ViewModels.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FollowMe.Web.Controllers
 {
+    [Authorize]
     public class SearchController : Controller
     {
         private readonly IProfilesService profilesService;
