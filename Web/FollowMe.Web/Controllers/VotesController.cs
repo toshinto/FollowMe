@@ -29,7 +29,6 @@ namespace FollowMe.Web.Controllers
         // Request body: {"postId":1,"isUpVote":true}
         // Response body: {"votesCount":16}
         [HttpPost]
-        [IgnoreAntiforgeryToken]
         public async Task<ActionResult<VoteResponseModel>> Post(VoteInputModel input)
         {
             var userId = this.userManager.GetUserId(this.User);

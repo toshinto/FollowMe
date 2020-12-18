@@ -59,3 +59,6 @@ dotnet_diagnostic.AD0001.severity = silent
 
 # SA1116: Split parameters should start on line after declaration
 dotnet_diagnostic.SA1116.severity = silent
+
+# SA1500: Braces for multi-line statements should not share line
+dotnet_diagnostic.SA1500.severity = silent
