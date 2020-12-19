@@ -14,6 +14,11 @@ namespace FollowMe.Web.Controllers
     [Authorize]
     public class AdminsController : Controller
     {
+        private const string AdminAllPosts = "AllPosts";
+        private const string AdminAllPhotoComments = "AllPhotoComments";
+        private const string AdminAllPhotos = "AllPhotos";
+        private const string AdminAllUsers = "AllUsers";
+
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IAdminsService adminsService;
@@ -52,7 +57,7 @@ namespace FollowMe.Web.Controllers
             var viewModel = new AdminViewModel();
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemsPerPage;
-            viewModel.Action = "AllPosts";
+            viewModel.Action = AdminAllPosts;
             viewModel.CountOfElements = this.adminsService.GetCountOfPosts();
             viewModel.Posts = this.adminsService.GetAllPosts<AdminPostsView>(id, ItemsPerPage);
             return this.View(viewModel);
@@ -75,7 +80,7 @@ namespace FollowMe.Web.Controllers
             var viewModel = new AdminCommentsViewModel();
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = 12;
-            viewModel.Action = "AllPhotoComments";
+            viewModel.Action = AdminAllPhotoComments;
             viewModel.CountOfElements = this.adminsService.GetCountOfPhotosComments();
             viewModel.Comments = this.adminsService.GetAllPhotoComments<AdminCommentsView>(id, ItemsPerPage);
             return this.View(viewModel);
@@ -99,7 +104,7 @@ namespace FollowMe.Web.Controllers
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemPerPage;
             viewModel.CountOfElements = this.adminsService.GetCountOfPhotos();
-            viewModel.Action = "AllPhotos";
+            viewModel.Action = AdminAllPhotos;
             viewModel.Photos = this.adminsService.GetAllPhotos<AdminAllPhotosView>(id, ItemPerPage);
             return this.View(viewModel);
         }
@@ -123,7 +128,7 @@ namespace FollowMe.Web.Controllers
             viewModel.PageNumber = id;
             viewModel.ItemsPerPage = ItemPerPage;
             viewModel.CountOfElements = this.adminsService.GetCountOfUsers();
-            viewModel.Action = "AllUsers";
+            viewModel.Action = AdminAllUsers;
             viewModel.Users = this.adminsService.GetAllUsers<AdminAllUsersView>(id, ItemPerPage);
             return this.View(viewModel);
         }
