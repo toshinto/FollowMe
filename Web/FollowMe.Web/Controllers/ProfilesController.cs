@@ -21,13 +21,12 @@ namespace FollowMe.Web.Controllers
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly IEmailSender emailSender;
 
-        public ProfilesController(IProfilesService profilesService, UserManager<ApplicationUser> userManager, IPostsService postsService, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender)
+        public ProfilesController(IProfilesService profilesService, UserManager<ApplicationUser> userManager, IPostsService postsService, IWebHostEnvironment webHostEnvironment)
         {
             this.profilesService = profilesService;
             this.userManager = userManager;
             this.postsService = postsService;
             this.webHostEnvironment = webHostEnvironment;
-            this.emailSender = emailSender;
         }
         public IActionResult Details()
         {
