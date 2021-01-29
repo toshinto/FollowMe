@@ -108,11 +108,15 @@ namespace FollowMe.Services.Data.Tests
         //    var user = new UserCharacteristic
         //    {
         //        Id = "1",
+        //        Gender = Gender.Male,
+        //        PhotoId = "1",
         //    };
 
         //    var secondUser = new UserCharacteristic
         //    {
         //        Id = "2",
+        //        Gender = Gender.Male,
+        //        PhotoId = "1",
         //    };
 
         //    userChars.Add(user);
@@ -121,6 +125,49 @@ namespace FollowMe.Services.Data.Tests
         //    var topMen = categoryService.GetTopMen<CategoryViewModel>();
 
         //    Assert.Equal(2, topMen.Count());
+        //}
+
+        //[Fact]
+        //public void GetTopWomenCountShouldWorkCorrectly()
+        //{
+        //    var userChars = new List<UserCharacteristic>();
+        //    var appUsers = new List<ApplicationUser>();
+        //    var photos = new List<Photo>();
+
+        //    var mockUserChar = new Mock<IDeletableEntityRepository<UserCharacteristic>>();
+        //    mockUserChar.Setup(x => x.All()).Returns(userChars.AsQueryable());
+        //    mockUserChar.Setup(x => x.AddAsync(It.IsAny<UserCharacteristic>())).Callback((UserCharacteristic uc) => userChars.Add(uc));
+
+        //    var mockAppUser = new Mock<IDeletableEntityRepository<ApplicationUser>>();
+        //    mockAppUser.Setup(x => x.All()).Returns(appUsers.AsQueryable());
+        //    mockAppUser.Setup(x => x.AddAsync(It.IsAny<ApplicationUser>())).Callback((ApplicationUser appU) => appUsers.Add(appU));
+
+        //    var mockPhoto = new Mock<IDeletableEntityRepository<Photo>>();
+        //    mockPhoto.Setup(x => x.All()).Returns(photos.AsQueryable());
+        //    mockPhoto.Setup(x => x.AddAsync(It.IsAny<Photo>())).Callback((Photo ph) => photos.Add(ph));
+
+        //    var categoryService = new CategoriesService(mockUserChar.Object);
+
+        //    var user = new UserCharacteristic
+        //    {
+        //        Id = "1",
+        //        Gender = Gender.Female,
+        //        PhotoId = "1",
+        //    };
+
+        //    var secondUser = new UserCharacteristic
+        //    {
+        //        Id = "2",
+        //        Gender = Gender.Female,
+        //        PhotoId = "1",
+        //    };
+
+        //    userChars.Add(user);
+        //    userChars.Add(secondUser);
+
+        //    var topWomen = categoryService.GetTopWomen<CategoryViewModel>();
+
+        //    Assert.Equal(2, topWomen.Count());
         //}
     }
 }

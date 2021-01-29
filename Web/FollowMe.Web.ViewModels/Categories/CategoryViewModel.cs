@@ -10,5 +10,7 @@ namespace FollowMe.Web.ViewModels.Categories
 
         public string Gender { get; set; }
 
+        public string PhotoId { get; set; }
+
     }
 }

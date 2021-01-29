@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-
+using FollowMe.Common;
 using FollowMe.Data.Models;
 using FollowMe.Services.Data;
+using FollowMe.Services.Messaging;
 using FollowMe.Web.ViewModels.Profiles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -18,13 +19,15 @@ namespace FollowMe.Web.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IPostsService postsService;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IEmailSender emailSender;
 
-        public ProfilesController(IProfilesService profilesService, UserManager<ApplicationUser> userManager, IPostsService postsService, IWebHostEnvironment webHostEnvironment)
+        public ProfilesController(IProfilesService profilesService, UserManager<ApplicationUser> userManager, IPostsService postsService, IWebHostEnvironment webHostEnvironment, IEmailSender emailSender)
         {
             this.profilesService = profilesService;
             this.userManager = userManager;
             this.postsService = postsService;
             this.webHostEnvironment = webHostEnvironment;
+            this.emailSender = emailSender;
         }
         public IActionResult Details()
         {

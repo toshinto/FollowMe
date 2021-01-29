@@ -46,5 +46,7 @@
 
         public const string MaximumAgeIsRequired = "Maximum age is required";
 
+        public const string EmailMessage = "<h1>You have successfully filled in your information.</h1>";
+
     }
 }
