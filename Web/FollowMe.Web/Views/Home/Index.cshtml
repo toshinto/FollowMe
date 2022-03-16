@@ -32,7 +32,7 @@
     </div>
     <div id="statistics" style="border-radius:25px;">
         <div class="container">
-            <div class="row">
+            <div class="userStatistics" id="userStat">
                 <h2 class="col-md-3 text-center" id="userId"></h2>
             </div>
         </div>
@@ -42,10 +42,19 @@
 
 @section Scripts{ 
 <script>
+
     $('#statistics-button').on('click', ev => {
         $.get('/api/statistics', (data) => {
-            $('#userId').text(data.text);
-   
+            
+            const node = document.createElement("p");
+            if ($.trim(data) == '')
+            {
+                node.innerText = "No Data"
+                alert("Nothing Found");
+
+            }
+            node.innerHTML = data;
+            document.getElementById('userStat').appendChild(node);
         });
     });
 </script>
