@@ -10,9 +10,12 @@ D:\FollowMe\FollowMe\Data\FollowMe.Data\bin\Debug\netcoreapp3.1\FollowMe.Data.Mo
 D:\FollowMe\FollowMe\Data\FollowMe.Data\bin\Debug\netcoreapp3.1\FollowMe.Common.pdb
 D:\FollowMe\FollowMe\Data\FollowMe.Data\bin\Debug\netcoreapp3.1\FollowMe.Data.Common.pdb
 D:\FollowMe\FollowMe\Data\FollowMe.Data\bin\Debug\netcoreapp3.1\FollowMe.Data.Models.pdb
-D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.AssemblyInfoInputs.cache
 D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.csproj.CopyComplete
 D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.dll
 D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.pdb
+D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.csproj.CoreCompileInputs.cache
+D:\FollowMe\FollowMe\Data\FollowMe.Data\obj\Debug\netcoreapp3.1\FollowMe.Data.genruntimeconfig.cache

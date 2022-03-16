@@ -3,26 +3,51 @@
 <div class="row mt-2 mb-4">
     @foreach (var user in Model.People)
     {
-    <div class="card col-6 col-lg-3 game-card">
-        <div class="text-lg-center">
-        @if (user.PhotoImagePath == null)
-        {
-            <img src="~/images/default-profile-picture1.jpg" ; text-align: center;"
-                 class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
-        }
-        else
-        {
-            <img src="@user.PhotoImagePath" ; text-align: center;"
-                 class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
-        }
+        <div class="card col-6 col-lg-3 game-card">
+            <div class="text-lg-center">
+                @if (user.PhotoImagePath == null)
+                {
+                    <img src="~/images/default-profile-picture1.jpg" ; text-align: center;"
+                         class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
+                }
+                else
+                {
+                    <img src="@user.PhotoImagePath" ; text-align: center;"
+                         class="card-img-top img-fluid card-image" id="coverImageUrlIndex">
+                }
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
+                    title="Description:<br>">
+                    @user.FullName
+                </h5>
+                <a href="/Profiles/Profile?id=@user.UserId" class="btn btn-block btn-primary">Profile</a>
+            </div>
         </div>
-        <div class="card-body">
-            <h5 class="card-title text-center" data-toggle="tooltip" data-placement="bottom"
-                title="Description:<br>">
-                @user.FullName
-            </h5>
-            <a href="/Profiles/Profile?id=@user.UserId" class="btn btn-block btn-primary">Profile</a>
+    }
+    <div class="row">
+        <div class="col-12 text-center">
+            <button class="btn btn-primary" id="statistics-button"><i class="fas fa-chart-bar"></i> Our Stats</button>
         </div>
     </div>
-    }
+    <div id="statistics" style="border-radius:25px;">
+        <div class="container">
+            <div class="row">
+                <h2 class="col-md-3 text-center" id="userId"></h2>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+@section Scripts{ 
+<script>
+    $('#statistics-button').on('click', ev => {
+        $.get('/api/statistics', (data) => {
+            $('#userId').text(data.text);
+   
+        });
+    });
+</script>
+ }
+    

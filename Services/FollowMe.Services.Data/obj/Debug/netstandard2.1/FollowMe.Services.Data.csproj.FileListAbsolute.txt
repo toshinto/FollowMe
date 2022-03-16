@@ -1,4 +1,3 @@
-D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.AssemblyInfoInputs.cache
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Services.Data.deps.json
@@ -19,3 +18,6 @@ D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\Fo
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.ViewModels.pdb
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.Infrastructure.dll
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\bin\Debug\netstandard2.1\FollowMe.Web.Infrastructure.pdb
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Data\obj\Debug\netstandard2.1\FollowMe.Services.Data.csproj.CoreCompileInputs.cache

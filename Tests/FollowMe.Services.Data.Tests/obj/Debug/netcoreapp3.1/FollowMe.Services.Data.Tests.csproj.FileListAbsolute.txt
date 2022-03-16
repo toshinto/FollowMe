@@ -154,7 +154,6 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Data.Common.pdb
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Data.Models.pdb
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Services.Mapping.pdb
-D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.AssemblyInfoInputs.cache
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.csproj.CopyComplete
@@ -166,3 +165,7 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.dll
 D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.pdb
+D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.csproj.CoreCompileInputs.cache
+D:\FollowMe\FollowMe\Tests\FollowMe.Services.Data.Tests\obj\Debug\netcoreapp3.1\FollowMe.Services.Data.Tests.genruntimeconfig.cache

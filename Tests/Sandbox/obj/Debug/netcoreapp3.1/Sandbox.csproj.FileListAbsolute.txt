@@ -83,7 +83,6 @@ D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Services.Dat
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Services.Mapping.pdb
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Services.Messaging.pdb
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Services.pdb
-D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.AssemblyInfoInputs.cache
 D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.csproj.CopyComplete
@@ -95,3 +94,7 @@ D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.dll
 D:\FollowMe\FollowMe\Tests\Sandbox\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.pdb
+D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.csproj.CoreCompileInputs.cache
+D:\FollowMe\FollowMe\Tests\Sandbox\obj\Debug\netcoreapp3.1\Sandbox.genruntimeconfig.cache

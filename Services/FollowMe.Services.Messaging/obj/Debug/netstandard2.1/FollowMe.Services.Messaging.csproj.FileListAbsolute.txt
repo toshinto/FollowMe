@@ -1,8 +1,10 @@
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\bin\Debug\netstandard2.1\FollowMe.Services.Messaging.deps.json
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\bin\Debug\netstandard2.1\FollowMe.Services.Messaging.dll
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\bin\Debug\netstandard2.1\FollowMe.Services.Messaging.pdb
-D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.AssemblyInfoInputs.cache
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.dll
 D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.pdb
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Services\FollowMe.Services.Messaging\obj\Debug\netstandard2.1\FollowMe.Services.Messaging.csproj.CoreCompileInputs.cache

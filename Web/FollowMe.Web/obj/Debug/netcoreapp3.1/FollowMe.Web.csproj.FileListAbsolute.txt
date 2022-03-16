@@ -1,9 +1,7 @@
-D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\FollowMe.Web.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\appsettings.json
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\bundleconfig.json
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\libman.json
-D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\FollowMe.Web.StaticWebAssets.xml
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\FollowMe.Web.exe
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\FollowMe.Web.deps.json
@@ -497,3 +495,8 @@ D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Search
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_PagingPartial.cshtml.g.cs
 D:\FollowMe\FollowMe\Web\FollowMe.Web\bin\Debug\netcoreapp3.1\wwwroot\images\error.jpg
 D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\StatusCodeError.cshtml.g.cs
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\FollowMe.Web.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\FollowMe.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\FollowMe.Web.csproj.CoreCompileInputs.cache
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\FollowMe.Web.styles.css
+D:\FollowMe\FollowMe\Web\FollowMe.Web\obj\Debug\netcoreapp3.1\FollowMe.Web.genruntimeconfig.cache

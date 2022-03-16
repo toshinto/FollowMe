@@ -5,4 +5,5 @@ D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowM
 D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.dll
 D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.pdb
-D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.csprojAssemblyReference.cache
+D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Services\FollowMe.Services\obj\Debug\netstandard2.1\FollowMe.Services.csproj.CoreCompileInputs.cache

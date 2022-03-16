@@ -3,9 +3,11 @@ D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\bin\Debug\netstandard2.1\FollowMe
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\bin\Debug\netstandard2.1\FollowMe.Data.Models.pdb
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\bin\Debug\netstandard2.1\FollowMe.Data.Common.dll
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\bin\Debug\netstandard2.1\FollowMe.Data.Common.pdb
-D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.AssemblyInfoInputs.cache
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.AssemblyInfo.cs
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.csproj.CopyComplete
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.dll
 D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.pdb
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Data\FollowMe.Data.Models\obj\Debug\netstandard2.1\FollowMe.Data.Models.csproj.CoreCompileInputs.cache

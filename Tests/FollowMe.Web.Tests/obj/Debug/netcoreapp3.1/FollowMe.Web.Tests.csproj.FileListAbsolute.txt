@@ -5,7 +5,6 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\appsetting
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\appsettings.json
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\bundleconfig.json
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\libman.json
-D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.StaticWebAssets.xml
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.exe
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\testhost.exe
@@ -512,7 +511,6 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.S
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Services.Messaging.pdb
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.Infrastructure.pdb
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.ViewModels.pdb
-D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.csprojAssemblyReference.cache
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\staticwebassets\FollowMe.Web.Tests.StaticWebAssets.Manifest.cache
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\staticwebassets\FollowMe.Web.Tests.StaticWebAssets.xml
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.MvcApplicationPartsAssemblyInfo.cs
@@ -533,3 +531,11 @@ D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Views\Comm
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\wwwroot\images\default-profile-picture1.jpg
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\wwwroot\images\error.jpg
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.deps.json
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.runtimeconfig.json
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\bin\Debug\netcoreapp3.1\FollowMe.Web.runtimeconfig.dev.json
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.csproj.AssemblyReference.cache
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.GeneratedMSBuildEditorConfig.editorconfig
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.csproj.CoreCompileInputs.cache
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\scopedcss\bundle\FollowMe.Web.Tests.styles.css
+D:\FollowMe\FollowMe\Tests\FollowMe.Web.Tests\obj\Debug\netcoreapp3.1\FollowMe.Web.Tests.genruntimeconfig.cache
