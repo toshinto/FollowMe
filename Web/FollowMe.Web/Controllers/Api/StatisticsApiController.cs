@@ -21,7 +21,7 @@ namespace FollowMe.Web.Controllers.Api
         {
             var userId = this.data
                 .Users
-                .Where(x => x.Id.Length < 3)
+                //.Where(x => x.Id.Length < 3)
                 .Select(t => t.Id)
                 .ToArray();
 
